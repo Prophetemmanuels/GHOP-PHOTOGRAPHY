@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #38bdf8;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.timer {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 1.2em;
+}
+
+.input-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.results {
+  border: 1px solid #1e293b;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.range {
+  font-size: 1.6em;
+  margin: 10px 0;
+  color: #22c55e;
+  text-align: center;
+}
+
+.stats div {
+  margin: 5px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border-bottom: 1px solid #1e293b;
+  padding: 5px 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.above {
+  background: #22c55e;
+  color: #000;
+  flex: 1;
+}
+
+.below {
+  background: #ef4444;
+  color: #fff;
+  flex: 1;
+}
+
+canvas {
+  width: 100%;
+  margin-top: 10px;
+  background: #020617;
+  border: 1px solid #1e293b;
+}
+
+.decision {
+  margin-top: 10px;
+  font-size: 1.1em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.disclaimer {
+  font-size: 0.75em;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 15px;
+}
