@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ghop-photography-v2';
+const CACHE_NAME = 'ghop-photography-v4';
 const APP_FILES = [
   './',
   './index.html',

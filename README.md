@@ -1,6 +1,6 @@
 # GHOP Photography — website app
 
-A responsive, dependency-free photography and event-support website for GHOP Photography. It includes a portfolio with category filters, editable collection prices, PA system hire, FAQs, contact links, a WhatsApp enquiry form, and installable/offline PWA support.
+A responsive, dependency-free photography, makeup and event-support website for GHOP Photography. It includes a portfolio with category filters, 31 photography shoot types, Pinterest makeup inspiration, an admin-gated price editor, PA system hire, business hours, direct contact links, a WhatsApp enquiry form, and installable/offline PWA support.
 
 ## Preview locally
 
@@ -31,7 +31,9 @@ Browsers do **not** allow a website to install silently without the visitor's ac
 
 ## Update prices
 
-Open **Collections & starting rates → Edit prices**, enter the amounts in Zambian Kwacha, then save. Changes persist in local storage in the current browser/device only. To publish one centrally managed price list for every visitor, connect a CMS or database.
+Open **Collections & starting rates → Edit prices**, enter the admin password, then update and save the amounts in Zambian Kwacha. The password is checked as a salted hash; it is not stored as plain text in the page. Changes persist in local storage in the current browser/device only.
+
+**Important:** GitHub Pages serves static files. A password check implemented only in browser code can be inspected or bypassed and is not strong admin security; it also cannot publish a shared price list to all visitors. For real administrator-only access and shared updates, connect a server-side authenticated CMS/database before launch.
 
 The defaults are in the `defaultPrices` object near the bottom of `index.html`:
 
@@ -55,6 +57,12 @@ Before publishing, confirm you have permission to display recognizable people, e
 ## Shoot types & Pinterest links
 
 The site includes 31 common shoot types grouped into Portraits & People, Weddings & Milestones, Events & Live Moments, and Commercial & Creative. Every type links to a Pinterest search for visual examples and pose ideas. Visitors can also select a specific shoot type in the WhatsApp enquiry form; PA System Hire remains a separate option.
+
+## Makeup and business hours
+
+The Makeup section lists 19 makeup styles across Everyday & Glam, Bridal & Celebrations, and Camera & Creative. Each style links to Pinterest search results for visual references. Makeup enquiries from the form are directed to the supplied makeup WhatsApp number, `097 141 5665`; photography and PA enquiries go to `076 052 8887`.
+
+Listed hours: Monday–Friday 08:00–17:30, Saturday 08:00–15:00, Sunday closed (Zambia local time).
 
 ## Main files
 

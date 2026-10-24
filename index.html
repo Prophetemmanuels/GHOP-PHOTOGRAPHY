@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#171613">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="GHOP Photography in Zambia: portraits, celebrations, personal branding and PA system hire. Get in touch to book.">
+  <meta name="description" content="GHOP Photography in Zambia: portrait and event photography, professional makeup services, PA system hire and more. Book your session."
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/ghop-192.png">
   <link rel="apple-touch-icon" href="./assets/icons/ghop-192.png">
@@ -130,9 +130,11 @@
     .section-header h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.65rem, 4.8vw, 4.6rem); font-weight: 400; letter-spacing: -.05em; line-height: 1.04; }
     .section-header h2 em { color: var(--gold); font-weight: 400; }
     .section-header p { max-width: 350px; margin: 0 0 4px; color: #aaa39a; font-size: .86rem; line-height: 1.8; }
-    .services-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
     .service-card { position: relative; min-height: 260px; padding: 28px 25px 26px 0; }
     .service-card + .service-card { padding-left: 26px; border-left: 1px solid var(--line-dark); }
+    .service-card:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+    .service-card:nth-child(n+4) { padding-top: 25px; border-top: 1px solid var(--line-dark); }
     .service-number { color: var(--gold); font-family: var(--serif); font-size: .9rem; font-style: italic; }
     .service-icon { position: absolute; top: 23px; right: 24px; width: 24px; height: 24px; color: #9d8c76; }
     .service-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.2; }
@@ -159,6 +161,25 @@
     .pinterest-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; color: #923e39; font-size: .56rem; font-weight: 700; letter-spacing: .055em; text-align: right; text-transform: uppercase; white-space: nowrap; transition: color .2s ease; }
     .pinterest-link:hover { color: #63221f; text-decoration: underline; text-underline-offset: 3px; }
     .pinterest-arrow { font-size: .83rem; line-height: 1; }
+
+    /* Makeup services — plum and champagne beauty palette */
+    .makeup-section { padding: 108px 0 116px; color: var(--paper); background: radial-gradient(ellipse at 12% 8%, rgba(169,105,139,.18), transparent 35%), radial-gradient(ellipse at 94% 95%, rgba(201,165,120,.1), transparent 30%), #211a20; }
+    .makeup-section .section-kicker { color: #e4b1ac; }
+    .makeup-section .section-header h2 em { color: #e2aeb3; }
+    .makeup-section .section-header p { color: #c4b8bc; }
+    .makeup-intro-bar { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin: 0 0 17px; padding: 15px 17px; border: 1px solid rgba(226,174,179,.26); color: #d1c4c4; background: rgba(255,255,255,.035); font-size: .72rem; line-height: 1.65; }
+    .makeup-intro-bar .button { flex: 0 0 auto; min-height: 46px; padding-inline: 16px; white-space: nowrap; }
+    .makeup-category-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .makeup-category { min-width: 0; padding: 22px 20px 12px; border: 1px solid rgba(226,174,179,.22); background: linear-gradient(150deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); }
+    .makeup-category-heading { display: flex; align-items: baseline; gap: 12px; margin-bottom: 3px; padding-bottom: 13px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .makeup-category-heading > span { color: #e0a6ac; font-family: var(--serif); font-size: .9rem; font-style: italic; }
+    .makeup-category-heading h3 { margin: 0; color: #f5eee8; font-family: var(--serif); font-size: 1.35rem; font-weight: 400; }
+    .makeup-type-list { margin: 0; padding: 0; list-style: none; }
+    .makeup-type-row { display: flex; justify-content: space-between; align-items: center; gap: 9px; min-height: 42px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.09); color: #e3d8d7; font-size: .7rem; line-height: 1.45; }
+    .makeup-type-row:last-child { border-bottom: 0; }
+    .makeup-type-row > span { flex: 1 1 auto; min-width: 0; }
+    .makeup-pinterest { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 4px; color: #eab6aa; font-size: .53rem; font-weight: 700; letter-spacing: .055em; text-transform: uppercase; white-space: nowrap; transition: color .2s ease; }
+    .makeup-pinterest:hover { color: #fff0dc; text-decoration: underline; text-underline-offset: 3px; }
 
     /* Portfolio */
     .portfolio-section { padding: 105px 0 120px; color: var(--ink); background: var(--paper); }
@@ -240,6 +261,15 @@
     .contact-method small { display: block; margin: 0 0 4px; color: #8e877e; font-size: .57rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .contact-method a, .contact-method span.value { color: #e5ded3; font-size: .86rem; transition: color .2s ease; }
     .contact-method a:hover { color: var(--gold-bright); }
+    .contact-method .inline-contact-link { margin-left: 9px; color: #c8a67f; font-size: .66rem; white-space: nowrap; }
+    .hours-card { margin-top: 26px; padding: 16px 17px 9px; border: 1px solid rgba(201,165,120,.24); background: rgba(255,255,255,.025); }
+    .hours-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .hours-heading span { color: var(--gold-bright); font-size: .62rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .hours-heading small { color: #8f887e; font-size: .57rem; }
+    .hours-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.08); color: #c9c1b7; font-size: .73rem; }
+    .hours-row:last-child { border-bottom: 0; }
+    .hours-row strong { color: #f1e9df; font-size: .72rem; font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
+    .hours-row .hours-closed { color: #dba7a5; }
     .social-row { display: flex; gap: 11px; margin-top: 30px; }
     .social-link { display: inline-flex; align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.17); color: #d2cbc0; font-size: .63rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; transition: all .2s ease; }
     .social-link:hover { color: var(--gold-bright); border-color: var(--gold); }
@@ -303,6 +333,13 @@
     .input-currency input { width: 100%; min-width: 0; height: 42px; padding: 0 11px; border: 0; outline: 0; color: white; background: transparent; text-align: right; font-size: .85rem; }
     .input-currency input:focus { box-shadow: inset 0 0 0 1px var(--gold); }
     .dialog-notice { margin: 18px 0 0; padding: 11px 13px; border-left: 2px solid var(--gold); color: #aaa39a; background: rgba(201,165,120,.07); font-size: .66rem; line-height: 1.65; }
+    .admin-intro { margin: -5px 0 20px; color: #aaa39a; font-size: .78rem; line-height: 1.7; }
+    .admin-field { display: flex; flex-direction: column; gap: 8px; }
+    .admin-field label { color: #b8b1a7; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .admin-field input { width: 100%; min-height: 47px; padding: 0 13px; border: 1px solid rgba(255,255,255,.2); border-radius: 0; outline: 0; color: var(--paper); background: rgba(0,0,0,.18); font-size: .85rem; }
+    .admin-field input:focus { border-color: var(--gold); }
+    .admin-error { min-height: 1.2em; margin: 8px 0 0; color: #f2a7a0; font-size: .68rem; }
+    .admin-dialog .dialog-actions { margin-top: 8px; }
     .dialog-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 23px; }
     .reset-button { padding: 8px 0; border: 0; color: #aaa39a; background: transparent; font-size: .64rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
     .reset-button:hover { color: var(--gold-bright); }
@@ -317,6 +354,7 @@
       .hero-grid { gap: 48px; }
       .hero h1 { font-size: clamp(3.8rem, 7vw, 6rem); }
       .gallery-grid { gap: 14px; }
+      .makeup-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .package-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { gap: 50px; }
     }
@@ -341,7 +379,7 @@
       .hero-photo-wrap { height: clamp(380px, 65vw, 500px); }
       .hero-services { gap: 9px; margin-top: 35px; font-size: .55rem; }
       .hero-services span + span::before { margin-right: 9px; }
-      .about-section, .services-section, .shoot-types-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 82px; }
+      .about-section, .services-section, .shoot-types-section, .makeup-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 82px; }
       .about-grid { gap: 40px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .service-card { min-height: 220px; padding-right: 20px; }
@@ -387,7 +425,7 @@
       .service-ribbon { gap: 11px 18px; padding: 18px 14px; }
       .service-ribbon span { font-size: .9rem; }
       .service-ribbon i { font-size: .55rem; }
-      .about-section, .services-section, .shoot-types-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 68px; }
+      .about-section, .services-section, .shoot-types-section, .makeup-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 68px; }
       .about-topline { margin-bottom: 34px; }
       .about-topline .side-note { max-width: 110px; text-align: right; font-size: .52rem; }
       .about-grid { grid-template-columns: 1fr; gap: 26px; }
@@ -404,6 +442,13 @@
       .shoot-category-heading h3 { font-size: 1.3rem; }
       .shoot-type-row { gap: 8px; font-size: .7rem; }
       .pinterest-link { font-size: .52rem; }
+      .makeup-intro-bar { align-items: flex-start; flex-direction: column; gap: 10px; font-size: .69rem; }
+      .makeup-intro-bar .button { width: 100%; }
+      .makeup-category-grid { grid-template-columns: 1fr; }
+      .makeup-category { padding: 18px 14px 8px; }
+      .makeup-category-heading h3 { font-size: 1.3rem; }
+      .makeup-type-row { gap: 8px; font-size: .69rem; }
+      .makeup-pinterest { font-size: .51rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .service-card { min-height: 211px; padding-top: 21px; padding-right: 12px; }
       .service-card + .service-card { padding-left: 15px; }
@@ -470,6 +515,7 @@
         <a href="#about">Our approach</a>
         <a href="#services">Services</a>
         <a href="#shoot-types">Shoot ideas</a>
+        <a href="#makeup">Makeup</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#packages">Packages</a>
         <a href="#faq">FAQs</a>
@@ -487,12 +533,12 @@
         <div class="hero-copy">
           <div class="eyebrow">Photography with feeling · Zambia</div>
           <h1 id="hero-title">Life moves.<br><em>Keep the feeling.</em></h1>
-          <p class="hero-intro">Portraits, personal branding and the joy of a birthday — captured with care, shaped into photographs you’ll return to.</p>
+          <p class="hero-intro">Portraits, makeup artistry and meaningful celebrations — beautifully considered, from the first brush to the final frame.</p>
           <div class="hero-actions">
             <a class="button" href="#portfolio">Explore the work <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
-            <a class="button button-outline" href="#contact">Book a session</a>
+            <a class="button button-outline" href="#contact">Book a service</a>
           </div>
-          <div class="hero-services" aria-label="Photography services"><span>Portraits</span><span>Birthdays</span><span>Branding</span></div>
+          <div class="hero-services" aria-label="Photography and beauty services"><span>Portraits</span><span>Makeup</span><span>Celebrations</span></div>
         </div>
         <div class="hero-visual">
           <div class="hero-frame" aria-hidden="true"></div>
@@ -506,8 +552,8 @@
       <div class="hero-bottomline"><span>GHOP Photography · Zambia</span><a href="#about">Scroll to explore ↓</a></div>
     </section>
 
-    <div class="service-ribbon" aria-label="Photography specialties">
-      <span>Studio portraits</span><i>✳</i><span>Personal branding</span><i>✳</i><span>Birthday celebrations</span><i>✳</i><span>Milestones</span>
+    <div class="service-ribbon" aria-label="Photography, beauty and event services">
+      <span>Studio portraits</span><i>✳</i><span>Makeup artistry</span><i>✳</i><span>Personal branding</span><i>✳</i><span>Birthday celebrations</span>
     </div>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
@@ -520,7 +566,7 @@
           <h2 id="about-title">It’s not just how it looked.<br><em>It’s how it felt.</em></h2>
           <div class="about-copy">
             <p>The best photographs take you back — to the laughter, the nerves, the people who showed up, and all the little moments in between.</p>
-            <p>GHOP Photography is here to tell your story with warmth and intention. Whether it’s a wedding, a portrait session, a celebration or a growing brand, we’ll make space for the moments that feel like you.</p>
+            <p>GHOP Photography is here to tell your story with warmth and intention. From portraits, weddings and celebrations to personal branding and makeup services, we’ll help you feel ready for the moments that matter.</p>
             <a class="text-link" href="#services">Find your kind of story <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
             <div class="about-quote">“A photograph should bring back more than the view. It should bring back the feeling.”</div>
           </div>
@@ -532,10 +578,10 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">02 / Photography & event support</div>
+            <div class="section-kicker">02 / Photography, beauty & event support</div>
             <h2 id="services-title">A story for <em>every season.</em></h2>
           </div>
-          <p>Thoughtful photography plus practical event support. Tell us what you’re planning and we’ll help you choose the right service.</p>
+          <p>Thoughtful photography, professional makeup and practical event support. Tell us what you’re planning and we’ll help you choose the right service.</p>
         </div>
         <div class="services-grid">
           <article class="service-card">
@@ -567,6 +613,12 @@
             <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h4l5-4v16l-5-4H4zM17 9a4 4 0 0 1 0 6M17 6a8 8 0 0 1 0 12"/></svg></span>
             <h3>PA system hire</h3>
             <p>K3,500 per hire. Transport is provided by the person booking the system.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">06</span>
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 14 9l6 2-6 2-2 7-2-7-6-2 6-2 2-6ZM19 3v4M17 5h4"/></svg></span>
+            <h3>Makeup artistry</h3>
+            <p>Natural, glam, bridal and camera-ready looks, shaped around your occasion.</p>
           </article>
         </div>
       </div>
@@ -638,11 +690,60 @@
       </div>
     </section>
 
+    <section class="makeup-section" id="makeup" aria-labelledby="makeup-title">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">04 / Makeup artistry</div>
+            <h2 id="makeup-title">A look that feels <em>like you.</em></h2>
+          </div>
+          <p>From fresh, natural beauty to bridal glam and camera-ready looks. Browse makeup ideas on Pinterest, save your favourite looks and tell us what you have in mind.</p>
+        </div>
+        <div class="makeup-intro-bar"><span>Makeup services for weddings, portraits, celebrations and more. Availability and pricing are confirmed on enquiry.</span><a class="button" href="#contact" data-package="Makeup Services">Enquire about makeup <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+        <div class="makeup-category-grid">
+          <article class="makeup-category" aria-labelledby="makeup-natural-title">
+            <div class="makeup-category-heading"><span>01</span><h3 id="makeup-natural-title">Everyday &amp; glam</h3></div>
+            <ul class="makeup-type-list">
+              <li class="makeup-type-row"><span>Natural / no-makeup makeup</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=natural%20no%20makeup%20makeup%20look%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest natural makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Soft glam</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=soft%20glam%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest soft glam makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Full glam</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=full%20glam%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest full glam makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Evening / special occasion</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=evening%20special%20occasion%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest evening and occasion makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Mature skin / timeless glam</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=mature%20skin%20timeless%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest mature skin makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Groom / camera-ready grooming</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=groom%20camera%20ready%20grooming%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest groom camera-ready makeup ideas">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+          <article class="makeup-category" aria-labelledby="makeup-bridal-title">
+            <div class="makeup-category-heading"><span>02</span><h3 id="makeup-bridal-title">Bridal &amp; celebrations</h3></div>
+            <ul class="makeup-type-list">
+              <li class="makeup-type-row"><span>Bridal / wedding makeup</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=bridal%20wedding%20makeup%20looks%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest bridal and wedding makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Traditional / cultural bridal</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=traditional%20african%20cultural%20bridal%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest traditional and cultural bridal makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Engagement / pre-wedding</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=engagement%20pre-wedding%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest engagement and pre-wedding makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Bridesmaid / bridal party</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=bridesmaid%20bridal%20party%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest bridesmaid and bridal party makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Birthday / celebration</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=birthday%20celebration%20party%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest birthday and celebration makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Graduation / prom</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=graduation%20prom%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest graduation and prom makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Maternity / baby shower</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=maternity%20baby%20shower%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest maternity and baby shower makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+          <article class="makeup-category" aria-labelledby="makeup-camera-title">
+            <div class="makeup-category-heading"><span>03</span><h3 id="makeup-camera-title">Camera &amp; creative</h3></div>
+            <ul class="makeup-type-list">
+              <li class="makeup-type-row"><span>Photoshoot / portrait makeup</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=photoshoot%20portrait%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest portrait and photoshoot makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Fashion / editorial</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=fashion%20editorial%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest fashion and editorial makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Professional / headshot</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=professional%20headshot%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest professional headshot makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Stage / performance</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=stage%20performance%20makeup%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest stage and performance makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Creative / colourful looks</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=creative%20colorful%20makeup%20looks" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest creative colourful makeup looks">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+              <li class="makeup-type-row"><span>Makeup lesson / self-application</span><a class="makeup-pinterest" href="https://www.pinterest.com/search/pins/?q=makeup%20lesson%20self%20application%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest makeup lesson and self-application ideas">Pinterest looks <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">04 / A few frames</div>
+            <div class="section-kicker">05 / A few frames</div>
             <h2 id="portfolio-title">The art of <em>being there.</em></h2>
           </div>
           <p>Every frame starts with a real person, a real place and a story worth keeping.</p>
@@ -689,7 +790,7 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">05 / Collections & starting rates</div>
+            <div class="section-kicker">06 / Collections & starting rates</div>
             <h2 id="packages-title">Good stories, <em>well supported.</em></h2>
           </div>
           <p>Choose a starting point. We’ll tailor photography coverage to your plans, or help you book PA system hire for your event.</p>
@@ -744,7 +845,7 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">06 / From first hello to event day</div>
+            <div class="section-kicker">07 / From first hello to event day</div>
             <h2 id="process-title">Simple, <em>from start to story.</em></h2>
           </div>
           <p>Good photographs begin with a good conversation. Here’s what booking can look like.</p>
@@ -762,21 +863,31 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">07 / Let’s make something lasting</div>
+            <div class="section-kicker">08 / Let’s make something lasting</div>
             <h2 id="contact-title">Your story<br><em>starts here.</em></h2>
           </div>
           <p>Tell us what you have in mind. A date, a dream, even just a question — we’d love to hear from you.</p>
         </div>
         <div class="contact-grid">
           <div class="contact-details">
-            <p>For availability, custom packages and bookings, get in touch directly or send an enquiry using the form.</p>
+            <p>For photography, makeup appointments, PA system hire and bookings, contact the relevant team line or send an enquiry using the form.</p>
             <div class="contact-method">
               <span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 3h3l1.5 4-2 1.3a12 12 0 0 0 5.2 5.2l1.3-2 4 1.5v3c0 .7-.6 1.2-1.3 1.2A13.7 13.7 0 0 1 2.8 4.3C2.8 3.6 3.3 3 4 3Z"/></svg></span>
-              <div><small>Call or WhatsApp</small><a href="tel:+260760528887">076 052 8887</a></div>
+              <div><small>Photography &amp; PA bookings</small><a href="tel:+260760528887">076 052 8887</a></div>
+            </div>
+            <div class="contact-method">
+              <span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 3h3l1.5 4-2 1.3a12 12 0 0 0 5.2 5.2l1.3-2 4 1.5v3c0 .7-.6 1.2-1.3 1.2A13.7 13.7 0 0 1 2.8 4.3C2.8 3.6 3.3 3 4 3Z"/></svg></span>
+              <div><small>Makeup · call or WhatsApp</small><a href="tel:+260971415665">097 141 5665</a><a class="inline-contact-link" href="https://wa.me/260971415665" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div>
             </div>
             <div class="contact-method">
               <span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="1"/><path d="m3 5 7 6 7-6"/></svg></span>
               <div><small>Email</small><a href="mailto:ghopbusinesscenter@gmail.com">ghopbusinesscenter@gmail.com</a></div>
+            </div>
+            <div class="hours-card" aria-label="Business hours">
+              <div class="hours-heading"><span>Business hours</span><small>Local time · Zambia</small></div>
+              <div class="hours-row"><span>Monday–Friday</span><strong>08:00–17:30</strong></div>
+              <div class="hours-row"><span>Saturday</span><strong>08:00–15:00</strong></div>
+              <div class="hours-row"><span>Sunday</span><strong class="hours-closed">Closed</strong></div>
             </div>
             <div class="social-row">
               <a class="social-link" href="https://wa.me/260760528887" target="_blank" rel="noopener noreferrer" aria-label="Chat with GHOP Photography on WhatsApp"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5a7.3 7.3 0 0 0-6.3 11l-.9 3.1 3.2-.8A7.5 7.5 0 1 0 10 2.5Z" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M7.2 6.4c.2-.4.4-.4.7-.4h.3c.2 0 .3 0 .4.3l.6 1.4c.1.2.1.4 0 .5l-.4.5c-.2.2-.2.3-.1.5.4.8 1 1.4 1.8 1.8.2.1.4.1.5-.1l.5-.6c.1-.2.3-.2.5-.1l1.4.7c.2.1.3.2.3.4 0 .3-.2 1-.6 1.3-.4.4-.9.6-1.5.5-.7-.1-1.8-.5-3.1-1.6-1-.9-1.7-2-1.9-2.7-.2-.7 0-1.3.3-1.8.2-.3.3-.5.3-.6Z" fill="currentColor"/></svg>WhatsApp</a>
@@ -786,7 +897,7 @@
           <form class="booking-form" id="booking-form">
             <div class="form-field"><label for="client-name">Your name</label><input id="client-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
             <div class="form-field"><label for="client-phone">Phone / WhatsApp</label><input id="client-phone" name="phone" type="tel" placeholder="Your number" autocomplete="tel" required></div>
-            <div class="form-field"><label for="booking-service">Which shoot or service?</label><select id="booking-service" name="service" required><option value="" disabled selected>Select a shoot or service</option><optgroup label="Portraits & people"><option>Portrait Session</option><option>Studio Portraits</option><option>Outdoor / Lifestyle Portraits</option><option>Couples / Engagement Session</option><option>Family Portraits</option><option>Pet / Animal Portraits</option><option>Maternity</option><option>Newborn / Baby</option><option>Children / Birthday Portraits</option><option>Graduation Portrait</option><option>Headshots / Personal Branding</option><option>Fashion / Editorial</option></optgroup><optgroup label="Weddings & milestones"><option>Wedding Story</option><option>Pre-wedding / Bridal</option><option>Wedding Day Coverage</option><option>Anniversary / Vow Renewal</option><option>Birthday Celebration</option><option>Baby Shower / Gender Reveal</option><option>Traditional / Cultural Celebration</option></optgroup><optgroup label="Events & live moments"><option>Event Coverage</option><option>Corporate / Conference</option><option>School / Graduation Event</option><option>Church / Community Gathering</option><option>Concert / Live Performance</option><option>Sports / Action</option><option>Launch / Opening</option></optgroup><optgroup label="Commercial & creative"><option>Brand Photography</option><option>Product / E-commerce</option><option>Food / Restaurant</option><option>Business / Team Portraits</option><option>Real Estate / Interiors</option><option>Beauty / Salon</option><option>Automotive / Vehicles</option><option>Wildlife / Safari</option><option>Travel / Nature / Landscape</option></optgroup><optgroup label="Additional service"><option>PA System Hire</option><option>Other / Custom Request</option></optgroup></select></div>
+            <div class="form-field"><label for="booking-service">Which shoot or service?</label><select id="booking-service" name="service" required><option value="" disabled selected>Select a shoot or service</option><optgroup label="Portraits & people"><option>Portrait Session</option><option>Studio Portraits</option><option>Outdoor / Lifestyle Portraits</option><option>Couples / Engagement Session</option><option>Family Portraits</option><option>Pet / Animal Portraits</option><option>Maternity</option><option>Newborn / Baby</option><option>Children / Birthday Portraits</option><option>Graduation Portrait</option><option>Headshots / Personal Branding</option><option>Fashion / Editorial</option></optgroup><optgroup label="Weddings & milestones"><option>Wedding Story</option><option>Pre-wedding / Bridal</option><option>Wedding Day Coverage</option><option>Anniversary / Vow Renewal</option><option>Birthday Celebration</option><option>Baby Shower / Gender Reveal</option><option>Traditional / Cultural Celebration</option></optgroup><optgroup label="Events & live moments"><option>Event Coverage</option><option>Corporate / Conference</option><option>School / Graduation Event</option><option>Church / Community Gathering</option><option>Concert / Live Performance</option><option>Sports / Action</option><option>Launch / Opening</option></optgroup><optgroup label="Commercial & creative"><option>Brand Photography</option><option>Product / E-commerce</option><option>Food / Restaurant</option><option>Business / Team Portraits</option><option>Real Estate / Interiors</option><option>Beauty / Salon</option><option>Automotive / Vehicles</option><option>Wildlife / Safari</option><option>Travel / Nature / Landscape</option></optgroup><optgroup label="Makeup services"><option value="Makeup: General">Makeup Services</option><option value="Makeup: Natural / no-makeup">Natural / no-makeup makeup</option><option value="Makeup: Soft glam">Soft glam</option><option value="Makeup: Full glam">Full glam</option><option value="Makeup: Evening / occasion">Evening / special occasion</option><option value="Makeup: Mature skin">Mature skin / timeless glam</option><option value="Makeup: Groom / camera-ready">Groom / camera-ready grooming</option><option value="Makeup: Bridal / wedding">Bridal / wedding makeup</option><option value="Makeup: Traditional / cultural bridal">Traditional / cultural bridal makeup</option><option value="Makeup: Engagement / pre-wedding">Engagement / pre-wedding makeup</option><option value="Makeup: Bridesmaid / bridal party">Bridesmaid / bridal party makeup</option><option value="Makeup: Birthday / celebration">Birthday / celebration makeup</option><option value="Makeup: Graduation / prom">Graduation / prom makeup</option><option value="Makeup: Maternity / baby shower">Maternity / baby shower makeup</option><option value="Makeup: Photoshoot / portrait">Photoshoot / portrait makeup</option><option value="Makeup: Fashion / editorial">Fashion / editorial makeup</option><option value="Makeup: Professional / headshot">Professional / headshot makeup</option><option value="Makeup: Stage / performance">Stage / performance makeup</option><option value="Makeup: Creative / colourful">Creative / colourful makeup</option><option value="Makeup: Lesson / self-application">Makeup lesson / self-application</option></optgroup><optgroup label="Additional service"><option>PA System Hire</option><option>Other / Custom Request</option></optgroup></select></div>
             <div class="form-field"><label for="booking-date">Date (if known)</label><input id="booking-date" name="date" type="date"></div>
             <div class="form-field full"><label for="booking-message">A little about your plans</label><textarea id="booking-message" name="message" placeholder="Location, occasion, timings or any questions…"></textarea></div>
             <div class="booking-submit"><button class="button" type="submit">Send enquiry on WhatsApp <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><p class="form-note">Your message will open in WhatsApp for you to review and send.</p></div>
@@ -799,18 +910,20 @@
     <section class="faq-section" id="faq" aria-labelledby="faq-title">
       <div class="shell faq-grid">
         <div class="faq-heading">
-          <div class="section-kicker">08 / Good to know</div>
+          <div class="section-kicker">09 / Good to know</div>
           <h2 id="faq-title">A few <em>answers.</em></h2>
           <p>Have another question? Reach out directly and we’ll help you figure out the details.</p>
           <a class="text-link" href="#contact">Ask us anything <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
         </div>
         <div class="faq-list">
           <details class="faq-item"><summary>How do I check availability?</summary><p>Send your preferred date, location and type of shoot through the enquiry form or WhatsApp. We’ll confirm availability and talk through next steps.</p></details>
+          <details class="faq-item"><summary>What makeup services do you offer?</summary><p>Choose from natural, soft or full glam, bridal, traditional bridal, occasion, graduation, photoshoot, editorial and more. Browse the Makeup section for Pinterest look ideas, then enquire on 097 141 5665.</p></details>
+          <details class="faq-item"><summary>What are your business hours?</summary><p>Monday–Friday: 08:00–17:30. Saturday: 08:00–15:00. Sunday: closed. Times are shown in Zambia local time.</p></details>
           <details class="faq-item"><summary>Can a package be tailored?</summary><p>Yes. The collections are starting points. Share your plans and we can discuss the coverage, location and options that suit your day.</p></details>
           <details class="faq-item"><summary>Do you travel for shoots?</summary><p>Travel can be discussed when we plan your shoot. Include the location in your enquiry so we can confirm any arrangements and costs.</p></details>
           <details class="faq-item"><summary>How does transport work for PA system hire?</summary><p>PA system hire is K3,500. Transport to and from your event is provided by the person booking the system. Please confirm availability and setup needs with GHOP.</p></details>
           <details class="faq-item"><summary>How do I secure a booking?</summary><p>Once we’ve confirmed availability and agreed on the details, GHOP will explain the booking and payment steps for your selected service.</p></details>
-          <details class="faq-item"><summary>Can I update the prices on this page?</summary><p>Use the “Edit prices” button in the Collections section. In this demo, the updated amounts are saved in this browser only; a shared live website needs a connected content manager or database.</p></details>
+          <details class="faq-item"><summary>Can I update the prices on this page?</summary><p>Yes. Choose “Edit prices” in Collections and enter the admin password to open the editor. Changes are saved in this browser only; shared updates for every visitor require an authenticated CMS or database.</p></details>
         </div>
       </div>
     </section>
@@ -819,11 +932,26 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <a class="footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">G</span><p>GHOP Photography · Zambia</p></a>
-      <div class="footer-links"><a href="tel:+260760528887">076 052 8887</a><a href="mailto:ghopbusinesscenter@gmail.com">Email</a><a href="https://web.facebook.com/GHOPzambia" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#top">Back to top ↑</a></div>
+      <div class="footer-links"><a href="tel:+260760528887">076 052 8887</a><a href="tel:+260971415665">Makeup · 097 141 5665</a><a href="mailto:ghopbusinesscenter@gmail.com">Email</a><a href="https://web.facebook.com/GHOPzambia" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#top">Back to top ↑</a></div>
       <span class="footer-credit">© <span id="current-year">2026</span> GHOP Photography</span>
     </div>
   </footer>
 
+  <dialog class="price-dialog admin-dialog" id="admin-dialog" aria-labelledby="admin-dialog-title">
+    <form class="dialog-card" id="admin-form" autocomplete="on">
+      <div class="dialog-head">
+        <div><div class="section-kicker">GHOP · Admin only</div><h2 id="admin-dialog-title">Admin access</h2></div>
+        <button class="dialog-close" id="close-admin-dialog" type="button" aria-label="Close admin access dialog">×</button>
+      </div>
+      <p class="admin-intro">Enter the admin password to open the price editor.</p>
+      <div class="admin-field">
+        <label for="admin-password">Admin password</label>
+        <input id="admin-password" name="admin-password" type="password" autocomplete="current-password" required aria-describedby="admin-error">
+      </div>
+      <p class="admin-error" id="admin-error" role="alert" aria-live="polite"></p>
+      <div class="dialog-actions"><button class="reset-button" id="cancel-admin" type="button">Cancel</button><button class="button" type="submit">Unlock prices</button></div>
+    </form>
+  </dialog>
   <dialog class="price-dialog" id="price-dialog" aria-labelledby="price-dialog-title">
     <form class="dialog-card" id="price-form">
       <div class="dialog-head">
@@ -848,6 +976,11 @@
       const storageKey = 'ghop-photography-prices-v1';
       const priceDialog = document.getElementById('price-dialog');
       const priceForm = document.getElementById('price-form');
+      const adminDialog = document.getElementById('admin-dialog');
+      const adminForm = document.getElementById('admin-form');
+      const adminError = document.getElementById('admin-error');
+      const adminPasswordSalt = 'd741c4428148830a6dd3902583bc7379';
+      const adminPasswordHash = 'cd1625cf2144fb69c9520b63f663773507e1192621c5ad2d09917c0313e13ee1';
       const toast = document.getElementById('price-toast');
       let toastTimer;
 
@@ -886,8 +1019,48 @@
 
       renderPrices();
       document.getElementById('open-price-editor').addEventListener('click', () => {
-        renderPrices();
-        priceDialog.showModal();
+        adminForm.reset();
+        adminError.textContent = '';
+        adminDialog.showModal();
+        document.getElementById('admin-password').focus();
+      });
+      document.getElementById('close-admin-dialog').addEventListener('click', () => adminDialog.close());
+      document.getElementById('cancel-admin').addEventListener('click', () => adminDialog.close());
+      adminDialog.addEventListener('click', event => {
+        if (event.target === adminDialog) adminDialog.close();
+      });
+      adminDialog.addEventListener('close', () => {
+        adminForm.reset();
+        adminError.textContent = '';
+      });
+      adminForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const passwordInput = document.getElementById('admin-password');
+        const submitButton = adminForm.querySelector('button[type="submit"]');
+        if (!window.crypto || !window.crypto.subtle) {
+          adminError.textContent = 'Password verification requires a secure HTTPS connection.';
+          return;
+        }
+        submitButton.disabled = true;
+        adminError.textContent = '';
+        try {
+          const bytes = new TextEncoder().encode(adminPasswordSalt + passwordInput.value);
+          const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+          const enteredHash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+          if (enteredHash === adminPasswordHash) {
+            adminDialog.close();
+            renderPrices();
+            priceDialog.showModal();
+          } else {
+            adminError.textContent = 'That password does not match. Please try again.';
+            passwordInput.value = '';
+            passwordInput.focus();
+          }
+        } catch (_) {
+          adminError.textContent = 'Unable to verify the password. Try again over HTTPS.';
+        } finally {
+          submitButton.disabled = false;
+        }
       });
       document.getElementById('close-price-dialog').addEventListener('click', () => priceDialog.close());
       priceDialog.addEventListener('click', event => {
@@ -946,16 +1119,20 @@
         const form = event.currentTarget;
         if (!form.reportValidity()) return;
         const data = new FormData(form);
+        const service = String(data.get('service') || '');
+        const serviceLabel = document.getElementById('booking-service').selectedOptions[0]?.textContent || service;
+        const isMakeup = service.startsWith('Makeup:');
+        const destinationNumber = isMakeup ? '260971415665' : '260760528887';
         const lines = [
-          'Hello GHOP Photography! I would like to enquire about a service.',
+          isMakeup ? 'Hello GHOP! I would like to enquire about makeup services.' : 'Hello GHOP Photography! I would like to enquire about a service.',
           `Name: ${data.get('name')}`,
           `My phone / WhatsApp: ${data.get('phone')}`,
-          `Service: ${data.get('service')}`,
-          data.get('service') === 'PA System Hire' ? `PA system hire is K${money(prices.pa)}. Transport is provided by the person booking the system.` : '',
+          `Service: ${serviceLabel}`,
+          service === 'PA System Hire' ? `PA system hire is K${money(prices.pa)}. Transport is provided by the person booking the system.` : '',
           data.get('date') ? `Preferred date: ${data.get('date')}` : '',
           data.get('message') ? `Details: ${data.get('message')}` : ''
         ].filter(Boolean);
-        const url = `https://wa.me/260760528887?text=${encodeURIComponent(lines.join('\n'))}`;
+        const url = `https://wa.me/${destinationNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
         document.getElementById('form-status').textContent = 'Opening WhatsApp with your enquiry…';
         window.open(url, '_blank', 'noopener,noreferrer');
       });
