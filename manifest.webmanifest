@@ -1,0 +1,28 @@
+{
+  "id": "./",
+  "name": "GHOP Photography",
+  "short_name": "GHOP Photo",
+  "description": "GHOP Photography — portraits, celebrations and memorable moments in Zambia.",
+  "lang": "en-ZM",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#171613",
+  "theme_color": "#171613",
+  "categories": ["photography", "lifestyle", "business"],
+  "icons": [
+    {
+      "src": "./assets/icons/ghop-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icons/ghop-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
