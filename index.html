@@ -139,6 +139,27 @@
     .service-card h3 { margin: 43px 0 12px; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; }
     .service-card p { max-width: 240px; margin: 0; color: #aaa39a; font-size: .8rem; line-height: 1.8; }
 
+    /* Shoot-type directory and Pinterest inspiration */
+    .shoot-types-section { padding: 100px 0 108px; color: var(--ink); background: var(--paper-warm); }
+    .shoot-types-section .section-kicker { color: #8a6c48; }
+    .shoot-types-section .section-header { margin-bottom: 30px; }
+    .shoot-types-section .section-header h2 em { color: #997250; }
+    .shoot-types-section .section-header p { color: #6d675f; }
+    .shoot-ideas-intro { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 16px; padding: 14px 17px; border: 1px solid var(--line-light); color: #6d675f; background: rgba(255,255,255,.28); font-size: .72rem; line-height: 1.65; }
+    .pinterest-mark { flex: 0 0 auto; color: #9a3738; font-size: .61rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+    .shoot-category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .shoot-category { min-width: 0; padding: 22px 23px 12px; border: 1px solid var(--line-light); background: rgba(255,255,255,.25); }
+    .shoot-category-heading { display: flex; align-items: baseline; gap: 13px; margin-bottom: 3px; padding-bottom: 13px; border-bottom: 1px solid var(--line-light); }
+    .shoot-category-heading > span { color: #9b7955; font-family: var(--serif); font-size: .9rem; font-style: italic; }
+    .shoot-category-heading h3 { margin: 0; color: var(--ink); font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+    .shoot-type-list { margin: 0; padding: 0; list-style: none; }
+    .shoot-type-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 43px; padding: 8px 0; border-bottom: 1px solid rgba(23,22,19,.09); color: #312d27; font-size: .75rem; line-height: 1.45; }
+    .shoot-type-row:last-child { border-bottom: 0; }
+    .shoot-type-row > span { flex: 1 1 auto; min-width: 0; }
+    .pinterest-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; color: #923e39; font-size: .56rem; font-weight: 700; letter-spacing: .055em; text-align: right; text-transform: uppercase; white-space: nowrap; transition: color .2s ease; }
+    .pinterest-link:hover { color: #63221f; text-decoration: underline; text-underline-offset: 3px; }
+    .pinterest-arrow { font-size: .83rem; line-height: 1; }
+
     /* Portfolio */
     .portfolio-section { padding: 105px 0 120px; color: var(--ink); background: var(--paper); }
     .portfolio-section .section-header { margin-bottom: 34px; }
@@ -320,13 +341,14 @@
       .hero-photo-wrap { height: clamp(380px, 65vw, 500px); }
       .hero-services { gap: 9px; margin-top: 35px; font-size: .55rem; }
       .hero-services span + span::before { margin-right: 9px; }
-      .about-section, .services-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 82px; }
+      .about-section, .services-section, .shoot-types-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 82px; }
       .about-grid { gap: 40px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .service-card { min-height: 220px; padding-right: 20px; }
       .service-card:nth-child(odd) { border-left: 0; padding-left: 0; }
       .service-card:nth-child(even) { border-left: 1px solid var(--line-dark); }
       .service-card:nth-child(n+3) { border-top: 1px solid var(--line-dark); padding-top: 25px; }
+      .shoot-category-grid { grid-template-columns: 1fr; }
       .gallery-grid { gap: 12px; }
       .gallery-card { grid-column: span 6; }
       .package-card { padding: 23px 20px 20px; }
@@ -365,7 +387,7 @@
       .service-ribbon { gap: 11px 18px; padding: 18px 14px; }
       .service-ribbon span { font-size: .9rem; }
       .service-ribbon i { font-size: .55rem; }
-      .about-section, .services-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 68px; }
+      .about-section, .services-section, .shoot-types-section, .portfolio-section, .packages-section, .process-section, .contact-section { padding-block: 68px; }
       .about-topline { margin-bottom: 34px; }
       .about-topline .side-note { max-width: 110px; text-align: right; font-size: .52rem; }
       .about-grid { grid-template-columns: 1fr; gap: 26px; }
@@ -377,6 +399,11 @@
       .section-header .section-kicker { margin-bottom: 14px; }
       .section-header h2 { font-size: clamp(2.8rem, 12vw, 4.2rem); }
       .section-header p { margin-top: 15px; font-size: .82rem; }
+      .shoot-ideas-intro { align-items: flex-start; flex-direction: column; gap: 7px; font-size: .69rem; }
+      .shoot-category { padding: 18px 14px 8px; }
+      .shoot-category-heading h3 { font-size: 1.3rem; }
+      .shoot-type-row { gap: 8px; font-size: .7rem; }
+      .pinterest-link { font-size: .52rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .service-card { min-height: 211px; padding-top: 21px; padding-right: 12px; }
       .service-card + .service-card { padding-left: 15px; }
@@ -442,6 +469,7 @@
       <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
         <a href="#about">Our approach</a>
         <a href="#services">Services</a>
+        <a href="#shoot-types">Shoot ideas</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#packages">Packages</a>
         <a href="#faq">FAQs</a>
@@ -544,11 +572,77 @@
       </div>
     </section>
 
+    <section class="shoot-types-section" id="shoot-types" aria-labelledby="shoot-types-title">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">03 / The full shoot menu</div>
+            <h2 id="shoot-types-title">Find your <em>kind of shoot.</em></h2>
+          </div>
+          <p>From portraits and family milestones to weddings, events, products and places. Pick a type to browse Pinterest examples and pose ideas.</p>
+        </div>
+        <div class="shoot-ideas-intro"><span>Use these Pinterest searches as inspiration and pose references—save the pins you like and share them with GHOP.</span><span class="pinterest-mark">P&nbsp; Pinterest ideas &amp; poses</span></div>
+        <div class="shoot-category-grid">
+          <article class="shoot-category" aria-labelledby="shoot-people-title">
+            <div class="shoot-category-heading"><span>01</span><h3 id="shoot-people-title">Portraits &amp; people</h3></div>
+            <ul class="shoot-type-list">
+              <li class="shoot-type-row"><span>Studio portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=studio%20portrait%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest studio portrait ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Outdoor &amp; lifestyle portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=outdoor%20lifestyle%20portrait%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest outdoor lifestyle portrait ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Couples &amp; engagement</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=couple%20engagement%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest couple and engagement photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Family portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=family%20photoshoot%20pose%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest family photo pose ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Pet &amp; animal portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=pet%20animal%20portrait%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest pet and animal portrait ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Maternity</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=maternity%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest maternity photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Newborn &amp; baby</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=newborn%20baby%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest newborn and baby photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Children &amp; birthday portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=kids%20birthday%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest children's birthday photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Graduation portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=graduation%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest graduation photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Headshots &amp; personal branding</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=professional%20headshot%20personal%20branding%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest headshot and personal branding photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Fashion &amp; editorial</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=fashion%20editorial%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest fashion editorial photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+          <article class="shoot-category" aria-labelledby="shoot-wedding-title">
+            <div class="shoot-category-heading"><span>02</span><h3 id="shoot-wedding-title">Weddings &amp; milestones</h3></div>
+            <ul class="shoot-type-list">
+              <li class="shoot-type-row"><span>Pre-wedding &amp; bridal</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=pre-wedding%20bridal%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest pre-wedding and bridal photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Wedding day</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=wedding%20photography%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest wedding photography ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Anniversary &amp; vow renewal</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=anniversary%20couple%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest anniversary photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Birthday celebrations</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=birthday%20celebration%20photography%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest birthday celebration photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Baby shower &amp; gender reveal</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=baby%20shower%20photography%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest baby shower photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Traditional &amp; cultural celebrations</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=traditional%20cultural%20wedding%20photography%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest traditional and cultural celebration photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+          <article class="shoot-category" aria-labelledby="shoot-events-title">
+            <div class="shoot-category-heading"><span>03</span><h3 id="shoot-events-title">Events &amp; live moments</h3></div>
+            <ul class="shoot-type-list">
+              <li class="shoot-type-row"><span>Corporate events &amp; conferences</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=corporate%20conference%20event%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest corporate and conference event photo ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>School &amp; graduation events</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=school%20graduation%20event%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest school and graduation event photo ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Church &amp; community gatherings</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=church%20community%20event%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest church and community event photo ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Concerts &amp; live performances</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=concert%20live%20music%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest concert and live music photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Sports &amp; action</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=sports%20action%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest sports and action photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Launches &amp; openings</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=product%20launch%20event%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest product launch event photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+          <article class="shoot-category" aria-labelledby="shoot-commercial-title">
+            <div class="shoot-category-heading"><span>04</span><h3 id="shoot-commercial-title">Commercial &amp; creative</h3></div>
+            <ul class="shoot-type-list">
+              <li class="shoot-type-row"><span>Products &amp; e-commerce</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=product%20photography%20styling%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest product photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Food &amp; restaurants</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=food%20restaurant%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest food and restaurant photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Business &amp; team portraits</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=business%20team%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest business team photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Real estate &amp; interiors</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=real%20estate%20interior%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest real estate and interior photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Beauty &amp; salon</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=beauty%20salon%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest beauty and salon photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Automotive &amp; vehicles</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=automotive%20car%20photoshoot%20ideas%20poses" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest automotive photo ideas and poses">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Wildlife &amp; safari</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=wildlife%20safari%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest wildlife and safari photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+              <li class="shoot-type-row"><span>Travel, nature &amp; landscapes</span><a class="pinterest-link" href="https://www.pinterest.com/search/pins/?q=travel%20nature%20landscape%20photography%20ideas" target="_blank" rel="noopener noreferrer" aria-label="Browse Pinterest travel, nature and landscape photography ideas">Pinterest ideas &amp; poses <span class="pinterest-arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">03 / A few frames</div>
+            <div class="section-kicker">04 / A few frames</div>
             <h2 id="portfolio-title">The art of <em>being there.</em></h2>
           </div>
           <p>Every frame starts with a real person, a real place and a story worth keeping.</p>
@@ -595,7 +689,7 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">04 / Collections & starting rates</div>
+            <div class="section-kicker">05 / Collections & starting rates</div>
             <h2 id="packages-title">Good stories, <em>well supported.</em></h2>
           </div>
           <p>Choose a starting point. We’ll tailor photography coverage to your plans, or help you book PA system hire for your event.</p>
@@ -650,7 +744,7 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">05 / From first hello to final frame</div>
+            <div class="section-kicker">06 / From first hello to event day</div>
             <h2 id="process-title">Simple, <em>from start to story.</em></h2>
           </div>
           <p>Good photographs begin with a good conversation. Here’s what booking can look like.</p>
@@ -668,7 +762,7 @@
       <div class="shell">
         <div class="section-header">
           <div>
-            <div class="section-kicker">06 / Let’s make something lasting</div>
+            <div class="section-kicker">07 / Let’s make something lasting</div>
             <h2 id="contact-title">Your story<br><em>starts here.</em></h2>
           </div>
           <p>Tell us what you have in mind. A date, a dream, even just a question — we’d love to hear from you.</p>
@@ -692,7 +786,7 @@
           <form class="booking-form" id="booking-form">
             <div class="form-field"><label for="client-name">Your name</label><input id="client-name" name="name" type="text" placeholder="Name" autocomplete="name" required></div>
             <div class="form-field"><label for="client-phone">Phone / WhatsApp</label><input id="client-phone" name="phone" type="tel" placeholder="Your number" autocomplete="tel" required></div>
-            <div class="form-field"><label for="booking-service">What service do you need?</label><select id="booking-service" name="service" required><option value="" disabled selected>Select a service</option><option>Portrait Session</option><option>Event Coverage</option><option>Wedding Story</option><option>Brand Photography</option><option>PA System Hire</option><option>Something else</option></select></div>
+            <div class="form-field"><label for="booking-service">Which shoot or service?</label><select id="booking-service" name="service" required><option value="" disabled selected>Select a shoot or service</option><optgroup label="Portraits & people"><option>Portrait Session</option><option>Studio Portraits</option><option>Outdoor / Lifestyle Portraits</option><option>Couples / Engagement Session</option><option>Family Portraits</option><option>Pet / Animal Portraits</option><option>Maternity</option><option>Newborn / Baby</option><option>Children / Birthday Portraits</option><option>Graduation Portrait</option><option>Headshots / Personal Branding</option><option>Fashion / Editorial</option></optgroup><optgroup label="Weddings & milestones"><option>Wedding Story</option><option>Pre-wedding / Bridal</option><option>Wedding Day Coverage</option><option>Anniversary / Vow Renewal</option><option>Birthday Celebration</option><option>Baby Shower / Gender Reveal</option><option>Traditional / Cultural Celebration</option></optgroup><optgroup label="Events & live moments"><option>Event Coverage</option><option>Corporate / Conference</option><option>School / Graduation Event</option><option>Church / Community Gathering</option><option>Concert / Live Performance</option><option>Sports / Action</option><option>Launch / Opening</option></optgroup><optgroup label="Commercial & creative"><option>Brand Photography</option><option>Product / E-commerce</option><option>Food / Restaurant</option><option>Business / Team Portraits</option><option>Real Estate / Interiors</option><option>Beauty / Salon</option><option>Automotive / Vehicles</option><option>Wildlife / Safari</option><option>Travel / Nature / Landscape</option></optgroup><optgroup label="Additional service"><option>PA System Hire</option><option>Other / Custom Request</option></optgroup></select></div>
             <div class="form-field"><label for="booking-date">Date (if known)</label><input id="booking-date" name="date" type="date"></div>
             <div class="form-field full"><label for="booking-message">A little about your plans</label><textarea id="booking-message" name="message" placeholder="Location, occasion, timings or any questions…"></textarea></div>
             <div class="booking-submit"><button class="button" type="submit">Send enquiry on WhatsApp <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><p class="form-note">Your message will open in WhatsApp for you to review and send.</p></div>
@@ -705,7 +799,7 @@
     <section class="faq-section" id="faq" aria-labelledby="faq-title">
       <div class="shell faq-grid">
         <div class="faq-heading">
-          <div class="section-kicker">07 / Good to know</div>
+          <div class="section-kicker">08 / Good to know</div>
           <h2 id="faq-title">A few <em>answers.</em></h2>
           <p>Have another question? Reach out directly and we’ll help you figure out the details.</p>
           <a class="text-link" href="#contact">Ask us anything <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>

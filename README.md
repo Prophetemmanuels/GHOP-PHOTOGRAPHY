@@ -52,6 +52,10 @@ The portfolio uses six photos supplied for GHOP's work. They are optimized JPEG 
 
 Before publishing, confirm you have permission to display recognizable people, especially the child in the birthday photos.
 
+## Shoot types & Pinterest links
+
+The site includes 31 common shoot types grouped into Portraits & People, Weddings & Milestones, Events & Live Moments, and Commercial & Creative. Every type links to a Pinterest search for visual examples and pose ideas. Visitors can also select a specific shoot type in the WhatsApp enquiry form; PA System Hire remains a separate option.
+
 ## Main files
 
 - `index.html` — site, styling and interactions
