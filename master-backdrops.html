@@ -131,6 +131,8 @@
     .resource-link:hover{color:#fff7f1;border-color:#835c64;background:#835c64}
     .resource-link.special{color:#80613e;border-color:rgba(211,178,127,.5);background:rgba(211,178,127,.1)}
     .resource-link.special:hover{color:var(--ink);border-color:var(--gold);background:var(--gold)}
+    .resource-link.pinterest{color:#963a42;border-color:rgba(150,58,66,.24);background:rgba(150,58,66,.045)}
+    .resource-link.pinterest:hover{color:#fff;border-color:#963a42;background:#963a42}
     .empty-state{grid-column:1/-1;padding:35px 20px;border:1px dashed var(--line-paper);color:#746b6b;text-align:center}
     .notice-band{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;margin-top:20px;padding:17px 18px;border:1px solid rgba(152,108,114,.28);color:#5d5154;background:rgba(255,255,255,.42)}
     .notice-band .mark{width:28px;height:28px;display:grid;place-items:center;border:1px solid #af7779;border-radius:50%;color:#945f64;font-family:var(--serif);font-size:.95rem}
@@ -204,7 +206,7 @@
       <div class="shell">
         <div class="section-head">
           <div><div class="section-kicker">01 / Backdrop directory</div><h2 id="library-title">Find the <em>right scene.</em></h2></div>
-          <p>Search by setting or filter by shoot type. Each button opens a source search for empty backgrounds — inspect the actual preview before downloading.</p>
+          <p>Search by setting or filter by shoot type. Browse empty-background searches and Pinterest visual inspiration; inspect the image and original source before downloading.</p>
         </div>
         <div class="search-panel">
           <label class="search-box" for="backdrop-search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m13 13 4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><input id="backdrop-search" type="search" placeholder="Try: empty lounge, floral arch, seamless studio…" autocomplete="off"></label>
@@ -220,7 +222,7 @@
         </div>
         <div class="directory-meta"><span id="results-count" aria-live="polite">Loading backdrop types…</span><span>Search links open in a new tab</span></div>
         <div class="backdrop-grid" id="backdrop-grid"></div>
-        <div class="notice-band"><span class="mark" aria-hidden="true">!</span><div><strong>Empty background plates only</strong><p>Stock-site searches can still include people or props. Confirm the downloaded scene has no person/model/subject, has enough clean foreground for your composite, and has a license that permits your intended client work.</p></div></div>
+        <div class="notice-band"><span class="mark" aria-hidden="true">!</span><div><strong>Empty background plates only</strong><p>Search links, including Pinterest, can still show people or pins that are only visual previews. Pinterest is for inspiration, not proof of a downloadable file or license: follow the pin to its original source, confirm the plate has no person/model/subject, check dimensions and clean foreground, and verify the terms for your client work.</p></div></div>
       </div>
     </section>
 
@@ -335,6 +337,8 @@
         const linkGroup = document.createElement('div'); linkGroup.className='card-links';
         addLink(linkGroup,'Pexels search',`https://www.pexels.com/search/${encodeURIComponent(item.query)}/`);
         addLink(linkGroup,'Unsplash search',`https://unsplash.com/s/photos/${encodeURIComponent(item.query)}`);
+        const pinterestQuery = `${item.query} background only empty plate`;
+        addLink(linkGroup,'Pinterest ideas',`https://www.pinterest.com/search/pins/?q=${encodeURIComponent(pinterestQuery)}`,'pinterest');
         if(item.special) addLink(linkGroup,item.special.label,item.special.url,'special');
         body.appendChild(linkGroup);
         card.appendChild(body);
