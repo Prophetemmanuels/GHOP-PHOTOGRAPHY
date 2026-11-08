@@ -1,0 +1,36 @@
+{
+  "id": "./master-backdrops.html",
+  "name": "GHOP Master Backdrops",
+  "short_name": "Master Backdrops",
+  "description": "Find empty background plates for GHOP Photography's Photoshop composites.",
+  "lang": "en-ZM",
+  "start_url": "./master-backdrops.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#211a20",
+  "theme_color": "#211a20",
+  "categories": ["photography", "design", "productivity"],
+  "icons": [
+    {
+      "src": "./assets/icons/backdrops-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icons/backdrops-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open backdrop library",
+      "short_name": "Backdrop library",
+      "url": "./master-backdrops.html#library",
+      "icons": [{"src": "./assets/icons/backdrops-192.png", "sizes": "192x192", "type": "image/png"}]
+    }
+  ]
+}

@@ -1,8 +1,12 @@
-const CACHE_NAME = 'ghop-photography-v4';
+const CACHE_NAME = 'ghop-photography-v5';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './master-backdrops.html',
+  './backdrops-manifest.webmanifest',
+  './assets/icons/backdrops-192.png',
+  './assets/icons/backdrops-512.png',
   './assets/icons/ghop-192.png',
   './assets/icons/ghop-512.png',
   './assets/portrait-purple-gown.jpg',
@@ -41,7 +45,10 @@ self.addEventListener('fetch', event => {
       try {
         return await fetch(request);
       } catch (_) {
-        return await caches.match(new URL('./index.html', self.registration.scope).href);
+        const fallback = url.pathname.endsWith('/master-backdrops.html')
+          ? './master-backdrops.html'
+          : './index.html';
+        return await caches.match(new URL(fallback, self.registration.scope).href);
       }
     })());
     return;

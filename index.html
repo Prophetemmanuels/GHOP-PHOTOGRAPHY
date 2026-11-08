@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#171613">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="description" content="GHOP Photography in Zambia: portrait and event photography, professional makeup services, PA system hire and more. Book your session."
+  <meta name="description" content="GHOP Photography in Zambia: portrait and event photography, professional makeup services, PA system hire and more. Book your session.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/ghop-192.png">
   <link rel="apple-touch-icon" href="./assets/icons/ghop-192.png">
@@ -109,6 +109,17 @@
     .service-ribbon { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: clamp(18px, 4vw, 55px); padding: 22px 24px; border-block: 1px solid var(--line-dark); color: #c3bcb0; background: #1c1a17; }
     .service-ribbon span { font-family: var(--serif); font-size: 1.04rem; font-style: italic; }
     .service-ribbon i { color: var(--gold); font-size: .7rem; font-style: normal; }
+
+    /* Prominent companion app launch */
+    .backdrop-launch { padding: 29px 0; border-bottom: 1px solid rgba(255,255,255,.1); background: linear-gradient(100deg, #32262e, #29231f); }
+    .backdrop-launch-inner { display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: 22px; }
+    .backdrop-launch-mark { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(226,174,179,.7); border-radius: 50%; color: #e2aeb3; font-family: var(--serif); font-size: 1.2rem; font-style: italic; }
+    .backdrop-launch-copy .launch-kicker { display: block; margin-bottom: 4px; color: #e2aeb3; font-size: .57rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+    .backdrop-launch-copy h2 { margin: 0; color: var(--paper); font-family: var(--serif); font-size: clamp(1.35rem, 2.3vw, 1.9rem); font-weight: 400; line-height: 1.15; }
+    .backdrop-launch-copy p { margin: 5px 0 0; color: #c2b7ba; font-size: .72rem; line-height: 1.6; }
+    .backdrops-launch-button { display: inline-flex; min-height: 49px; align-items: center; justify-content: center; gap: 11px; padding: 0 17px; border: 1px solid #e2aeb3; color: var(--ink); background: #e2aeb3; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-align: center; text-transform: uppercase; transition: all .22s var(--ease); }
+    .backdrops-launch-button:hover { border-color: #f2c7c5; background: #f2c7c5; transform: translateY(-2px); }
+    .backdrops-launch-button svg { width: 15px; height: 15px; }
 
     /* About */
     .about-section { padding: 105px 0 118px; color: var(--ink); background: var(--paper); }
@@ -372,6 +383,8 @@
       .header-actions { grid-column: 2; grid-row: 1; gap: 11px; }
       .nav-contact > span { display: none; }
       .hero { min-height: auto; }
+      .backdrop-launch-inner { grid-template-columns: 50px 1fr; gap: 15px; }
+      .backdrops-launch-button { grid-column: 2; justify-self: start; }
       .hero-grid { min-height: auto; padding: 64px 0 84px; grid-template-columns: 1fr 1fr; gap: 30px; }
       .hero h1 { font-size: clamp(3.45rem, 7.2vw, 5.3rem); }
       .hero-intro { font-size: .87rem; }
@@ -401,6 +414,12 @@
     @media (max-width: 600px) {
       .shell, .hero-grid, .hero-bottomline { width: calc(100% - 38px); }
       .header-inner { width: calc(100% - 38px); min-height: 67px; grid-template-columns: 1fr auto auto; gap: 12px; }
+      .backdrop-launch { padding: 22px 0; }
+      .backdrop-launch-inner { grid-template-columns: 42px 1fr; gap: 12px; }
+      .backdrop-launch-mark { width: 40px; height: 40px; font-size: 1rem; }
+      .backdrop-launch-copy h2 { font-size: 1.35rem; }
+      .backdrop-launch-copy p { font-size: .68rem; }
+      .backdrops-launch-button { grid-column: 1 / -1; justify-self: stretch; min-height: 48px; padding-inline: 12px; font-size: .58rem; }
       .brand-mark { width: 35px; height: 35px; }
       .brand-copy strong { font-size: .9rem; }
       .header-actions { gap: 6px; }
@@ -555,6 +574,18 @@
     <div class="service-ribbon" aria-label="Photography, beauty and event services">
       <span>Studio portraits</span><i>✳</i><span>Makeup artistry</span><i>✳</i><span>Personal branding</span><i>✳</i><span>Birthday celebrations</span>
     </div>
+
+    <section class="backdrop-launch" aria-labelledby="backdrop-launch-title">
+      <div class="shell backdrop-launch-inner">
+        <span class="backdrop-launch-mark" aria-hidden="true">MB</span>
+        <div class="backdrop-launch-copy">
+          <span class="launch-kicker">New · Companion Photoshop tool</span>
+          <h2 id="backdrop-launch-title">Need an empty scene for your next composite?</h2>
+          <p>Browse GHOP Master Backdrops — scene plates only, with no people or models in the backdrop itself.</p>
+        </div>
+        <a class="backdrops-launch-button" href="./master-backdrops.html">Open GHOP Master Backdrops <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="shell">

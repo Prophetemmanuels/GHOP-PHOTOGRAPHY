@@ -24,5 +24,13 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "GHOP Master Backdrops",
+      "short_name": "Backdrops",
+      "url": "./master-backdrops.html",
+      "icons": [{"src": "./assets/icons/backdrops-192.png", "sizes": "192x192", "type": "image/png"}]
+    }
   ]
 }

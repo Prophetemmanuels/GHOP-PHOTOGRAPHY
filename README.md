@@ -1,6 +1,6 @@
 # GHOP Photography — website app
 
-A responsive, dependency-free photography, makeup and event-support website for GHOP Photography. It includes a portfolio with category filters, 31 photography shoot types, Pinterest makeup inspiration, an admin-gated price editor, PA system hire, business hours, direct contact links, a WhatsApp enquiry form, and installable/offline PWA support.
+A responsive, dependency-free photography, makeup and event-support website for GHOP Photography, plus the companion **GHOP Master Backdrops** scene-finder. The site includes a portfolio with category filters, 31 photography shoot types, Pinterest makeup inspiration, an admin-gated price editor, PA system hire, business hours, direct contact links, a WhatsApp enquiry form, and installable/offline PWA support.
 
 ## Preview locally
 
@@ -25,9 +25,17 @@ All manifest, image and service-worker paths are relative, so the app works from
 
 ## Install / offline use
 
-The website is a Progressive Web App. After it is published over HTTPS and opened once, it registers a service worker and caches the page, photos, manifest and icons for offline viewing. Use **Install** in the site header to open the browser's install prompt or see the device-specific instructions.
+The main site and GHOP Master Backdrops are Progressive Web Apps. After either is published over HTTPS and opened once, the shared service worker caches both pages, their manifests and icons, and the portfolio photos for offline viewing. Use the relevant app's **Install** button to open the browser's install prompt or see device-specific instructions.
 
 Browsers do **not** allow a website to install silently without the visitor's action. On iPhone/iPad, use the browser Share menu → **Add to Home Screen**; supported Android/desktop browsers can offer an install prompt.
+
+## GHOP Master Backdrops
+
+Open `master-backdrops.html` from the prominent launch button on the main site. It is also a standalone PWA with its own `backdrops-manifest.webmanifest`; its install control requires the visitor to use the browser's install/Add to Home Screen action. The main site manifest also includes a shortcut to the backdrops app.
+
+The searchable/filterable directory points to external searches and specialist background libraries for luxury and seamless studios, floral installations, wedding/reception stages, offices and lounges, modern homes, church/auditorium stages, birthday and graduation setups, newborn/maternity scenes, commercial/product sets, fantasy gardens, beaches, landscapes, architecture and more. **The goal is empty background plates for compositing, not photos of people posing in front of a backdrop.** The app uses abstract CSS previews rather than implying that source thumbnails are verified plates. Stock search links can still return people, so check every result before downloading.
+
+Prefer JPG or PNG and a 3000 px or larger long edge when available. Actual dimensions differ: some source examples are below that preference. Check individual pixel dimensions, confirm that the scene has enough clean foreground/floor space and realistic perspective/shadows, and review licensing for the intended client/commercial use. The app links the image-license page for PhotoBackground.in; each site's and each file's terms may vary.
 
 ## Update prices
 
@@ -66,8 +74,10 @@ Listed hours: Monday–Friday 08:00–17:30, Saturday 08:00–15:00, Sunday clos
 
 ## Main files
 
-- `index.html` — site, styling and interactions
-- `manifest.webmanifest` — PWA name, launch URL, display mode and icons
-- `service-worker.js` — offline cache
+- `index.html` — main site, styling and interactions
+- `master-backdrops.html` — searchable/filterable companion backdrop app
+- `manifest.webmanifest` — main PWA and shortcut to Master Backdrops
+- `backdrops-manifest.webmanifest` — standalone Master Backdrops PWA metadata
+- `service-worker.js` — offline cache for both apps
 - `.github/workflows/deploy.yml` — GitHub Pages deployment
 - `assets/` — portfolio photos and app icons
