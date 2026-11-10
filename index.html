@@ -522,6 +522,15 @@
   </style>
 </head>
 <body>
+<!-- ===== Profit OS navigation bar (top) ===== -->
+<div id="ypoTopBar" style="position:relative;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;background:#c9a578;color:#171613;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:.04em">
+  <a href="yango-profit-os.html" style="display:inline-flex;align-items:center;gap:8px;color:#171613;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:11px">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Back to Profit OS
+  </a>
+  <span style="opacity:.75;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10px">Yango app · home is one tap away</span>
+</div>
+
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
@@ -912,7 +921,7 @@
             </div>
             <div class="contact-method">
               <span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="1"/><path d="m3 5 7 6 7-6"/></svg></span>
-              <div><small>Email</small><a href="mailto:ghopbusinesscenter@gmail.com">ghopbusinesscenter@gmail.com</a></div>
+              <div><small>Email</small><a href="/cdn-cgi/l/email-protection#4027282f30223533292e25333323252e34253200272d21292c6e232f2d"><span class="__cf_email__" data-cfemail="dcbbb4b3acbea9afb5b2b9afafbfb9b2a8b9ae9cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span></a></div>
             </div>
             <div class="hours-card" aria-label="Business hours">
               <div class="hours-heading"><span>Business hours</span><small>Local time · Zambia</small></div>
@@ -963,7 +972,7 @@
   <footer class="site-footer">
     <div class="shell footer-inner">
       <a class="footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">G</span><p>GHOP Photography · Zambia</p></a>
-      <div class="footer-links"><a href="tel:+260760528887">076 052 8887</a><a href="tel:+260971415665">Makeup · 097 141 5665</a><a href="mailto:ghopbusinesscenter@gmail.com">Email</a><a href="https://web.facebook.com/GHOPzambia" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#top">Back to top ↑</a></div>
+      <div class="footer-links"><a href="tel:+260760528887">076 052 8887</a><a href="tel:+260971415665">Makeup · 097 141 5665</a><a href="/cdn-cgi/l/email-protection#deb9b6b1aebcabadb7b0bbadadbdbbb0aabbac9eb9b3bfb7b2f0bdb1b3">Email</a><a href="https://web.facebook.com/GHOPzambia" target="_blank" rel="noopener noreferrer">Facebook</a><a href="#top">Back to top ↑</a></div>
       <span class="footer-credit">© <span id="current-year">2026</span> GHOP Photography</span>
     </div>
   </footer>
@@ -1001,7 +1010,7 @@
   </dialog>
   <div class="price-toast" id="price-toast" role="status" aria-live="polite">Prices saved on this device.</div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (() => {
       const defaultPrices = { portrait: 950, event: 2500, wedding: 6500, pa: 3500 };
       const storageKey = 'ghop-photography-prices-v1';
@@ -1231,5 +1240,32 @@
       dateInput.min = new Date(localToday.getTime() - localToday.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
     })();
   </script>
-</body>
+
+<!-- ===== Back to Yango Profit OS ===== -->
+<style>
+  #ypoBack{
+    position:fixed; left:16px; bottom:16px; z-index:2147483000;
+    display:inline-flex; align-items:center; gap:9px;
+    padding:13px 18px; border-radius:30px;
+    background:#171613; color:#f2efe9; border:1px solid #c9a578;
+    font:700 11.5px/1 Arial,Helvetica,sans-serif; letter-spacing:.13em; text-transform:uppercase;
+    text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.5);
+    transition:background .2s ease, color .2s ease, transform .2s ease;
+  }
+  #ypoBack svg{ width:14px; height:14px; }
+  #ypoBack:hover{ background:#c9a578; color:#171613; transform:translateY(-2px); }
+  #ypoBack:focus-visible{ outline:2px solid #dfbb8b; outline-offset:3px; }
+  #ypoBack span.k{ font-weight:700; opacity:.65; letter-spacing:.06em; text-transform:none; }
+  @media (max-width:520px){
+    #ypoBack{ left:12px; bottom:12px; padding:11px 14px; font-size:10.5px; letter-spacing:.1em; }
+  }
+  @media print{ #ypoBack{ display:none !important; } }
+</style>
+<a id="ypoBack" href="yango-profit-os.html" aria-label="Back to Yango Profit OS home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>
+  </svg>
+  Back to Profit OS <span class="k">· home</span>
+</a>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a585660e9fa83c99',t:'MTc5NDMxNzI4OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a585660e9fa83c99',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
