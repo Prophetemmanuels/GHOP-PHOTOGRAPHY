@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yango Profit OS — Lusaka · Honda Fit 1.3</title>
+<style>
+:root{
+  --bg:#080b10; --bg2:#0d131b; --card:#111924; --card2:#16202d; --line:#1e2b3b;
+  --txt:#e9f0f8; --mut:#8ea2b8; --mut2:#6b7f95;
+  --lime:#c6f76a; --gold:#ffc85c; --red:#ff6b6b; --blue:#63b3ff; --teal:#4ee0c0;
+  --r:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(198,247,106,.09), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(99,179,255,.08), transparent 55%),
+    var(--bg);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px; line-height:1.5;
+  padding-bottom:80px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 14px}
+h1,h2,h3,h4{margin:0;line-height:1.2;letter-spacing:-.02em}
+h2{font-size:20px;font-weight:800}
+h3{font-size:16px;font-weight:750}
+h4{font-size:13.5px;font-weight:700;letter-spacing:.02em}
+p{margin:0 0 10px}
+a{color:var(--blue)}
+small{font-size:11.5px}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(8,11,16,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hd{display:flex;align-items:center;gap:12px;padding:11px 0 9px}
+.logo{
+  width:38px;height:38px;border-radius:12px;flex:0 0 auto;
+  background:linear-gradient(140deg,var(--lime),#7ddc4a 55%,#3bb37a);
+  display:grid;place-items:center;color:#08120a;font-weight:900;font-size:17px;
+  box-shadow:0 6px 22px rgba(198,247,106,.28);
+}
+.hd-t{flex:1;min-width:0}
+.hd-t .n{font-size:15.5px;font-weight:850;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd-t .s{font-size:11px;color:var(--mut);letter-spacing:.03em;text-transform:uppercase}
+.pillfuel{
+  font-size:11px;font-weight:800;color:#08120a;background:var(--lime);
+  padding:5px 9px;border-radius:20px;white-space:nowrap;
+}
+.pillfuel.d{background:var(--gold)}
+
+/* ---------- tabs ---------- */
+nav{display:flex;gap:6px;overflow-x:auto;padding:0 0 9px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;border:1px solid var(--line);background:var(--card);
+  color:var(--mut);font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:20px;
+  cursor:pointer;white-space:nowrap;transition:.15s;
+}
+.tab:hover{color:var(--txt);border-color:#2c3d51}
+.tab.on{background:var(--lime);color:#08120a;border-color:var(--lime)}
+
+/* ---------- layout ---------- */
+main{padding-top:16px}
+.page{display:none;animation:fade .25s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:860px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{
+  background:linear-gradient(180deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--r);padding:14px;
+}
+.card.tight{padding:12px}
+.card.accent{border-color:rgba(198,247,106,.35);box-shadow:0 0 0 1px rgba(198,247,106,.07) inset}
+.card.warn{border-color:rgba(255,107,107,.35)}
+.sec{margin:22px 0 11px;display:flex;align-items:baseline;gap:9px}
+.sec .tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut2);font-weight:800}
+.hr{height:1px;background:var(--line);margin:14px 0}
+.mut{color:var(--mut)}
+.dim{color:var(--mut2)}
+.tiny{font-size:11.5px;line-height:1.45}
+
+/* ---------- numbers ---------- */
+.big{font-size:29px;font-weight:860;letter-spacing:-.03em;line-height:1.05}
+.mid{font-size:21px;font-weight:820;letter-spacing:-.02em}
+.lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut2);font-weight:800}
+.lime{color:var(--lime)} .gold{color:var(--gold)} .red{color:var(--red)} .blue{color:var(--blue)} .teal{color:var(--teal)}
+.k{font-variant-numeric:tabular-nums}
+
+/* ---------- kpi ---------- */
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.kpi .v{font-size:23px;font-weight:840;letter-spacing:-.02em;margin-top:2px}
+.kpi .d{font-size:11px;color:var(--mut);margin-top:2px}
+
+/* ---------- forms ---------- */
+label.fl{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut2);font-weight:800;margin:0 0 4px}
+input[type=number],input[type=text],input[type=date],select{
+  width:100%;background:#0a1017;border:1px solid var(--line);border-radius:10px;
+  color:var(--txt);padding:9px 10px;font-size:14.5px;font-weight:650;
+  font-family:inherit;
+
+}
+input:focus,select:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(198,247,106,.12)}
+.fld{margin-bottom:10px}
+.row{display:grid;gap:9px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--lime);height:22px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{
+  border:1px solid var(--line);background:#0a1017;color:var(--mut);border-radius:20px;
+  font-size:11.5px;font-weight:750;padding:5px 10px;cursor:pointer;transition:.15s
+}
+.chip:hover{color:var(--txt)}
+.chip.on{background:rgba(198,247,106,.14);border-color:rgba(198,247,106,.5);color:var(--lime)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  background:var(--lime);color:#08120a;border:none;border-radius:11px;
+  padding:11px 16px;font-size:14px;font-weight:850;cursor:pointer;font-family:inherit;
+  transition:.15s;width:100%
+}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:#0a1017;color:var(--txt);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:#31465e}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{
+  text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--mut2);font-weight:850;padding:7px 6px;border-bottom:1px solid var(--line);
+  white-space:nowrap
+}
+td{padding:8px 6px;border-bottom:1px solid rgba(30,43,59,.55);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.tscroll{overflow-x:auto;margin:0 -4px}
+
+/* ---------- misc ---------- */
+.bar{height:9px;background:#0a1017;border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#7ddc4a,var(--lime));border-radius:20px;transition:width .4s}
+.badge{display:inline-block;font-size:10.5px;font-weight:850;padding:3px 8px;border-radius:7px;letter-spacing:.02em}
+.b-ok{background:rgba(198,247,106,.15);color:var(--lime)}
+.b-mid{background:rgba(255,200,92,.15);color:var(--gold)}
+.b-bad{background:rgba(255,107,107,.15);color:var(--red)}
+.b-inf{background:rgba(99,179,255,.15);color:var(--blue)}
+ul.ck{list-style:none;padding:0;margin:0}
+ul.ck li{position:relative;padding:6px 0 6px 24px;font-size:13.5px;border-bottom:1px solid rgba(30,43,59,.5)}
+ul.ck li:last-child{border-bottom:none}
+ul.ck li:before{
+  content:"";position:absolute;left:2px;top:12px;width:13px;height:13px;border-radius:4px;
+  border:1.5px solid #2e4358;cursor:pointer;transition:.15s
+}
+ul.ck li.done:before{background:var(--lime);border-color:var(--lime);box-shadow:0 0 0 3px rgba(198,247,106,.13)}
+ul.ck li.done{color:var(--mut);text-decoration:line-through;text-decoration-color:#2e4358}
+ul.dot{list-style:none;padding:0;margin:0}
+ul.dot li{position:relative;padding:0 0 8px 16px;font-size:13.5px}
+ul.dot li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--lime)}
+ul.dot.o li:before{background:var(--gold)}
+ul.dot.r li:before{background:var(--red)}
+.heat{display:grid;grid-template-columns:46px repeat(9,1fr);gap:3px;font-size:9.5px;align-items:center}
+.heat .hd2{color:var(--mut2);font-weight:800;text-align:center;font-size:9px;letter-spacing:.04em}
+.heat .dl{color:var(--mut);font-weight:800;font-size:10px}
+.hc{height:19px;border-radius:4px;background:#0d151f;border:1px solid rgba(30,43,59,.6)}
+.hc.l1{background:rgba(198,247,106,.18);border-color:transparent}
+.hc.l2{background:rgba(198,247,106,.45);border-color:transparent}
+.hc.l3{background:var(--lime);border-color:transparent}
+.hc.r{background:rgba(99,179,255,.25);border-color:transparent}
+.hc.hnow{outline:2px solid var(--gold);outline-offset:1px;position:relative;z-index:3;box-shadow:0 0 10px rgba(255,200,92,.55)}
+.nowstrip{background:rgba(198,247,106,.1);border:1px solid rgba(198,247,106,.35);border-radius:10px;padding:8px 10px;margin-bottom:9px}
+.nowstrip.off{background:rgba(255,200,92,.08);border-color:rgba(255,200,92,.32)}
+.nowdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-right:5px;vertical-align:1px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+.nowdot.off{background:var(--gold)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--mut);margin-top:9px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.note{
+  border-left:3px solid var(--gold);background:rgba(255,200,92,.06);
+  padding:9px 11px;border-radius:0 9px 9px 0;font-size:12.5px;color:#e4d9bd;margin:10px 0
+}
+.note.r{border-color:var(--red);background:rgba(255,107,107,.07);color:#f0cfcf}
+.note.g{border-color:var(--lime);background:rgba(198,247,106,.07);color:#dfeecd}
+.note.b{border-color:var(--blue);background:rgba(99,179,255,.07);color:#cfe2f5}
+footer{margin-top:34px;padding:16px 0 26px;border-top:1px solid var(--line);font-size:11px;color:var(--mut2)}
+.src{font-size:11.5px;color:var(--mut);line-height:1.7}
+.src b{color:var(--txt)}
+.vd{padding:12px;border-radius:12px;font-weight:850;text-align:center;font-size:15px;letter-spacing:.01em}
+.vd.ok{background:rgba(198,247,106,.13);color:var(--lime);border:1px solid rgba(198,247,106,.35)}
+.vd.mid{background:rgba(255,200,92,.12);color:var(--gold);border:1px solid rgba(255,200,92,.32);font-size:14px}
+.vd.bad{background:rgba(255,107,107,.12);color:var(--red);border:1px solid rgba(255,107,107,.32)}
+.split{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:13.5px;border-bottom:1px dashed rgba(30,43,59,.8)}
+.split:last-child{border-bottom:none}
+.split b{font-variant-numeric:tabular-nums}
+/* ---------- printable shift card ---------- */
+.pc{background:#fff;color:#0f1419;border:1px solid #d8dfe6;border-radius:14px;padding:16px}
+.pc h2{color:#0f1419}
+.pc .lbl{color:#6b7785}
+.pct th{color:#67727e;border-bottom:1.5px solid #cfd6de;font-size:9.5px}
+.pct td{color:#0f1419;border-bottom:1px solid #e6eaef;font-size:12px;padding:6px 6px}
+.pct tr:last-child td{border-bottom:1px solid #cfd6de}
+.pctr-off td{background:#f2f5f8;color:#5d6873}
+.pcrule{display:flex;gap:8px;font-size:11px;color:#2b3540;padding:3px 0;border-bottom:1px solid #eef1f4}
+.pcrule:last-child{border-bottom:none}
+.pcrule b{color:#0f1419}
+@media print{
+  header,nav,footer,.no-print{display:none!important}
+  body{background:#fff!important;color:#000;padding:0!important}
+  .page{display:none!important}
+  #p-week{display:block!important}
+  #p-week > *:not(#printCard){display:none!important}
+  #printCard{display:block!important;border:0!important;border-radius:0;box-shadow:none;padding:0}
+  .tscroll{overflow:visible!important}
+  .pc{font-size:11px}
+}
+@page{size:A4 portrait;margin:12mm}
+/* ---------- app launcher ---------- */
+.fab{
+  position:fixed; right:14px; bottom:16px; z-index:80;
+  display:inline-flex; align-items:center; gap:9px;
+  padding:12px 17px; border-radius:30px;
+  background:linear-gradient(140deg,var(--lime),#8ee04f); color:#08120a;
+  font-size:13px; font-weight:850; letter-spacing:.01em; text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.6), 0 0 0 1px rgba(198,247,106,.4);
+  transition:transform .18s ease, filter .18s ease;
+}
+.fab:hover{ transform:translateY(-2px); filter:brightness(1.06); }
+.fab svg{ width:17px; height:17px; }
+@media print{ .fab{display:none!important} }
+.applink{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  background:var(--lime); color:#08120a; border:none; border-radius:11px;
+  padding:11px 18px; font-size:14px; font-weight:850; text-decoration:none; cursor:pointer;
+  transition:filter .15s;
+}
+.applink:hover{ filter:brightness(1.07); }
+.applink svg{ width:16px; height:16px; }
+.applink.ghost{ background:#0a1017; color:var(--txt); border:1px solid var(--line); }
+.applink.ghost:hover{ border-color:#31465e; }
+body{ padding-bottom:104px; }
+.hbtn{
+  display:inline-flex; align-items:center; gap:6px; flex:0 0 auto;
+  background:var(--lime); color:#08120a; text-decoration:none;
+  font-size:11.5px; font-weight:850; letter-spacing:.01em;
+  padding:7px 11px; border-radius:20px; white-space:nowrap;
+  box-shadow:0 4px 16px rgba(198,247,106,.28);
+  transition:filter .15s ease, transform .15s ease;
+}
+.hbtn:hover{ filter:brightness(1.07); transform:translateY(-1px); }
+.hbtn svg{ width:13px; height:13px; }
+@media(max-width:430px){
+  .hd-t .s{ display:none }
+  .hbtn{ padding:6px 9px; font-size:10.5px; gap:5px }
+  .hbtn svg{ width:12px; height:12px }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hd">
+      <div class="logo">Y</div>
+      <div class="hd-t">
+        <div class="n">Yango Profit OS</div>
+        <div class="s">Lusaka · Honda Fit 1.3 · fuel &amp; targets</div>
+      </div>
+      <a class="hbtn" href="yango-app.html" title="Open your Yango app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17"/>
+          <circle cx="7.5" cy="19.5" r="1.5"/><circle cx="16.5" cy="19.5" r="1.5"/>
+        </svg>
+        Yango App
+      </a>
+      <div style="text-align:right">
+        <div class="pillfuel" id="hdrFuel">K33.06 /L</div>
+        <div class="tiny dim" id="hdrClock" style="margin-top:4px;font-size:9.5px;letter-spacing:.02em;white-space:nowrap">—</div>
+      </div>
+    </div>
+    <nav id="nav">
+      <button class="tab on" data-p="dash">Dashboard</button>
+      <button class="tab" data-p="week">My Week</button>
+      <button class="tab" data-p="trip">Trip Check</button>
+      <button class="tab" data-p="fuel">Fuel &amp; Prices</button>
+      <button class="tab" data-p="plan">K3,000 Plan</button>
+      <button class="tab" data-p="shift">Shift Clock</button>
+      <button class="tab" data-p="car">Vehicle</button>
+      <button class="tab" data-p="play">Playbook</button>
+      <button class="tab" data-p="log">My Log</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ DASHBOARD ============ -->
+<section class="page on" id="p-dash">
+  <div class="card accent" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start">
+      <div>
+        <div class="lbl">Right now</div>
+        <div style="display:flex;align-items:baseline;gap:3px;margin-top:1px">
+          <div class="big lime k" id="nowTime" style="font-size:36px">--:--</div>
+          <div class="mut tiny k" id="nowSec" style="font-size:15px;font-weight:800">:--</div>
+        </div>
+        <div class="tiny mut" id="nowDate">—</div>
+      </div>
+      <div style="text-align:right;flex:1;min-width:210px">
+        <div class="badge" id="nowBadge" style="font-size:12px;padding:5px 11px">—</div>
+        <div class="tiny mut" id="nowDetail" style="margin-top:7px;line-height:1.45">—</div>
+      </div>
+    </div>
+    <div id="nowBar" style="margin-top:12px"></div>
+    <div id="nowAction" class="tiny" style="margin-top:7px">—</div>
+    <div class="hr" style="margin:11px 0"></div>
+    <div class="tiny" id="nowTarget">—</div>
+  </div>
+
+  <div id="priceBanner"></div>
+  <div class="card accent" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <div class="lbl" id="fxLabel">ERB pump price</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px">
+          <div class="big lime k" id="fxPetrol">K33.06</div>
+          <div class="mut tiny">per litre petrol</div>
+        </div>
+        <div class="tiny mut" style="margin-top:4px" id="fxDieselLine">Diesel K34.45</div>
+      </div>
+      <div style="text-align:right">
+        <div class="badge" id="fxChange">—</div>
+        <div class="tiny dim" style="margin-top:6px" id="fxEff">—</div>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div class="tiny" id="fxNext" style="flex:1;min-width:220px">—</div>
+      <button class="btn ghost" id="fxBtn" style="width:auto;padding:8px 12px;font-size:12.5px">Update price</button>
+    </div>
+  </div>
+
+  <div class="grid g4" style="margin-bottom:12px">
+    <div class="kpi"><div class="lbl">Your fuel cost / km</div><div class="v lime k" id="dCPK">K2.54</div><div class="d" id="dCPKd">@ 12 km/L · Honda Fit</div></div>
+    <div class="kpi"><div class="lbl">Break-even fare</div><div class="v k" id="dBE">K—</div><div class="d">per km you must earn</div></div>
+    <div class="kpi"><div class="lbl">This week net</div><div class="v k" id="dNet">K0</div><div class="d" id="dNetd">no entries yet</div></div>
+    <div class="kpi"><div class="lbl">Target progress</div><div class="v k" id="dProg">0%</div><div class="d" id="dProgd">of K3,000</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <h3>Weekly target</h3><div class="tiny mut" id="dTargetLbl">K3,000 net / week</div>
+    </div>
+    <div class="bar"><i id="dBar" style="width:0%"></i></div>
+    <div style="display:flex;justify-content:space-between;margin-top:7px" class="tiny mut">
+      <span id="dBarL">K0 logged</span><span id="dBarR">K3,000</span>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-bottom:9px">The four levers that decide your profit</h3>
+      <ul class="dot">
+        <li><b>Fuel efficiency.</b> At K33.06/L your Fit at 12 km/L burns <b>K2.76</b> of fuel per km. A well-driven 14 km/L Fit burns K2.36; a hybrid burns K1.50. On 1,000 km a week that is a <b class="lime">K400–K1,260</b> swing from driving style and car choice alone. This is the single biggest lever you control.</li>
+        <li><b>Gross per online hour.</b> Dead miles, long pickups and sitting in a jam earn you nothing. Aim for paid trips, not just online time.</li>
+        <li><b>Cost discipline.</b> Fuel theft, unnecessary idling, late servicing and unpriced maintenance quietly eat the margin.</li>
+        <li><b>Target bonuses.</b> Chase the weekly trip-count tiers — the bonus is pure margin because your fuel is already spent.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">Reality check on the ads</h3>
+      <p class="tiny">Yango's own Zambia recruitment ads say car drivers in Lusaka and Kitwe can earn <b>up to ZMW 5,000 a week</b>. That is <b>gross before commission, fuel, data, car wash, tyres and servicing</b> — and it is a top-of-market figure, not an average.</p>
+      <p class="tiny">Plan on keeping roughly <b class="lime">30–45%</b> of gross as true profit in an efficient petrol car, less in a thirsty one and much less if you rent the car. Use the <b>K3,000 Plan</b> tab to see exactly what your numbers require.</p>
+      <div class="note b" style="margin-bottom:0">Set your real numbers once in <b>K3,000 Plan → Your cost model</b>. Every calculator in this app uses them.</div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Today</span><h2>Do these three things</h2></div>
+  <div class="grid g3">
+    <div class="card tight"><div class="badge b-inf">1</div><h4 style="margin:7px 0 4px">Fill up before month-end</h4><p class="tiny mut" style="margin:0">ERB announces on the last day of the month and prices bite at midnight. A 40 L tank bought a day early after a K1.60 hike saves K64.</p></div>
+    <div class="card tight"><div class="badge b-inf">2</div><h4 style="margin:7px 0 4px">Check tyre pressure</h4><p class="tiny mut" style="margin:0">Soft tyres cost up to 3% fuel. That is about K1 per litre of your monthly burn — free money every week.</p></div>
+    <div class="card tight"><div class="badge b-inf">3</div><h4 style="margin:7px 0 4px">Log tonight</h4><p class="tiny mut" style="margin:0">Trips, gross, fuel, km. Drivers who track earn more, because they stop guessing which shifts actually pay.</p></div>
+  </div>
+
+  <div class="sec"><span class="tag">Apps</span><h2>Open your Yango app</h2></div>
+  <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+    <div style="min-width:220px;flex:1">
+      <h3>Yango app</h3>
+      <div class="tiny mut" style="margin-top:3px">Your ride-hailing page. Tap through, and use the <b>Back to Profit OS</b> button at the bottom-left of that screen to come straight home.</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="applink" href="yango-app.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17"/><circle cx="7.5" cy="19.5" r="1.5"/><circle cx="16.5" cy="19.5" r="1.5"/></svg>
+        Open Yango app
+      </a>
+      <a class="applink ghost" href="https://yango.com/en_zm/" target="_blank" rel="noopener">yango.com ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY WEEK ============ -->
+<section class="page" id="p-week">
+  <div class="sec"><span class="tag">Everyday strategy</span><h2>Your week, day by day</h2></div>
+
+  <div class="card accent" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <div class="lbl">The split</div>
+        <div class="big lime k" id="wkPerDay">K500</div>
+        <div class="tiny mut" id="wkPerDaySub">net per working day · 6 days on, Sunday off</div>
+      </div>
+      <div style="text-align:right">
+        <div class="badge b-inf" id="wkHours">—</div>
+        <div class="tiny dim" style="margin-top:6px" id="wkHrsDay">—</div>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div class="grid g4">
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Weekly target</div><div class="v k" id="wkTarget">K3,000</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Working days</div><div class="v k" id="wkDays">6</div><div class="d">Sunday is OFF</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Fuel budget / week</div><div class="v k" id="wkFuel">—</div><div class="d" id="wkFuelL">—</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Gross needed / week</div><div class="v k" id="wkGross">—</div><div class="d">before commission</div></div>
+    </div>
+    <div class="note g" id="wkNote" style="margin-bottom:0"></div>
+  </div>
+
+  <div id="dayCards" class="grid g2"></div>
+
+  <div class="sec"><span class="tag">Take it with you</span><h2>Your one-page shift card</h2></div>
+  <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px">
+    <button class="btn" id="printBtn" style="width:auto;padding:10px 16px">Print / save as PDF</button>
+    <div class="tiny mut" style="align-self:center">If printing is blocked in this preview, download the file and press Ctrl/Cmd + P — the card prints alone on one A4 page.</div>
+  </div>
+  <div class="pc" id="printCard">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:2px solid #0f1419;padding-bottom:9px">
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.15em;font-weight:850;color:#6b7785">YANGO PROFIT OS · LUSAKA</div>
+        <h2 id="pcTitle" style="font-size:17px;margin-top:2px">Shift card</h2>
+      </div>
+      <div style="text-align:right;font-size:10.5px;color:#4a5663;line-height:1.5" id="pcMeta"></div>
+    </div>
+    <div class="tscroll" style="margin-top:10px">
+      <table class="pct">
+        <thead><tr><th>Day</th><th>Online hours</th><th class="n">Hrs</th><th class="n">Net target</th><th class="n">Trips</th><th class="n">Fuel budget</th></tr></thead>
+        <tbody id="pcRows"></tbody>
+      </table>
+    </div>
+    <div id="pcRules" style="margin-top:11px"></div>
+    <div style="display:flex;justify-content:space-between;gap:10px;font-size:9px;color:#6b7785;margin-top:9px;border-top:1px solid #dde3e9;padding-top:6px">
+      <span id="pcFoot"></span><span>Fuel &amp; fares change monthly — update this app before you plan the week</span>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Day 7</span><h2>Sunday — off day, not a lost day</h2></div>
+  <div class="card">
+    <p class="tiny mut">Sunday earns you nothing directly and protects everything else. The six working days only pay if the car is healthy, you are rested, and the week's numbers are known. Do these, in this order, and be finished by 14:00.</p>
+    <div class="grid g2">
+      <ul class="ck" id="sunCk">
+        <li>Sleep until you wake naturally — no alarm</li>
+        <li>Wash and vacuum the car inside and out</li>
+        <li>Check tyre pressures cold, top up if needed</li>
+        <li>Check oil, coolant, brake fluid, washer water</li>
+        <li>Fill the tank before the week starts (and before any price change)</li>
+        <li>Service items due this month? Book or do them today</li>
+      </ul>
+      <ul class="ck" id="sunCk2">
+        <li>Enter every day of last week into My Log</li>
+        <li>Compare actual net against the K3,000 target</li>
+        <li>Find your best-paying window and your worst — drop the worst</li>
+        <li>Set next week's fuel money aside in a separate place</li>
+        <li>Top up data bundle and phone credit for the week</li>
+        <li>Plan Monday's first three hours before you sleep</li>
+      </ul>
+    </div>
+    <div class="note" style="margin-bottom:0">If you are behind target by Sunday, do <b>not</b> work Sunday. Add the hours to Friday evening next week instead — Friday pays roughly double a Sunday morning per hour, and you keep the rest day that keeps you safe.</div>
+  </div>
+</section>
+
+<!-- ============ TRIP CHECK ============ -->
+<section class="page" id="p-trip">
+  <div class="sec"><span class="tag">Decision tool</span><h2>Accept or decline this trip?</h2></div>
+  <p class="mut tiny" style="margin-bottom:12px">Type the fare the app is offering and the real distances. The verdict uses your own cost model, so it stays honest as fuel moves.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-bottom:10px">Trip details</h3>
+      <div class="chips" id="tripPreset">
+        <button class="chip on" data-fare="45" data-km="5" data-pick="1.5" data-min="16">Short hop 5 km</button>
+        <button class="chip" data-fare="85" data-km="11" data-pick="2" data-min="30">Cross-city 11 km</button>
+        <button class="chip" data-fare="55" data-km="7" data-pick="4" data-min="25">Far pickup 7 km</button>
+        <button class="chip" data-fare="320" data-km="28" data-pick="3" data-min="50">Airport run</button>
+      </div>
+      <div class="row">
+        <div class="fld"><label class="fl">Offered fare (K)</label><input type="number" id="tFare" value="45" step="1"></div>
+        <div class="fld"><label class="fl">Trip distance (km)</label><input type="number" id="tKm" value="5" step="0.5"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label class="fl">Pickup distance (km)</label><input type="number" id="tPick" value="1.5" step="0.5"></div>
+        <div class="fld"><label class="fl">Total time (min)</label><input type="number" id="tMin" value="16" step="1"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label class="fl">Fuel price (K/L)</label><input type="number" id="tFuel" value="33.06" step="0.01"></div>
+        <div class="fld"><label class="fl">Your km per litre</label><input type="number" id="tKmpl" value="12" step="0.5"></div>
+      </div>
+      <div class="fld"><label class="fl">Yango / station commission (%)</label><input type="number" id="tComm" value="20" step="1"></div>
+      <div class="tiny dim">Tip: leave the preset chips alone after editing — they just seed the fields.</div>
+    </div>
+
+    <div class="card accent">
+      <h3 style="margin-bottom:10px">The maths</h3>
+      <div class="vd ok" id="tVerdict" style="margin-bottom:11px">TAKE IT</div>
+      <div class="split"><span class="mut">Gross fare</span><b id="tGross">K45.00</b></div>
+      <div class="split"><span class="mut">Commission</span><b class="red" id="tCommK">−K9.00</b></div>
+      <div class="split"><span class="mut">Fuel, trip + pickup</span><b class="red" id="tFuelK">−K16.53</b></div>
+      <div class="split"><span class="mut">Maintenance reserve</span><b class="red" id="tMaintK">−K3.58</b></div>
+      <div class="split" style="border-bottom:1px solid var(--line);padding-bottom:9px"><span><b>Net profit</b></span><b class="lime" id="tNet">K15.89</b></div>
+      <div class="grid g3" style="margin-top:11px">
+        <div class="kpi" style="background:#0a1017"><div class="lbl">Per hour</div><div class="v k" id="tPerHr" style="font-size:19px">K60</div></div>
+        <div class="kpi" style="background:#0a1017"><div class="lbl">Margin</div><div class="v k" id="tMargin" style="font-size:19px">35%</div></div>
+        <div class="kpi" style="background:#0a1017"><div class="lbl">Vs target</div><div class="v k" id="tVs" style="font-size:19px">—</div></div>
+      </div>
+      <div class="hr"></div>
+      <div class="tiny mut" id="tNotes"></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Benchmarks</span><h2>What a good trip looks like</h2></div>
+  <div class="card">
+    <div class="tscroll"><table>
+      <thead><tr><th>Rule of thumb</th><th class="n">Target</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Net profit per trip</td><td class="n lime" id="ruleTripNet">K25+</td><td class="mut tiny">Below K15 a trip barely beats the cost of the seat it uses.</td></tr>
+        <tr><td>Net profit per hour online</td><td class="n lime" id="ruleNph">K60–90</td><td class="mut tiny" id="ruleNphWhy">This is the number to watch — it is the only one that pays your bills.</td></tr>
+        <tr><td>Deadhead (pickup) distance</td><td class="n lime">≤ 3 km</td><td class="mut tiny">Every unpaid km burns K2.50+ and earns nothing.</td></tr>
+        <tr><td>Margin on fare</td><td class="n lime">≥ 35%</td><td class="mut tiny">Under 30% and one pothole or puncture wipes out the trip.</td></tr>
+        <tr><td>Acceptance discipline</td><td class="n">Decline &lt; K15 net</td><td class="mut tiny">But keep acceptance high enough to protect your bonus tier and rating.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">A K45 fare on a 5 km hop looks fine until you count the 1.5 km pickup and 16 minutes: net is about K15, or K56 an hour in your Fit. That is the real wage. Judge trips by <b>net per hour</b>, never by the fare on the screen.</div>
+  </div>
+</section>
+
+<!-- ============ FUEL ============ -->
+<section class="page" id="p-fuel">
+  <div class="sec"><span class="tag">Live facts</span><h2>Zambia fuel prices</h2></div>
+  <div class="grid g4" style="margin-bottom:12px">
+    <div class="kpi"><div class="lbl">Petrol</div><div class="v lime k" id="kPetrol">K33.06</div><div class="d" id="kPetrolD">—</div></div>
+    <div class="kpi"><div class="lbl">Diesel</div><div class="v gold k" id="kDiesel">K34.45</div><div class="d" id="kDieselD">—</div></div>
+    <div class="kpi"><div class="lbl">Kerosene</div><div class="v k" id="kKero">K32.08</div><div class="d" id="kKeroD">—</div></div>
+    <div class="kpi"><div class="lbl">Next ERB review</div><div class="v k" id="kNext" style="font-size:18px">—</div><div class="d" id="kNextD">announced last day of the month</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div>
+        <h3>Price feed</h3>
+        <div class="tiny mut" id="feedStatus" style="margin-top:3px">—</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ghost" id="syncBtn" style="width:auto;padding:9px 13px;font-size:12.5px">Check for changes now</button>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <h4 style="margin-bottom:7px">Manual update — takes 10 seconds</h4>
+    <div class="row" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+      <div class="fld"><label class="fl">Petrol K/L</label><input type="number" id="upPetrol" step="0.01"></div>
+      <div class="fld"><label class="fl">Diesel K/L</label><input type="number" id="upDiesel" step="0.01"></div>
+      <div class="fld"><label class="fl">Kerosene K/L</label><input type="number" id="upKero" step="0.01"></div>
+      <div class="fld"><label class="fl">Effective date</label><input type="date" id="upDate"></div>
+    </div>
+    <button class="btn" id="savePrice">Save new prices &amp; recalculate everything</button>
+    <div class="tiny" id="upStatus" style="margin-top:8px"></div>
+    <div class="tiny dim" style="margin-top:9px">Every calculator in this app — trip check, weekly plan, cost per km, fuel budget — reads from this one price. Change it here and the whole app updates instantly.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <h3>2026 price track</h3>
+      <div class="tiny mut">K per litre, national uniform pump price</div>
+    </div>
+    <div id="chart" style="margin-top:12px"></div>
+    <div class="legend">
+      <span><i style="background:var(--lime)"></i>Petrol</span>
+      <span><i style="background:var(--gold)"></i>Diesel</span>
+      <span><i style="background:var(--red)"></i>VAT re-entry, 1 Dec</span>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-bottom:9px">What moved the price</h3>
+      <ul class="dot o">
+        <li><b>Oil.</b> International petrol and diesel benchmarks rose through September–October; the ERB cited Gulf tensions.</li>
+        <li><b>The kwacha.</b> A weaker kwacha raises the local cost of every imported litre. November's hike came even though the diesel benchmark <i>fell</i>, purely on currency.</li>
+        <li><b>Tax.</b> The three-month excise suspension and zero-rated VAT ended in September — that alone added over K6 a litre in October.</li>
+        <li><b>VAT returns 1 December.</b> Unless extended, expect another step up in the December review.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">How to buy fuel smarter</h3>
+      <ul class="dot">
+        <li><b>Fill before the last day of the month.</b> Prices change at midnight after the ERB announcement. On a hike month a full 40 L tank bought early saves K50–K250.</li>
+        <li><b>Fill in the morning, cool fuel is denser.</b> A small but real effect; you get slightly more energy per litre than at 3 pm heat.</li>
+        <li><b>Use one trusted station on your route.</b> Avoid detours of 5 km just to save 20 ngwee — that detour costs you K2.50 in fuel.</li>
+        <li><b>Never run below a quarter tank.</b> Sediment pickup and a dry tank cost far more than the fuel you saved.</li>
+        <li><b>Pay by card or mobile money where possible.</b> It creates a record you can reconcile in the My Log tab.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Full history</span><h2>2026 monthly table</h2></div>
+  <div class="card tight">
+    <div class="tscroll"><table>
+      <thead><tr><th>Effective</th><th class="n">Petrol</th><th class="n">Diesel</th><th class="n">Petrol Δ</th><th class="n">Diesel Δ</th><th>Driver</th></tr></thead>
+      <tbody id="fuelTable"></tbody>
+    </table></div>
+    <div class="tiny dim" style="margin-top:9px">Sources: ERB monthly announcements as reported (Lusaka Times, Diggers, Lusaka Brief). Prices are national and uniform — Lusaka pays the same as Ndola.</div>
+  </div>
+
+  <div class="sec"><span class="tag">Cost control</span><h2>Where your fuel actually goes</h2></div>
+  <div class="card">
+    <p class="tiny mut">Your 1.3 L Fit doing 100 km in Lusaka traffic burns roughly 8.3 L at 12 km/L — about K275 at November prices. Here is how to claw back 10–20% of that without changing your car.</p>
+    <div class="tscroll"><table>
+      <thead><tr><th>Habit</th><th class="n">Fuel saved</th><th class="n">Value / 100 km</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>Correct tyre pressure</td><td class="n">up to 3%</td><td class="n lime">K7.60</td><td class="mut tiny">Check weekly, cold. Soft tyres = drag.</td></tr>
+        <tr><td>No idling while waiting</td><td class="n">~1 L / hour</td><td class="n lime">K33 / hr</td><td class="mut tiny">Switch off in queues over 60 seconds.</td></tr>
+        <tr><td>Smooth acceleration, lift early</td><td class="n">10–15%</td><td class="n lime">K25–38</td><td class="mut tiny">The single biggest driving win in stop-start traffic.</td></tr>
+        <tr><td>AC on economy / windows at low speed</td><td class="n">5–10%</td><td class="n lime">K13–25</td><td class="mut tiny">AC can add 10% in city driving.</td></tr>
+        <tr><td>Plan the route, avoid double-backs</td><td class="n">1–3 km</td><td class="n lime">K3–8</td><td class="mut tiny">Use the app's pickup fee to refuse far pickups.</td></tr>
+        <tr><td>Fresh air filter + correct oil</td><td class="n">2–4%</td><td class="n lime">K5–10</td><td class="mut tiny">Cheap service item, immediate payback.</td></tr>
+        <tr><td>Remove junk from the boot</td><td class="n">1–2%</td><td class="n lime">K2.5–5</td><td class="mut tiny">Every 50 kg costs roughly 1–2%.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note g">Do all seven and you can realistically cut your fuel bill by <b>15–20%</b>. At 1,000 km a week that is <b>K600–K1,000 a month</b> straight back into profit — the same as a profitable extra shift every week.</div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section class="page" id="p-plan">
+  <div class="sec"><span class="tag">The target</span><h2>K3,000 a week — the honest maths</h2></div>
+  <div class="note b">Everything below is driven by <b>your</b> cost model. Change a field and the whole plan recalculates. Defaults are set for a Yango Economy driver in Lusaka, November 2026 prices.</div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3 style="margin-bottom:11px">Your cost model</h3>
+    <div class="row">
+      <div class="fld"><label class="fl">Weekly net target (K)</label><input type="number" id="pTarget" value="3000" step="100"></div>
+      <div class="fld"><label class="fl">Days you work / week</label><input type="number" id="pDays" value="6" min="1" max="7" step="1"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Fuel price (K/L)</label><input type="number" id="pFuel" value="33.06" step="0.01"></div>
+      <div class="fld"><label class="fl">Vehicle km per litre</label><input type="number" id="pKmpl" value="12" step="0.5"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Commission + station (%)</label><input type="number" id="pComm" value="20" step="1"></div>
+      <div class="fld"><label class="fl">Gross per online hour (K)</label><input type="number" id="pGph" value="140" step="5"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Km driven per online hour</label><input type="number" id="pKph" value="18" step="1"></div>
+      <div class="fld"><label class="fl">Maintenance reserve (K/km)</label><input type="number" id="pMaint" value="0.50" step="0.05"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Other costs per day (data, wash, parking)</label><input type="number" id="pOther" value="35" step="5"></div>
+      <div class="fld"><label class="fl">Car rental per day (0 if own car)</label><input type="number" id="pRent" value="0" step="10"></div>
+    </div>
+    <div class="fld"><label class="fl">Typical gross fare per trip (K) &nbsp;—&nbsp; <span id="pFareLbl" class="lime">K55</span></label><input type="range" id="pFare" min="20" max="200" value="55" step="5"></div>
+    <button class="btn ghost" id="presetReset">Reset to Lusaka defaults</button>
+  </div>
+
+  <div class="card accent" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+      <div>
+        <div class="lbl">To net <span id="rTargetTop">K3,000</span> a week you need</div>
+        <div class="big lime k" id="rHours">— hours</div>
+        <div class="tiny mut" id="rHoursSub">online per week, spread over 6 days</div>
+      </div>
+      <div class="vd ok" id="rFeas" style="min-width:150px">ACHIEVABLE</div>
+    </div>
+    <div class="grid g3">
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Per day</div><div class="v k" id="rPerDay">—</div><div class="d" id="rPerDaySub">net</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Trips / day</div><div class="v k" id="rTrips">—</div><div class="d">at your typical fare</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Gross / week</div><div class="v k" id="rGrossWk">—</div><div class="d">before commission</div></div>
+    </div>
+    <div class="hr"></div>
+    <h4 style="margin-bottom:8px">Where the gross goes, per week</h4>
+    <div id="rWaterfall"></div>
+    <div class="hr"></div>
+    <div class="grid g2">
+      <div><div class="split"><span class="mut">Fuel needed</span><b id="rLitres">—</b></div>
+        <div class="split"><span class="mut">Fuel spend</span><b id="rFuelSpend">—</b></div>
+        <div class="split"><span class="mut">Maintenance reserve</span><b id="rMaintSpend">—</b></div></div>
+      <div><div class="split"><span class="mut">Other costs</span><b id="rOtherSpend">—</b></div>
+        <div class="split"><span class="mut">Rental</span><b id="rRentSpend">—</b></div>
+        <div class="split"><span class="mut">Km driven</span><b id="rKm">—</b></div></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Scenarios</span><h2>What it takes at different hours</h2></div>
+  <div class="card tight" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Online hours / week</th><th class="n">Days</th><th class="n">Gross</th><th class="n">Net</th><th class="n">Net / hour</th><th>Verdict</th></tr></thead>
+      <tbody id="scenTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="sec"><span class="tag">Why the car decides</span><h2>Hours needed at each level of economy</h2></div>
+  <div class="card tight" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Vehicle economy</th><th class="n">Fuel / km</th><th class="n">Net / online hour</th><th class="n">Hours for your target</th><th>Example cars</th></tr></thead>
+      <tbody id="vehHoursTable"></tbody>
+    </table></div>
+    <div class="note" id="vehHoursNote" style="margin-bottom:0"></div>
+  </div>
+
+  <div class="sec"><span class="tag">Levers</span><h2>If the target looks out of reach</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <h4 style="margin-bottom:7px">Pull these, in this order</h4>
+      <ul class="dot">
+        <li><b>1. Car efficiency.</b> Going from 13 to 22 km/L cuts fuel per km from K2.54 to K1.50. Worth more than any other single change.</li>
+        <li><b>2. Peak-hour density.</b> Same hours, better placed — work 06:00–09:30 and 16:30–20:00 instead of 10:00–16:00.</li>
+        <li><b>3. Cut deadhead.</b> Reposition to where the next request is while you are still on the drop-off road.</li>
+        <li><b>4. Weekly bonus tiers.</b> The last 10 trips to hit a tier often pay double after fuel.</li>
+        <li><b>5. Retail side.</b> Airport runs, Comfort/Comfort+ requests and Yango Delivery/Cargo add higher-value jobs to the same tank of fuel.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:7px">Sanity checks before you commit</h4>
+      <ul class="dot r">
+        <li>Is your <b>gross per hour</b> number real, or from your best day? Use a two-week average from My Log.</li>
+        <li>Are you counting <b>tyres, brakes, clutch and servicing</b>? At K0.55/km those are covered; at K0 they are a future bill.</li>
+        <li>If you <b>rent the car</b>, the daily fee comes off before profit. K300/day × 6 days = K1,800 — that changes everything.</li>
+        <li>Remember <b>December VAT re-entry</b>. Build the model at K34–36/L so a price hike does not bankrupt the plan.</li>
+      </ul>
+      <div class="note r" style="margin-bottom:0">Never confuse <b>gross</b> with <b>profit</b>. A driver grossing K7,000 a week and netting K1,500 is working for the fuel station.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHIFT ============ -->
+<section class="page" id="p-shift">
+  <div class="sec"><span class="tag">Timing</span><h2>When Lusaka pays best</h2></div>
+  <p class="mut tiny" style="margin-bottom:12px">Demand intensity by hour. Lusaka's congestion peaks are the money peaks: people who cannot walk or use a minibus call a car. The <span class="blue">blue</span> blocks are rest, not work.</p>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="heat" id="heat"></div>
+    <div class="legend">
+      <span><i style="background:#0d151f;border:1px solid #1e2b3b"></i>Dead</span>
+      <span><i style="background:rgba(198,247,106,.18)"></i>Fair</span>
+      <span><i style="background:rgba(198,247,106,.45)"></i>Good</span>
+      <span><i style="background:var(--lime)"></i>Peak — be online</span>
+      <span><i style="background:rgba(99,179,255,.25)"></i>Off / rest</span>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="card">
+      <h3 style="margin-bottom:9px">The five peak windows</h3>
+      <ul class="dot">
+        <li><b>Mon–Fri 06:00–09:00.</b> Residential → CBD. Home pickups in Kabwata, Chilenje, Matero, Chelston, Ibex Hill, Chalala, Meanwood, Avondale. Short hops, high volume, low deadhead.</li>
+        <li><b>Mon–Fri 12:00–14:00.</b> Lusaka's lunch/midday crush — the CBD, Cairo Road, Great East and Great North all slow to a crawl. Riders who would walk it are now calling a car.</li>
+        <li><b>Mon–Fri 16:30–19:30.</b> CBD → residential, the single richest window of the week. Position in the CBD by 16:15.</li>
+        <li><b>Fri–Sat 20:00–00:30.</b> Nightlife: East Park, Arcades, Levy Junction, Cosmopolitan, Northmead, Kabulonga. Fewer drivers online, so higher paying requests.</li>
+        <li><b>Sun 09:30–13:30 and month-end.</b> Church runs, market trips, and payday surges from the 25th to the 31st, when salaries land.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">Conditions that pay a premium</h3>
+      <ul class="dot o">
+        <li><b>Rain.</b> Lusaka's rainy season (Nov–Apr) brings sudden downpours. Demand spikes and average speeds collapse, so per-minute fares climb. Work the first two hours after rain starts.</li>
+        <li><b>Month-end &amp; payday.</b> 25th–31st is the strongest week of the month for both volume and tips.</li>
+        <li><b>School terms.</b> Term opening and closing weeks bring long intercity and airport runs.</li>
+        <li><b>Airport waves.</b> Early-morning and evening KKIA arrivals; Comfort+ airport transfers start around K47 and run per km beyond that.</li>
+        <li><b>Public holidays &amp; conferences.</b> Agriculture and trade shows, weddings, funerals — all long trips at short notice.</li>
+        <li><b>When other drivers sleep.</b> 05:00–06:30 is quietly good: commuters, early flights, almost no competition.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Routine</span><h2>A 6-day week that hits K3,000</h2></div>
+  <div class="card tight" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Day</th><th>Online</th><th class="n">Hours</th><th>Focus</th></tr></thead>
+      <tbody>
+        <tr><td><b>Mon</b></td><td>06:00–09:30 · 16:00–20:00</td><td class="n">7.5</td><td class="mut tiny">Split shift. Rest 09:30–16:00.</td></tr>
+        <tr><td><b>Tue</b></td><td>06:00–09:30 · 16:00–20:00</td><td class="n">7.5</td><td class="mut tiny">Same pattern. Consistency beats heroics.</td></tr>
+        <tr><td><b>Wed</b></td><td>06:00–09:30 · 12:00–14:00 · 16:00–19:30</td><td class="n">9.0</td><td class="mut tiny">Add the midday window — the deadest day becomes useful.</td></tr>
+        <tr><td><b>Thu</b></td><td>06:00–09:30 · 16:00–20:00</td><td class="n">7.5</td><td class="mut tiny">Month-end weeks: stay on until 21:00.</td></tr>
+        <tr><td><b>Fri</b></td><td>14:00–23:30</td><td class="n">9.5</td><td class="mut tiny">Nightlife. Highest gross per hour of the week.</td></tr>
+        <tr><td><b>Sat</b></td><td>10:00–14:00 · 17:00–00:00</td><td class="n">11</td><td class="mut tiny">Day errands, then night. Rest midday.</td></tr>
+        <tr><td><b>Sun</b></td><td>OFF</td><td class="n">0</td><td class="mut tiny">Sleep, service, clean, inspect. Non-negotiable.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tiny mut" style="margin-top:9px">Total: about <b class="lime">52 online hours</b>. If the K3,000 Plan tab says you need more, add a Saturday morning block (08:00–12:00) before you add a seventh day — the seventh day is what breaks drivers.</div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-bottom:9px">Rest is a profit strategy</h3>
+      <ul class="dot">
+        <li><b>Sleep 7 hours.</b> A tired driver misses requests, drives badly, gets poor ratings and crashes. All three destroy earnings.</li>
+        <li><b>Take one full day off.</b> Six days of peaks beats seven days of burnout — you cannot earn in a week where you are sick or the car is broken.</li>
+        <li><b>Rest in the trough, not in the peak.</b> Between 10:00 and 15:00 on a Monday, sleep or eat. Do not burn fuel hunting.</li>
+        <li><b>Break every 4 hours.</b> Stretch, water, food, toilet. Most accidents in this business are fatigue accidents.</li>
+        <li><b>Night safety.</b> Verify the passenger name and destination, keep the car visible, do not accept off-app cash trips, tell someone your route on late runs.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">Micro-habit checklist</h3>
+      <ul class="ck" id="shiftCk">
+        <li>Fill the tank the night before, not at rush hour</li>
+        <li>Tyres and fluids checked before going online</li>
+        <li>Phone at 100%, data bundle active, charger in car</li>
+        <li>Car clean inside and out, water bottles and tissue stocked</li>
+        <li>Positioned in the CBD by 16:15 on weekdays</li>
+        <li>Acceptance rate kept above your bonus threshold</li>
+        <li>Log the day before you sleep</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VEHICLE ============ -->
+<section class="page" id="p-car">
+  <div class="sec"><span class="tag">The biggest lever</span><h2>Your car is your margin</h2></div>
+  <div class="card accent" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start">
+      <div>
+        <div class="lbl">Your vehicle profile</div>
+        <h2 style="margin-top:3px">Honda Fit 1.3 · 2013 (GE6)</h2>
+        <div class="tiny mut" style="margin-top:3px">Petrol · 1.3 L i-VTEC · 5-door hatch · ~42 L tank · CVT or 5-speed manual</div>
+      </div>
+      <div class="vd ok" id="myVerdict" style="min-width:132px;font-size:13px">—</div>
+    </div>
+    <div class="hr"></div>
+    <div class="grid g4">
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Assumed economy</div><div class="v k" id="myKmpl">12.0</div><div class="d" id="myKmplD">km per litre, Lusaka traffic</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Fuel per km</div><div class="v k lime" id="myCpK">K2.76</div><div class="d">at November pump price</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Full tank (42 L)</div><div class="v k" id="myTank">K1,389</div><div class="d" id="myRange">~504 km of range</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Fuel per 100 km</div><div class="v k" id="my100">K276</div><div class="d">what a busy shift burns</div></div>
+    </div>
+    <div class="hr"></div>
+    <h4 style="margin-bottom:7px">Same K3,000 target, different right foot</h4>
+    <div class="tscroll"><table>
+      <thead><tr><th>If your Fit really does…</th><th class="n">Fuel / km</th><th class="n">Net / online hour</th><th class="n">Hours for K3,000</th><th>How you get there</th></tr></thead>
+      <tbody id="mySens"></tbody>
+    </table></div>
+    <div class="hr"></div>
+    <h4 style="margin-bottom:7px">What actually takes hours off your week</h4>
+    <div class="tscroll"><table>
+      <thead><tr><th>If you change one thing</th><th class="n">Hours for K3,000</th><th class="n">Hours saved</th></tr></thead>
+      <tbody id="myLevers"></tbody>
+    </table></div>
+    <div class="note g" id="myCarNote" style="margin-bottom:0"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <h3 style="margin-bottom:9px">Fit 1.3 — the things that actually cost you money</h3>
+    <div class="grid g2">
+      <ul class="dot">
+        <li><b>CVT fluid.</b> If yours is the CVT, change the HCF-2 fluid roughly every 40,000 km. A slipping CVT takes you from 12 km/L to 9 — and then to a rebuild. This is the most expensive thing you can neglect on a GE6.</li>
+        <li><b>Keep it under 2,000 rpm.</b> GE6 owners consistently report the 1.3 needs revs to move and drinks when you use them. Let the gearbox do the work, roll into stops, lift early.</li>
+        <li><b>Tyres at 210–230 kPa (30–33 psi).</b> The Fit is light, so under-inflation hurts proportionally more. Check cold, weekly — it is worth up to 3% fuel.</li>
+        <li><b>0W-20 oil and a clean air filter.</b> Cheap items worth 2–4% economy and they protect the engine in stop-start heat.</li>
+      </ul>
+      <ul class="dot o">
+        <li><b>AC discipline.</b> You need it for ratings in 30°C heat, but full-blast AC in a 1.3 can cost 8–12% fuel. Vent the car first, then AC on low.</li>
+        <li><b>42 L tank means frequent fill-ups.</b> Fill the night before an ERB announcement, never in the middle of a peak. At K1,389 a tank, a badly-timed fill is real money.</li>
+        <li><b>Magic Seats are an income stream.</b> Fold the rears and the Fit becomes a small van — Delivery by Car (from about K19) and Express Cargo (from about K60) pay far more per km than a passenger hop.</li>
+        <li><b>The 2013 age question.</b> Yango's published guidance prefers cars under about 10 years old; yours is 13. Confirm eligibility with Yango Zambia or your station <i>before</i> spending on fitness, taxi insurance and licensing. Older cars get inspected harder — keep it spotless.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="mut tiny" style="margin-bottom:12px">At K33.06 a litre, the difference between a 12 km/L Fit and a 22 km/L hybrid is roughly <b>K1,260 a week</b> at 1,000 km. That is the gap between missing and hitting a K3,000 target — but before you shop for a hybrid, note that <b>how you drive the Fit</b> is worth up to K400 of that on its own.</p>
+
+  <div class="card tight" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Vehicle</th><th class="n">Real km/L in Lusaka</th><th class="n">Fuel / km</th><th class="n">Fuel / week @1,000 km</th><th>Notes</th></tr></thead>
+      <tbody id="carTable"></tbody>
+    </table></div>
+    <div class="tiny dim" style="margin-top:9px">Fuel per km uses the November 2026 petrol price. "Real Lusaka" figures assume heavy traffic, AC and stop-start driving — expect 20–30% below the brochure number.</div>
+  </div>
+
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="card">
+      <h3 style="margin-bottom:9px">Is an upgrade worth it?</h3>
+      <div class="row">
+        <div class="fld"><label class="fl">Current km/L</label><input type="number" id="uFrom" value="12" step="0.5"></div>
+        <div class="fld"><label class="fl">New car km/L</label><input type="number" id="uTo" value="22" step="0.5"></div>
+      </div>
+      <div class="row">
+        <div class="fld"><label class="fl">Km per week</label><input type="number" id="uKm" value="1000" step="50"></div>
+        <div class="fld"><label class="fl">Upgrade cost (K)</label><input type="number" id="uCost" value="45000" step="1000"></div>
+      </div>
+      <div class="hr"></div>
+      <div class="split"><span class="mut">Weekly fuel saving</span><b class="lime" id="uSaving">—</b></div>
+      <div class="split"><span class="mut">Monthly saving</span><b class="lime" id="uMonth">—</b></div>
+      <div class="split"><span class="mut">Payback</span><b id="uPayback">—</b></div>
+      <div class="tiny mut" style="margin-top:9px" id="uNote"></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">Buying rules for a Yango car</h3>
+      <ul class="dot">
+        <li><b>Four doors, working belts, under 10 years old</b> — Yango's basic eligibility in Zambia.</li>
+        <li><b>Parts availability first.</b> Toyota and Honda dominate Lusaka's spare-parts market; an obscure import with no local parts will eat your margin.</li>
+        <li><b>Hybrid battery check.</b> On a used Aqua or Prius, have the battery health read before you buy. A replacement battery can cost more than the fuel you save in a year.</li>
+        <li><b>Ground clearance matters.</b> Lusaka's untarred shortcuts and rainy season punish low cars.</li>
+        <li><b>Cooling system.</b> Stop-start traffic in 30°C heat is brutal. A weak radiator means a blown head gasket and a dead week.</li>
+        <li><b>Insurance and fitness.</b> Budget taxi insurance, road tax and fitness as fixed costs, not surprises.</li>
+      </ul>
+      <div class="note">Yango's own 2025 review named the <b>Toyota Vitz</b> the most-booked car on the platform in Zambia — cheap, simple, everywhere. But "most popular" is not the same as "most profitable per km". The Aqua usually wins that fight.</div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Maintenance</span><h2>What to service, and when</h2></div>
+  <div class="card">
+    <div class="tscroll"><table>
+      <thead><tr><th>Item</th><th>Interval</th><th class="n">Budget</th><th>Ignore it and…</th></tr></thead>
+      <tbody>
+        <tr><td>Engine oil &amp; filter</td><td>Every 5,000 km (severe duty)</td><td class="n">K450–700</td><td class="mut tiny">Sludge, then a rebuild. City driving is severe duty.</td></tr>
+        <tr><td>Air filter</td><td>Every 10,000 km</td><td class="n">K120</td><td class="mut tiny">2–4% worse fuel economy, immediately.</td></tr>
+        <tr><td>Spark plugs</td><td>Every 20,000–30,000 km</td><td class="n">K250–600</td><td class="mut tiny">Misfires, rough idle, more fuel burnt.</td></tr>
+        <tr><td>Brake pads</td><td>Every 25,000–40,000 km</td><td class="n">K600–1,200</td><td class="mut tiny">Disc damage and a far bigger bill.</td></tr>
+        <tr><td>Tyres</td><td>Check weekly, replace at 1.6 mm</td><td class="n">K700–1,200 each</td><td class="mut tiny">A blowout at speed, plus lost days.</td></tr>
+        <tr><td>Wheel alignment</td><td>Every 10,000 km or after a pothole</td><td class="n">K250</td><td class="mut tiny">Uneven wear and extra drag.</td></tr>
+        <tr><td>Coolant &amp; hoses</td><td>Every 40,000 km</td><td class="n">K300</td><td class="mut tiny">Overheating in traffic — the classic Yango killer.</td></tr>
+        <tr><td>Hybrid battery (if hybrid)</td><td>Health check yearly</td><td class="n">K8,000–15,000 when due</td><td class="mut tiny">Sudden failure means weeks off the road.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note g">Put <b>K0.50–0.60 aside for every kilometre you drive</b>. At 1,000 km a week that is K550 in the maintenance kitty — enough that servicing is a scheduled cost instead of an emergency that stops your income.</div>
+  </div>
+</section>
+
+<!-- ============ PLAYBOOK ============ -->
+<section class="page" id="p-play">
+  <div class="sec"><span class="tag">Operating manual</span><h2>Make the app work for you</h2></div>
+
+  <div class="grid g2" style="margin-bottom:12px">
+    <div class="card">
+      <h3 style="margin-bottom:9px">Getting on the road</h3>
+      <ul class="ck" id="onbCk">
+        <li>NRC and a valid Zambian driver's licence (Class B or higher)</li>
+        <li>Vehicle logbook — or a signed owner agreement if the car is not yours</li>
+        <li>Valid insurance including taxi cover</li>
+        <li>Road tax and fitness certificate</li>
+        <li>Passport-size photo and a smartphone with Yango Pro (Android)</li>
+        <li>Taxi registration number and taxi licence where required</li>
+        <li>Background check and app account verified</li>
+        <li>Confirmed with Yango / your station that a 2013 Fit is accepted (age rule)</li>
+      </ul>
+      <div class="tiny mut" style="margin-top:9px">Requirements shift; confirm the current list with Yango Zambia or your taxi station before you pay anyone for paperwork.</div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:9px">Understand the money flow</h3>
+      <ul class="dot">
+        <li><b>Rides are paid out weekly.</b> Bonuses are typically settled separately, often monthly. Plan your cash flow around the payout day, not the trip day.</li>
+        <li><b>You pay commission to Yango, plus a station fee if you drive under a fleet.</b> The platform fee is small; the station's cut is set by the station, so negotiate and read it.</li>
+        <li><b>Ask, in writing, what the exact deduction is</b> on your first payout. Compare it against the model in this app and correct the commission field.</li>
+        <li><b>Bonuses are tiered on completed trips</b> in a period. A trip cancelled or refused can knock you out of a tier — the cost is far more than that one fare.</li>
+        <li><b>Keep a separate fuel account.</b> The most common failure in this business is spending the fuel money on the weekend.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Geography</span><h2>Lusaka hotspots</h2></div>
+  <div class="card" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Area</th><th>Why it pays</th><th>Best window</th></tr></thead>
+      <tbody>
+        <tr><td><b>CBD — Cairo Road, Kulima Tower, City Market</b></td><td class="mut tiny">Highest density of short hops in the city; you never wait long.</td><td class="tiny">07:00–09:00 · 16:30–19:00</td></tr>
+        <tr><td><b>East Park, Manda Hill, Arcades, Levy Junction, Cosmopolitan</b></td><td class="mut tiny">Malls generate both riders and delivery orders, and nightlife after 20:00.</td><td class="tiny">11:00–14:00 · 18:00–23:00</td></tr>
+        <tr><td><b>KKIA airport</b></td><td class="mut tiny">Long, high-value runs. Comfort+ airport transfers start near K47 and bill per km after.</td><td class="tiny">05:00–08:00 · 17:00–22:00</td></tr>
+        <tr><td><b>Intercity bus terminus &amp; Kamwala</b></td><td class="mut tiny">Travellers with luggage: longer trips, less price sensitivity.</td><td class="tiny">All day; peaks at bus arrivals</td></tr>
+        <tr><td><b>UTH, UNZA / Great East Road</b></td><td class="mut tiny">Hospital and university traffic — steady and predictable.</td><td class="tiny">07:00–09:00 · 16:00–18:00</td></tr>
+        <tr><td><b>Residential: Kabwata, Chilenje, Matero, Chelston, Ibex Hill, Chalala, Meanwood, Libala, Avondale</b></td><td class="mut tiny">Morning pickups heading to the CBD; evening drop-offs coming home.</td><td class="tiny">05:30–08:00 · 17:00–20:00</td></tr>
+        <tr><td><b>Soweto &amp; City markets</b></td><td class="mut tiny">Early bulk-buying runs; good for Delivery and Cargo jobs.</td><td class="tiny">05:00–09:00</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="sec"><span class="tag">Beyond rides</span><h2>Other ways the same tank earns</h2></div>
+  <div class="grid g3" style="margin-bottom:12px">
+    <div class="card tight"><h4 class="lime">Yango Delivery (moto)</h4><p class="tiny mut" style="margin:6px 0 0">Lusaka rates run from about K10.17 minimum plus roughly K4.95/km. Fast turnaround, tiny fuel burn — but two-wheelers in traffic need real care.</p></div>
+    <div class="card tight"><h4 class="lime">Delivery by Car</h4><p class="tiny mut" style="margin:6px 0 0">From about K19 minimum, roughly K4.2/km. Pairs beautifully with mall runs when ride demand dips at 14:00.</p></div>
+    <div class="card tight"><h4 class="lime">Cargo Express</h4><p class="tiny mut" style="margin:6px 0 0">From about K60 minimum, roughly K11/km, with ten free minutes of loading. Furniture and appliance moves pay far better per km than a passenger hop.</p></div>
+  </div>
+
+  <div class="sec"><span class="tag">Earnings craft</span><h2>Twelve habits that move the number</h2></div>
+  <div class="card" style="margin-bottom:12px">
+    <div class="grid g2">
+      <ul class="dot">
+        <li><b>Protect your rating.</b> Above 4.8 keeps you first in line for requests. Clean car, charged phone charger, correct music volume, no unsolicited conversation.</li>
+        <li><b>Never argue about the fare.</b> Off-app negotiation gets you deactivated and costs you everything.</li>
+        <li><b>Use the passenger's name and confirm the destination</b> before moving. Wrong-trip cancellations are pure loss.</li>
+        <li><b>End the trip where the next request is.</b> Reposition empty only with purpose.</li>
+        <li><b>Learn three alternate routes</b> for Great East, Great North and Kafue Road. Traffic knowledge is paid time.</li>
+        <li><b>Keep water, tissue and a phone cable.</b> Cheap, and it shows up in ratings and tips.</li>
+      </ul>
+      <ul class="dot o">
+        <li><b>Decline the trap trips.</b> A 6 km pickup for a 2 km fare is a loss disguised as a job.</li>
+        <li><b>Work the bonus tier, not the single fare.</b> Ten more trips to reach a tier often beats three premium rides.</li>
+        <li><b>Take your break at 10:00, not at 13:00.</b> Rest in the trough, be online in the peak.</li>
+        <li><b>Bank a float.</b> Two weeks of fuel money in reserve means a price hike never takes you off the road.</li>
+        <li><b>Track every day.</b> The drivers who hit K3,000 know their numbers to the kwacha.</li>
+        <li><b>Service before it breaks.</b> A breakdown costs more in lost earnings than in parts.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Risk</span><h2>Safety and the things that end businesses</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <h4 style="margin-bottom:7px" class="red">Avoid</h4>
+      <ul class="dot r">
+        <li>Picking up street hails off-app at night, especially in unfamiliar areas.</li>
+        <li>Carrying large cash sums — bank or mobile-money the day's takings.</li>
+        <li>Driving uninsured or with lapsed fitness. One incident erases years of profit.</li>
+        <li>Letting a second driver use the car without an agreement in writing.</li>
+        <li>Working 14-hour days back to back. Fatigue is the leading cause of the crash that ends the business.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="margin-bottom:7px" class="lime">Protect</h4>
+      <ul class="dot">
+        <li>A written daily/monthly target, reviewed every Sunday.</li>
+        <li>Separate accounts: fuel money, maintenance money, living money.</li>
+        <li>The maintenance reserve of K0.50–0.60 per km, never touched.</li>
+        <li>A phone mount, charger and a second SIM for data redundancy.</li>
+        <li>Your own record of every trip, so a disputed payout is a conversation you can win.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec"><span class="tag">Sources</span><h2>Where these numbers come from</h2></div>
+  <div class="card">
+    <div class="src">
+      <p><b>Fuel prices.</b> Energy Regulation Board monthly reviews as reported: November 2026 (petrol K33.06, diesel K34.45, effective 31 October 2026, Diggers/Lusaka Brief); October 2026 (K31.46 / K33.27); August and September 2026 (K25.29 / K26.86); July 2026 (K26.15 / K28.11); April 2026 (K27.15 / K29.78). The VAT zero-rating on petrol and diesel is scheduled to end 1 December 2026.</p>
+      <p><b>Yango Lusaka tariffs.</b> Yango's published Lusaka tariff pages: Economy minimum about K21.1 with roughly K3.2/km inside the city and K3.6/km in suburbs; Comfort around K4.7/km; Comfort+ around K6/km with airport transfers from about K47; Delivery by moto from about K10.17 plus about K4.95/km; Delivery by Car from about K19 plus about K4.2/km; Express Cargo from about K60 plus about K11/km. Published figures are caps and change — always read the fare on your own screen.</p>
+      <p><b>Earnings claims.</b> Yango Zambia recruitment adverts state car drivers can earn "up to ZMW 5,000/week" in Lusaka and Kitwe, motorbike drivers "up to ZMW 1,280/week", and the Yango Zambia site mentions up to about K23,000 a month. These are gross, best-case figures.</p>
+      <p><b>Commission.</b> Widely reported at roughly 15–20% for drivers in Zambia, plus whatever a taxi station charges. Yango's own driver documentation shows the platform fee varies by market. Verify your exact deduction from your first payout and enter it in this app.</p>
+      <p><b>Vehicles.</b> Lusaka-market fuel-economy guides for the Toyota Aqua, Prius, Corolla Axio Hybrid, Honda Fit Hybrid, Vezel and Mazda Demio. Yango's 2025 Zambia trend report named the Toyota Vitz the most-booked car and Economy the most-used tariff.</p>
+      <p><b>Traffic.</b> Lusaka congestion research shows traffic growing about 13% a year against 2% road-capacity growth, with average speeds falling to around 15 km/h in peaks on CBD approaches.</p>
+      <p class="dim" style="margin-bottom:0">This is an independent planning tool. It is not affiliated with Yango, and it is not financial advice. Prices, fares and commission change monthly — update the fields and trust your own records over any published figure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOG ============ -->
+<section class="page" id="p-log">
+  <div class="sec"><span class="tag">Your numbers</span><h2>Daily log</h2></div>
+  <p class="mut tiny" style="margin-bottom:12px">Log every shift. Data saved in this browser only. Two weeks of entries turns the guesses in this app into your actual numbers.</p>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="row">
+      <div class="fld"><label class="fl">Date</label><input type="date" id="lDate"></div>
+      <div class="fld"><label class="fl">Trips completed</label><input type="number" id="lTrips" value="20" step="1"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Gross earnings (K)</label><input type="number" id="lGross" value="0" step="10"></div>
+      <div class="fld"><label class="fl">Fuel spend (K)</label><input type="number" id="lFuel" value="0" step="10"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label class="fl">Other spend (data, wash, parking)</label><input type="number" id="lOther" value="0" step="10"></div>
+      <div class="fld"><label class="fl">Km driven</label><input type="number" id="lKm" value="0" step="10"></div>
+    </div>
+    <div class="fld"><label class="fl">Commission % (leave blank to use your model)</label><input type="number" id="lComm" placeholder="auto" step="1"></div>
+    <button class="btn" id="lAdd">Add entry</button>
+    <div id="lStatus" class="tiny" style="margin-top:9px"></div>
+    <textarea id="lCsv" style="display:none;width:100%;height:110px;margin-top:9px;background:#0a1017;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:8px;font-size:11px;font-family:ui-monospace,monospace"></textarea>
+  </div>
+
+  <div class="grid g4" style="margin-bottom:12px">
+    <div class="kpi"><div class="lbl">This week gross</div><div class="v k" id="lgGross">K0</div></div>
+    <div class="kpi"><div class="lbl">This week net</div><div class="v lime k" id="lgNet">K0</div></div>
+    <div class="kpi"><div class="lbl">Net / hour est.</div><div class="v k" id="lgNph">—</div><div class="d">from your km &amp; speed</div></div>
+    <div class="kpi"><div class="lbl">Profit margin</div><div class="v k" id="lgMargin">—</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <h3>Two-week rolling view</h3>
+      <div class="tiny mut">this week vs last week vs your pace</div>
+    </div>
+    <div class="grid g4" style="margin-top:11px">
+      <div class="kpi" style="background:#0a1017"><div class="lbl">This week</div><div class="v k" id="rwNow">K0</div><div class="d" id="rwNowD">—</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Last week</div><div class="v k" id="rwPrev">K0</div><div class="d" id="rwPrevD">—</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">Week on week</div><div class="v k" id="rwDelta">—</div><div class="d">change in net profit</div></div>
+      <div class="kpi" style="background:#0a1017"><div class="lbl">14-day average</div><div class="v k" id="rwAvg">—</div><div class="d">net per logged day</div></div>
+    </div>
+    <div class="hr"></div>
+    <div id="rwPace" class="tiny"></div>
+    <div class="hr"></div>
+    <div class="tscroll"><table>
+      <thead><tr><th>Date</th><th>Day</th><th class="n">Net</th><th class="n">Running total</th><th>vs daily target</th></tr></thead>
+      <tbody id="rwTable"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+      <h3>Weekly net vs target</h3><div class="tiny mut" id="lgTargetLbl">K3,000</div>
+    </div>
+    <div class="bar"><i id="lgBar" style="width:0%"></i></div>
+    <div id="lgChart" style="margin-top:14px"></div>
+  </div>
+
+  <div class="card tight" style="margin-bottom:12px">
+    <div class="tscroll"><table>
+      <thead><tr><th>Date</th><th class="n">Trips</th><th class="n">Gross</th><th class="n">Comm.</th><th class="n">Fuel</th><th class="n">Other</th><th class="n">Net</th><th class="n">K/km</th><th></th></tr></thead>
+      <tbody id="lBody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="row">
+    <button class="btn ghost" id="lExport">Export CSV</button>
+    <button class="btn ghost" id="lClear">Clear all data</button>
+  </div>
+</section>
+
+<a class="fab" href="yango-app.html" aria-label="Open your Yango app">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17"/>
+    <circle cx="7.5" cy="19.5" r="1.5"/><circle cx="16.5" cy="19.5" r="1.5"/>
+  </svg>
+  Yango App
+</a>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    <b>Yango Profit OS — Lusaka.</b> Built for drivers working Lusaka traffic at November 2026 fuel prices. Independent tool, not affiliated with Yango. All plans are estimates driven by the inputs you set — check every fare, deduction and price against your own app and payslip.
+  </div>
+</footer>
+</main>
+
+<script>
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const K = (n,d=0) => 'K' + (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const N = (n,d=1) => (Math.round(n*Math.pow(10,d))/Math.pow(10,d)).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:d});
+const num = (el,def=0) => { const v = parseFloat(el && el.value); return isNaN(v) ? def : v; };
+const LK = n => (n<0?'\u2212':'') + K(Math.abs(n));
+function todayStr(d){ const x = d || new Date(); return x.getFullYear() + '-' + String(x.getMonth()+1).padStart(2,'0') + '-' + String(x.getDate()).padStart(2,'0'); }
+
+/* storage with sandbox-safe fallback */
+const mem = {};
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return mem[k] ?? null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){ mem[k]=v; } },
+  del(k){ try { localStorage.removeItem(k); } catch(e){ delete mem[k]; } }
+};
+
+/* ================= model ================= */
+const DEFAULTS = { fuelPrice:33.06, kmpl:12, comm:20, maint:0.50, target:3000, days:6,
+                   gph:140, kph:18, other:35, rent:0, fare:55 };
+
+let M = Object.assign({}, DEFAULTS);
+try { const s = JSON.parse(store.get('ypo_model')||'null'); if (s) M = Object.assign(M, s); } catch(e){}
+
+const MODEL_FIELDS = {
+  pTarget:'target', pDays:'days', pFuel:'fuelPrice', pKmpl:'kmpl', pComm:'comm',
+  pGph:'gph', pKph:'kph', pMaint:'maint', pOther:'other', pRent:'rent'
+};
+
+function paintModel(){
+  Object.entries(MODEL_FIELDS).forEach(([id,key]) => { const el = document.getElementById(id); if (el) el.value = M[key]; });
+  const f = $('#pFare'); if (f) { f.value = M.fare; $('#pFareLbl').textContent = K(M.fare); }
+}
+function readModel(){
+  Object.entries(MODEL_FIELDS).forEach(([id,key]) => { const el = document.getElementById(id); if (el) M[key] = num(el, M[key]); });
+  M.fare = num($('#pFare'), M.fare);
+  store.set('ypo_model', JSON.stringify(M));
+  paintAll();
+}
+
+/* ================= plan math ================= */
+function plan(){
+  const m = M;
+  const fuelPerKm = m.fuelPrice / Math.max(m.kmpl, 1);
+  const netPerHour = m.gph * (1 - m.comm/100) - m.kph * (fuelPerKm + m.maint);
+  const fixedWeek = (m.other + m.rent) * m.days;
+  const hours = netPerHour > 0 ? (m.target + fixedWeek) / netPerHour : Infinity;
+  const km = m.kph * (isFinite(hours) ? hours : 0);
+  const litres = km / Math.max(m.kmpl,1);
+  return {
+    fuelPerKm, netPerHour, fixedWeek, hours, km, litres,
+    grossWeek: m.gph * (isFinite(hours)?hours:0),
+    fuelSpend: litres * m.fuelPrice,
+    maintSpend: km * m.maint,
+    otherSpend: m.other * m.days,
+    rentSpend: m.rent * m.days,
+    perDay: m.target / Math.max(m.days,1),
+    hoursPerDay: hours / Math.max(m.days,1)
+  };
+}
+function netAt(hours){
+  const m = M;
+  const fuelPerKm = m.fuelPrice / Math.max(m.kmpl,1);
+  const gross = m.gph * hours;
+  const commK = gross * m.comm/100;
+  const km = m.kph * hours;
+  const fuel = km / Math.max(m.kmpl,1) * m.fuelPrice;
+  const maint = km * m.maint;
+  const fixed = (m.other + m.rent) * m.days;
+  return { gross, commK, fuel, maint, fixed, net: gross - commK - fuel - maint - fixed, hours };
+}
+
+/* ================= tabs ================= */
+$$('#nav .tab').forEach(t => t.addEventListener('click', () => {
+  $$('#nav .tab').forEach(x => x.classList.remove('on'));
+  $$('.page').forEach(p => p.classList.remove('on'));
+  t.classList.add('on');
+  $('#p-' + t.dataset.p).classList.add('on');
+  window.scrollTo({top:0, behavior:'smooth'});
+}));
+
+/* ================= dashboard ================= */
+function paintDash(){
+  const p = plan();
+  $('#hdrFuel').textContent = K(M.fuelPrice,2) + ' /L';
+  $('#dCPK').textContent = K(p.fuelPerKm,2);
+  $('#dCPKd').textContent = '@ ' + N(M.kmpl) + ' km/L · ' + K(M.fuelPrice,2) + '/L';
+  const be = (M.fuelPrice / Math.max(M.kmpl,1) + M.maint) / (1 - M.comm/100);
+  $('#dBE').textContent = K(be,2);
+  $('#dTargetLbl').textContent = K(M.target) + ' net / week';
+  $('#dBarR').textContent = K(M.target);
+
+  const w = weekLog();
+  const net = w.net;
+  $('#dNet').textContent = LK(net);
+  $('#dNet').className = 'v k ' + (net >= 0 ? 'lime' : 'red');
+  $('#dNetd').textContent = w.count ? (w.count + ' day' + (w.count>1?'s':'') + ' logged this week') : 'no entries yet';
+  const pct = Math.max(0, Math.min(100, net / M.target * 100));
+  $('#dProg').textContent = Math.round(pct) + '%';
+  $('#dProgd').textContent = 'of ' + K(M.target);
+  $('#dBar').style.width = pct + '%';
+  $('#dBarL').textContent = LK(net) + ' logged';
+}
+
+/* ================= trip check ================= */
+function paintTrip(){
+  const fare = num($('#tFare'),45), km = num($('#tKm'),5), pick = num($('#tPick'),1.5);
+  const mins = Math.max(num($('#tMin'),16),1), fp = num($('#tFuel'),M.fuelPrice);
+  const kmpl = Math.max(num($('#tKmpl'),M.kmpl),1), comm = num($('#tComm'),M.comm);
+  const totalKm = km + pick;
+  const commK = fare * comm/100;
+  const fuelK = totalKm / kmpl * fp;
+  const maintK = totalKm * M.maint;
+  const net = fare - commK - fuelK - maintK;
+  const perHr = net / (mins/60);
+  const margin = fare > 0 ? net/fare*100 : 0;
+  const p = plan();
+  const targetHr = p.netPerHour > 0 ? p.netPerHour : 60;
+
+  $('#tGross').textContent = K(fare,2);
+  $('#tCommK').textContent = '−' + K(commK,2);
+  $('#tFuelK').textContent = '−' + K(fuelK,2);
+  $('#tMaintK').textContent = '−' + K(maintK,2);
+  const netEl = $('#tNet');
+  netEl.textContent = (net<0?'−':'') + K(Math.abs(net),2);
+  netEl.className = net < 0 ? 'red' : 'lime';
+  $('#tPerHr').textContent = (perHr<0?'−':'') + K(Math.abs(perHr),0);
+  $('#tPerHr').className = 'v k ' + (perHr >= targetHr ? 'lime' : perHr >= targetHr*0.7 ? 'gold':'red');
+  $('#tMargin').textContent = Math.round(margin) + '%';
+  $('#tMargin').className = 'v k ' + (margin >= 35 ? 'lime' : margin >= 25 ? 'gold' : 'red');
+  const vs = perHr / targetHr * 100;
+  $('#tVs').textContent = (Math.round(vs)) + '%';
+  $('#tVs').className = 'v k ' + (vs >= 100 ? 'lime' : vs >= 75 ? 'gold' : 'red');
+
+  const v = $('#tVerdict');
+  let label, cls;
+  if (net <= 0){ label = 'DECLINE — THIS LOSES MONEY'; cls='bad'; }
+  else if (perHr >= targetHr*1.25){ label = 'STRONG — TAKE IT'; cls='ok'; }
+  else if (perHr >= targetHr*0.95){ label = 'TAKE IT'; cls='ok'; }
+  else if (perHr >= targetHr*0.7){ label = 'MARGINAL — ONLY IF IT LEADS SOMEWHERE'; cls='mid'; }
+  else { label = 'DECLINE — TOO CHEAP PER HOUR'; cls='bad'; }
+  v.textContent = label; v.className = 'vd ' + cls;
+
+  const notes = [];
+  notes.push('You keep <b>' + Math.round(margin) + '%</b> of the fare. Your model needs <b>' + K(targetHr,0) + '/hour</b> net to hit ' + K(M.target) + ' a week, and this trip pays <b>' + K(perHr,0) + '/hour</b>.');
+  if (pick > 3) notes.push('<span class="red">Deadhead warning:</span> ' + N(pick) + ' km of unpaid driving costs you ' + K(pick/kmpl*fp,2) + ' in fuel before you earn a ngwee.');
+  if (margin < 30) notes.push('<span class="gold">Thin margin.</span> One puncture or a wrong turn turns this into a loss.');
+  if (km > 20) notes.push('<b>Long trip.</b> Long runs pay better per hour but strand you away from demand — plan the return leg before you accept.');
+  if (mins > 45) notes.push('<b>Slow trip.</b> Heavy traffic means your per-minute take matters more than distance. Check the route before accepting.');
+  $('#tNotes').innerHTML = notes.map(n => '• ' + n).join('<br>');
+}
+['tFare','tKm','tPick','tMin','tFuel','tKmpl','tComm'].forEach(id => {
+  const el = document.getElementById(id); if (el) el.addEventListener('input', paintTrip);
+});
+$$('#tripPreset .chip').forEach(c => c.addEventListener('click', () => {
+  $$('#tripPreset .chip').forEach(x => x.classList.remove('on'));
+  c.classList.add('on');
+  $('#tFare').value = c.dataset.fare; $('#tKm').value = c.dataset.km;
+  $('#tPick').value = c.dataset.pick; $('#tMin').value = c.dataset.min;
+  paintTrip();
+}));
+
+/* ================= fuel ================= */
+const FUEL_BASE = [
+  {m:'Mar 26', p:26.61, d:23.25, note:'Baseline before the April review'},
+  {m:'Apr 26', p:27.15, d:29.78, note:'Diesel +K6.53 on a global oil surge'},
+  {m:'May 26', p:27.15, d:32.11, note:'Kwacha weakness passed through'},
+  {m:'Jul 26', p:26.15, d:28.11, note:'Cuts begin as oil falls'},
+  {m:'Aug 26', p:25.29, d:26.86, note:'Third consecutive cut'},
+  {m:'Sep 26', p:25.29, d:26.86, note:'Held flat'},
+  {m:'Oct 26', p:31.46, d:33.27, note:'Tax relief ends — over K6 added'},
+  {m:'Nov 26', p:33.06, d:34.45, note:'Kwacha −3% despite softer diesel oil'}
+];
+function fuelHistory(){
+  let extra = [];
+  try { extra = JSON.parse(store.get('ypo_fuel_extra') || '[]'); } catch(e){}
+  if (!Array.isArray(extra)) extra = [];
+  const base = FUEL_BASE.slice();
+  extra.forEach(e => {
+    const i = base.findIndex(b => b.m === e.m);
+    if (i >= 0) base[i] = e; else base.push(e);
+  });
+  return base;
+}
+function paintFuel(){
+  const tb = $('#fuelTable'); if (!tb) return;
+  const FUEL = fuelHistory();
+  tb.innerHTML = FUEL.map((r,i) => {
+    const pv = i ? FUEL[i-1].p : r.p, dv = i ? FUEL[i-1].d : r.d;
+    const dp = r.p - pv, dd = r.d - dv;
+    const fmtD = v => v === 0 ? '<span class="dim">—</span>' :
+      (v > 0 ? '<span class="red">+' + K(v,2).slice(1) + '</span>' : '<span class="lime">−' + K(Math.abs(v),2).slice(1) + '</span>');
+    return '<tr><td><b>' + r.m + '</b></td><td class="n k">' + K(r.p,2) + '</td><td class="n k">' + K(r.d,2) + '</td>' +
+           '<td class="n k">' + fmtD(dp) + '</td><td class="n k">' + fmtD(dd) + '</td><td class="tiny mut">' + r.note + '</td></tr>';
+  }).join('');
+  // chart
+  const W = 720, H = 250, pad = {l:38, r:12, t:14, b:26};
+  const xs = i => pad.l + i * (W - pad.l - pad.r) / (FUEL.length - 1);
+  const all = FUEL.flatMap(r => [r.p, r.d]);
+  const lo = Math.floor(Math.min(...all) / 2) * 2 - 1, hi = Math.ceil(Math.max(...all) / 2) * 2 + 1;
+  const ys = v => pad.t + (hi - v) / (hi - lo) * (H - pad.t - pad.b);
+  const path = key => FUEL.map((r,i) => (i?'L':'M') + xs(i).toFixed(1) + ' ' + ys(r[key]).toFixed(1)).join(' ');
+  let grid = '';
+  for (let v = Math.ceil(lo/5)*5; v <= hi; v += 5){
+    grid += '<line x1="' + pad.l + '" x2="' + (W-pad.r) + '" y1="' + ys(v) + '" y2="' + ys(v) + '" stroke="#1e2b3b" stroke-width="1"/>';
+    grid += '<text x="' + (pad.l-7) + '" y="' + (ys(v)+3.5) + '" fill="#6b7f95" font-size="10" text-anchor="end">' + v + '</text>';
+  }
+  const xl = FUEL.map((r,i) => '<text x="' + xs(i) + '" y="' + (H-8) + '" fill="#6b7f95" font-size="10" text-anchor="middle">' + r.m.replace(' 26','') + '</text>').join('');
+  const dots = key => FUEL.map((r,i) => '<circle cx="' + xs(i) + '" cy="' + ys(r[key]) + '" r="3.2" fill="' + (key==='p'?'#c6f76a':'#ffc85c') + '"/>').join('');
+  const dec = '<rect x="' + (W-pad.r-52) + '" y="' + pad.t + '" width="52" height="16" rx="4" fill="rgba(255,107,107,.16)"/>' +
+              '<text x="' + (W-pad.r-26) + '" y="' + (pad.t+11.5) + '" fill="#ff6b6b" font-size="9.5" text-anchor="middle" font-weight="800">VAT 1 DEC</text>';
+  $('#chart').innerHTML =
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">' +
+    grid + xl + dec +
+    '<path d="' + path('p') + '" fill="none" stroke="#c6f76a" stroke-width="2.6" stroke-linejoin="round"/>' +
+    '<path d="' + path('d') + '" fill="none" stroke="#ffc85c" stroke-width="2.6" stroke-linejoin="round"/>' +
+    dots('p') + dots('d') +
+    '</svg>';
+}
+
+/* ================= plan paint ================= */
+function paintPlan(){
+  const p = plan();
+  const h = p.hours;
+  $('#pFareLbl').textContent = K(M.fare);
+  $('#rTargetTop').textContent = K(M.target);
+  $('#rPerDay').textContent = p.perDay >= 1000 ? K(p.perDay) : K(p.perDay, 0);
+  $('#rPerDaySub').textContent = 'net, over ' + M.days + ' days';
+  $('#rTrips').textContent = isFinite(h) ? N(p.grossWeek / M.days / Math.max(M.fare,1), 0) : '—';
+  $('#rGrossWk').textContent = isFinite(h) ? K(p.grossWeek) : '—';
+  $('#rLitres').textContent = isFinite(h) ? N(p.litres,1) + ' L' : '—';
+  $('#rFuelSpend').textContent = isFinite(h) ? K(p.fuelSpend) : '—';
+  $('#rMaintSpend').textContent = isFinite(h) ? K(p.maintSpend) : '—';
+  $('#rOtherSpend').textContent = K(p.otherSpend);
+  $('#rRentSpend').textContent = M.rent ? K(p.rentSpend) : K(0);
+  $('#rKm').textContent = isFinite(h) ? N(p.km,0) + ' km' : '—';
+
+  const rH = $('#rHours'), rS = $('#rHoursSub'), rF = $('#rFeas');
+  if (!isFinite(h) || p.netPerHour <= 0){
+    rH.textContent = 'Never'; rS.textContent = 'Your cost per hour is eating everything you earn';
+    rF.textContent = 'MODEL DOES NOT WORK'; rF.className = 'vd bad';
+  } else {
+    rH.textContent = N(h,1) + ' hours';
+    rS.textContent = 'online per week · ' + N(p.hoursPerDay,1) + ' hours a day over ' + M.days + ' days';
+    let lbl, cls;
+    if (h <= 42){ lbl = 'COMFORTABLE'; cls = 'ok'; }
+    else if (h <= 54){ lbl = 'ACHIEVABLE'; cls = 'ok'; }
+    else if (h <= 64){ lbl = 'HARD — LONG WEEKS'; cls = 'mid'; }
+    else { lbl = 'NOT REALISTIC'; cls = 'bad'; }
+    rF.textContent = lbl; rF.className = 'vd ' + cls;
+  }
+
+  const rows = [
+    ['Gross fares', K(p.grossWeek), 'txt'],
+    ['Commission', '−' + K(p.grossWeek * M.comm/100), 'red'],
+    ['Fuel', '−' + K(p.fuelSpend), 'red'],
+    ['Maintenance', '−' + K(p.maintSpend), 'red'],
+    ['Other costs', '−' + K(p.otherSpend), 'red'],
+    ['Car rental', '−' + K(p.rentSpend), 'red']
+  ];
+  if (isFinite(h)) rows.push(['= Your net', K(M.target), 'lime']);
+  $('#rWaterfall').innerHTML = rows.map(([a,b,c]) =>
+    '<div class="split"><span class="mut">' + a + '</span><b class="' + c + ' k">' + b + '</b></div>').join('');
+
+  // hours by vehicle economy
+  const vt = $('#vehHoursTable');
+  if (vt){
+    const EX = {10:'Noah / Voxy, Hiace',13:'Toyota Vitz 1.0',16:'Honda Vezel Hybrid',19:'Honda Fit Hybrid',22:'Toyota Aqua',25:'Aqua driven gently'};
+    vt.innerHTML = [10,13,16,19,22,25].map(kpl => {
+      const fpk = M.fuelPrice/kpl;
+      const nph = M.gph*(1-M.comm/100) - M.kph*(fpk + M.maint);
+      const hh = nph > 0 ? (M.target + p.fixedWeek)/nph : Infinity;
+      const cls = !isFinite(hh) ? 'red' : hh <= 54 ? 'lime' : hh <= 64 ? 'gold' : 'red';
+      return '<tr><td><b>' + kpl + ' km/L</b></td><td class="n k">' + K(fpk,2) + '</td><td class="n k">' + (nph>0?K(nph,0):'—') +
+             '</td><td class="n k ' + cls + '">' + (isFinite(hh)?N(hh,0)+' h':"—") + '</td><td class="tiny mut">' + EX[kpl] + '</td></tr>';
+    }).join('');
+    const base = M.kmpl;
+    const bfpk = M.fuelPrice/Math.max(base,1);
+    const bnph = M.gph*(1-M.comm/100) - M.kph*(bfpk + M.maint);
+    const bh = bnph > 0 ? (M.target + p.fixedWeek)/bnph : Infinity;
+    const aq = M.gph*(1-M.comm/100) - M.kph*(M.fuelPrice/22 + M.maint);
+    const aqh = aq > 0 ? (M.target + p.fixedWeek)/aq : Infinity;
+    const note = $('#vehHoursNote');
+    if (isFinite(bh) && isFinite(aqh) && base < 22){
+      note.innerHTML = 'At your current <b>' + N(base) + ' km/L</b> you need <b class="' + (bh<=54?'lime':'gold') + '">' + N(bh,0) + ' hours a week</b> to net ' + K(M.target) +
+        '. Move to a 22 km/L car and the same target needs <b class="lime">' + N(aqh,0) + ' hours</b> — that is <b>' + N(bh-aqh,0) + ' hours of your life back every week</b>, worth ' + K((bh-aqh)*bnph) + ' in free time at your own hourly rate.';
+    } else if (isFinite(bh)) {
+      note.innerHTML = 'At <b>' + N(base) + ' km/L</b> you need <b class="' + (bh<=54?'lime':'gold') + '">' + N(bh,0) + ' hours a week</b> to net ' + K(M.target) + '.';
+    } else {
+      note.innerHTML = 'At these inputs no amount of hours gets you there — the fuel and fixed costs per hour are bigger than what you earn. Fix the car, the fare or the commission first.';
+    }
+  }
+
+  const rn = $('#ruleNph');
+  if (rn){
+    const need = isFinite(h) ? (M.target + p.fixedWeek)/h : p.netPerHour;
+    rn.textContent = K(Math.max(need*0.9, 20),0) + '–' + K(Math.max(need*1.35, 30),0);
+    const why = $('#ruleNphWhy');
+    if (why) why.innerHTML = 'Netting ' + K(M.target) + ' in ' + (isFinite(h) ? N(h,0) + ' online hours' : 'your hours') +
+      ' needs about <b>' + K(p.netPerHour,0) + '/hour</b> by your own cost model. Watch this number, not the fare.';
+  }
+
+  // scenarios
+  const tb = $('#scenTable');
+  tb.innerHTML = [35,40,45,50,55,60,65].map(hh => {
+    const r = netAt(hh);
+    const nh = r.net / hh;
+    let b, cls;
+    if (r.net >= M.target*1.15){ b = 'Beats target'; cls='b-ok'; }
+    else if (r.net >= M.target){ b = 'Hits target'; cls='b-ok'; }
+    else if (r.net >= M.target*0.85){ b = 'Close'; cls='b-mid'; }
+    else { b = 'Short by ' + K(M.target - r.net); cls='b-bad'; }
+    return '<tr><td><b>' + hh + ' h</b></td><td class="n">' + N(hh/M.days,1) + '</td><td class="n k">' + K(r.gross) +
+           '</td><td class="n k ' + (r.net>=M.target?'lime':'') + '">' + K(r.net) + '</td><td class="n k">' + K(nh,0) +
+           '</td><td><span class="badge ' + cls + '">' + b + '</span></td></tr>';
+  }).join('');
+}
+
+/* ================= heat ================= */
+const HRS = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+const WD = {5:1,6:3,7:3,8:3,9:2,10:1,11:1,12:2,13:2,14:1,15:1,16:3,17:3,18:3,19:2,20:2,21:2,22:1,23:0};
+const FR = {5:1,6:2,7:2,8:2,9:1,10:1,11:1,12:2,13:2,14:2,15:2,16:3,17:3,18:3,19:3,20:3,21:3,22:2,23:1};
+const SA = {5:0,6:1,7:1,8:1,9:2,10:2,11:2,12:2,13:2,14:2,15:2,16:2,17:3,18:3,19:3,20:3,21:3,22:2,23:1};
+const SU = {5:0,6:0,7:1,8:1,9:2,10:3,11:3,12:3,13:2,14:1,15:1,16:1,17:2,18:2,19:1,20:1,21:0,22:0,23:0};
+const DAYS = [['Mon',WD],['Tue',WD],['Wed',WD],['Thu',WD],['Fri',FR],['Sat',SA],['Sun',SU]];
+function paintHeat(){
+  const el = $('#heat'); if (!el) return;
+  el.style.gridTemplateColumns = '46px repeat(' + HRS.length + ',1fr)';
+  let html = '<div></div>' + HRS.map(h => '<div class="hd2">' + (h%3===0 ? h + ':00' : '') + '</div>').join('');
+  const tips = {0:'Dead — rest or service',1:'Fair',2:'Good',3:'Peak — be online'};
+  DAYS.forEach(([d,map], di) => {
+    html += '<div class="dl">' + d + '</div>';
+    HRS.forEach(h => {
+      const v = map[h] || 0;
+      const cls = v === 0 ? 'r' : 'l' + v;
+      html += '<div class="hc ' + cls + '" data-di="' + di + '" data-h="' + h + '" title="' + d + ' ' + h + ':00 — ' + (tips[v]||'') + '"></div>';
+    });
+  });
+  el.innerHTML = html;
+}
+
+/* ================= my car ================= */
+function hoursFor(over){
+  const m = Object.assign({}, M, over || {});
+  const fpk = m.fuelPrice / Math.max(m.kmpl,1);
+  const nph = m.gph * (1 - m.comm/100) - m.kph * (fpk + m.maint);
+  const fixed = (m.other + m.rent) * m.days;
+  return { fpk, nph, hours: nph > 0 ? (m.target + fixed)/nph : Infinity };
+}
+function fitHours(kpl){ return hoursFor({ kmpl: kpl }); }
+function paintLevers(){
+  const el = $('#myLevers'); if (!el) return;
+  const base = hoursFor({}).hours;
+  if (!isFinite(base)){ el.innerHTML = '<tr><td colspan="3" class="tiny mut">Your model currently cannot reach the target at any number of hours.</td></tr>'; return; }
+  const better = Math.min(M.kmpl + 2, 16);
+  const rows = [
+    ['Baseline — your numbers as entered', base, true],
+    ['Drive it properly: ' + N(M.kmpl) + ' \u2192 ' + N(better) + ' km/L', hoursFor({kmpl:better}).hours],
+    ['Commission at 15% instead of ' + M.comm + '%', hoursFor({comm:15}).hours],
+    ['Better positioning: +K20 gross per hour', hoursFor({gph:M.gph+20}).hours],
+    ['Cut daily costs by K15 (data, wash, parking)', hoursFor({other:Math.max(M.other-15,0)}).hours],
+    [N(better) + ' km/L AND +K20 per hour', hoursFor({kmpl:better, gph:M.gph+20}).hours],
+    ['Switch to a 20 km/L hybrid', hoursFor({kmpl:20}).hours]
+  ];
+  el.innerHTML = rows.map(([label,h,isBase]) => {
+    const save = base - h;
+    return '<tr' + (isBase?' style="opacity:.75"':'') + '><td>' + label + '</td><td class="n k">' + N(h,1) + ' h' +
+      '</td><td class="n k ' + (save > 0.4 ? 'lime' : 'dim') + '">' + (isBase ? '\u2014' : (save > 0.4 ? '\u2212' + N(save,1) + ' h' : 'no change')) + '</td></tr>';
+  }).join('');
+}
+function paintMyCar(){
+  const el = $('#mySens'); if (!el) return;
+  const tank = 42;
+  const base = fitHours(M.kmpl);
+  $('#myKmpl').textContent = N(M.kmpl);
+  $('#myCpK').textContent = K(base.fpk,2);
+  $('#myTank').textContent = K(tank * M.fuelPrice);
+  const range = tank * M.kmpl;
+  $('#myRange').textContent = '~' + N(range,0) + ' km of range';
+  $('#my100').textContent = K(100 / Math.max(M.kmpl,1) * M.fuelPrice);
+
+  const v = $('#myVerdict');
+  if (!isFinite(base.hours)) { v.textContent = 'MODEL FAILS'; v.className = 'vd bad'; }
+  else if (base.hours <= 50) { v.textContent = 'ON TRACK'; v.className = 'vd ok'; }
+  else if (base.hours <= 62) { v.textContent = 'DOABLE BUT LONG'; v.className = 'vd mid'; }
+  else { v.textContent = 'TOO MANY HOURS'; v.className = 'vd bad'; }
+
+  const HOW = {
+    10:'AC full blast, hard acceleration, soft tyres',
+    11:'Typical hard-driven Lusaka average',
+    12:'Realistic working figure — plan on this',
+    13:'Smooth driving, tyres checked weekly',
+    14:'Under 2,000 rpm, AC on economy, no idling',
+    15:'Best case: light traffic, disciplined, little AC'
+  };
+  el.innerHTML = [10,11,12,13,14,15].map(kpl => {
+    const r = fitHours(kpl);
+    const isMine = Math.abs(kpl - M.kmpl) < 0.01;
+    const cls = !isFinite(r.hours) ? 'red' : r.hours <= 54 ? 'lime' : r.hours <= 64 ? 'gold' : 'red';
+    return '<tr' + (isMine ? ' style="background:rgba(198,247,106,.06)"' : '') + '><td><b>' + kpl + ' km/L</b>' + (isMine ? ' <span class="badge b-ok">you</span>' : '') +
+      '</td><td class="n k">' + K(r.fpk,2) + '</td><td class="n k">' + (r.nph>0?K(r.nph,0):'—') +
+      '</td><td class="n k ' + cls + '">' + (isFinite(r.hours)?N(r.hours,0)+' h':'—') + '</td><td class="tiny mut">' + HOW[kpl] + '</td></tr>';
+  }).join('');
+
+  paintLevers();
+  const lo = fitHours(10), hi = fitHours(15);
+  const note = $('#myCarNote');
+  if (isFinite(lo.hours) && isFinite(hi.hours)){
+    note.innerHTML = 'Your right foot is worth <b class="lime">' + N(lo.hours - hi.hours,0) + ' hours a week</b>. At 10 km/L this Fit needs ' +
+      N(lo.hours,0) + ' hours to net ' + K(M.target) + '; driven properly at 15 km/L it needs ' + N(hi.hours,0) +
+      '. Nothing else you can change this week moves the number that far — not a new phone mount, not a new playlist, not a new app.';
+  } else {
+    note.innerHTML = 'At these inputs no amount of hours gets you to ' + K(M.target) + '. Fix fuel per hour, gross per hour or the commission first.';
+  }
+}
+
+/* ================= cars ================= */
+const CARS = [
+  ['Toyota Aqua (hybrid)',22,'Best all-round margin play. Small, cheap parts, huge city economy.'],
+  ['Honda Fit 1.3 petrol (2013) \u2190 YOUR CAR',12,'Light body and parts everywhere. Economy lives or dies on your right foot and CVT health.'],
+  ['Honda Fit Hybrid',19,'Similar economics, slightly roomier, parts well stocked.'],
+  ['Toyota Prius',20,'Comfort class eligible in some markets — bigger fares, same sipping.'],
+  ['Nissan Note e-Power',18,'Smooth and frugal; fewer local specialists.'],
+  ['Toyota Corolla Axio Hybrid',18,'Sedan comfort, strong Comfort-tier appeal.'],
+  ['Suzuki Swift 1.2',15,'Simple petrol, cheap to fix, good city economy.'],
+  ['Toyota Probox / Succeed',14,'Van-style load space for Delivery and Cargo work.'],
+  ['Mazda Demio 1.3',14,'Popular, nimble, decent economy — watch parts prices.'],
+  ['Toyota Vitz 1.0',13,'Zambia\'s most-booked Yango car. Cheap, simple, everywhere.'],
+  ['Toyota Vitz 1.3',12,'Slightly thirstier, slightly quicker.'],
+  ['Toyota Fielder 1.5',12,'Good for long airport and intercity runs.'],
+  ['Honda Vezel Hybrid',16,'SUV feel, hybrid economy, higher purchase price.'],
+  ['Toyota Noah / Voxy',9,'7 seats = group trips; thirsty in traffic.'],
+  ['Toyota Hiace',8,'Volume work only. Fuel will dominate your P&L.']
+];
+function paintCars(){
+  const tb = $('#carTable'); if (!tb) return;
+  const fp = M.fuelPrice;
+  tb.innerHTML = CARS.map(([n,k,n2]) => {
+    const cpk = fp / k;
+    const wk = cpk * 1000;
+    const cls = k >= 20 ? 'lime' : k >= 15 ? 'gold' : 'red';
+    return '<tr><td><b>' + n + '</b></td><td class="n k ' + cls + '">' + N(k,0) + '</td><td class="n k">' + K(cpk,2) +
+           '</td><td class="n k">' + K(wk) + '</td><td class="tiny mut">' + n2 + '</td></tr>';
+  }).join('');
+  paintUpgrade();
+}
+function paintUpgrade(){
+  const from = Math.max(num($('#uFrom'),13),1), to = Math.max(num($('#uTo'),22),1);
+  const kmw = num($('#uKm'),1000), cost = num($('#uCost'),45000);
+  const saving = kmw * (M.fuelPrice/from - M.fuelPrice/to);
+  $('#uSaving').textContent = K(saving);
+  $('#uMonth').textContent = K(saving*52/12);
+  const payback = saving > 0 ? cost/saving : Infinity;
+  $('#uPayback').textContent = isFinite(payback) ? N(payback,1) + ' weeks (~' + N(payback/52,1) + ' yrs)' : 'never';
+  $('#uNote').innerHTML = saving > 0
+    ? 'At ' + N(kmw,0) + ' km a week, moving from ' + N(from) + ' to ' + N(to) + ' km/L returns <b class="lime">' + K(saving) + ' a week</b>. If the upgrade costs ' + K(cost) + ', it pays for itself in ' + N(payback,1) + ' weeks of driving — and the car still has resale value afterwards.'
+    : 'The new car is not more efficient than your current one. No saving.';
+}
+['uFrom','uTo','uKm','uCost'].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', paintUpgrade); });
+
+/* ================= log ================= */
+let LOG = [];
+try { const s = JSON.parse(store.get('ypo_log')||'[]'); if (Array.isArray(s)) LOG = s; } catch(e){}
+const saveLog = () => store.set('ypo_log', JSON.stringify(LOG));
+
+function startOfWeek(d0){
+  const x = new Date(d0); const day = (x.getDay()+6)%7;
+  x.setDate(x.getDate()-day); x.setHours(0,0,0,0); return x;
+}
+function entryNet(e){ return e.gross * (1 - (e.comm ?? M.comm)/100) - e.fuel - e.other; }
+
+function weekLog(){
+  const s = startOfWeek(new Date());
+  const rows = LOG.filter(e => new Date(e.date + 'T12:00:00') >= s);
+  const gross = rows.reduce((a,e)=>a+e.gross,0);
+  const net = rows.reduce((a,e)=>a+entryNet(e),0);
+  const km = rows.reduce((a,e)=>a+e.km,0);
+  return { rows, gross, net, km, count: rows.length };
+}
+
+function lastWeekLog(){
+  const s = startOfWeek(new Date());
+  const e = new Date(s); e.setDate(e.getDate()-7);
+  const rows = LOG.filter(x => { const d = new Date(x.date + 'T12:00:00'); return d >= e && d < s; });
+  return { rows, net: rows.reduce((a,x)=>a+entryNet(x),0), count: rows.length };
+}
+function paintRolling(){
+  const el = $('#rwTable'); if (!el) return;
+  const w = weekLog(), lw = lastWeekLog();
+  const set = (id,v) => { const e = $(id); if (e) e.textContent = v; };
+  set('#rwNow', LK(w.net));
+  set('#rwNowD', w.count ? w.count + ' day' + (w.count>1?'s':'') + ' logged' : 'nothing logged yet');
+  set('#rwPrev', LK(lw.net));
+  set('#rwPrevD', lw.count ? lw.count + ' day' + (lw.count>1?'s':'') + ' logged' : 'no data');
+  if (lw.count === 0 && w.count === 0){ set('#rwDelta','—'); }
+  else if (lw.count === 0){ set('#rwDelta','new'); }
+  else {
+    const diff = w.net - lw.net;
+    const de = $('#rwDelta');
+    de.textContent = (diff>=0?'+':'') + LK(diff);
+    de.className = 'v k ' + (diff >= 0 ? 'lime' : 'red');
+  }
+  const from = new Date(); from.setDate(from.getDate()-13); from.setHours(0,0,0,0);
+  const recent = LOG.filter(e => new Date(e.date + 'T12:00:00') >= from);
+  const avg = recent.length ? recent.reduce((a,e)=>a+entryNet(e),0)/recent.length : 0;
+  set('#rwAvg', recent.length ? LK(avg) : '—');
+
+  const pace = $('#rwPace');
+  const netDay = M.target / Math.max(M.days,1);
+  if (!w.count){
+    pace.innerHTML = 'Log your first shift in My Log and this tells you whether you are on pace for <b>' + K(M.target) + '</b> — including exactly how much each remaining day has to earn.';
+  } else {
+    const perDay = w.net / w.count;
+    const left = Math.max(M.days - w.count, 0);
+    const proj = perDay * M.days;
+    if (left > 0){
+      const need = (M.target - w.net) / left;
+      pace.innerHTML = 'You are averaging <b>' + LK(perDay) + '</b> per logged day. At that pace the week ends at <b class="' + (proj>=M.target?'lime':'gold') + '">' + K(proj) + '</b> against ' + K(M.target) + '. ' +
+        'With <b>' + left + ' working day' + (left>1?'s':'') + ' left</b> you need <b class="' + (need>netDay*1.15?'red':'lime') + '">' + K(Math.max(need,0)) + ' a day</b>' +
+        (need > netDay*1.15 ? ' — that is above plan, so take the Friday evening peak and airport runs, not extra mid-day hours.' : ' — right on your plan.');
+    } else {
+      pace.innerHTML = 'Week complete: <b class="' + (w.net>=M.target?'lime':'gold') + '">' + LK(w.net) + '</b> against ' + K(M.target) + (w.net>=M.target ? ' — target hit.' : ' — short by ' + K(M.target-w.net) + '.') +
+        ' Next week: fix the single worst-paying window rather than adding hours.';
+    }
+  }
+
+  const days = [];
+  for (let i = 13; i >= 0; i--){
+    const d0 = new Date(); d0.setDate(d0.getDate()-i);
+    const key = todayStr(d0);
+    const rows = LOG.filter(e => e.date === key);
+    if (rows.length) days.push({ key, d: d0, net: rows.reduce((a,e)=>a+entryNet(e),0) });
+  }
+  if (!days.length){
+    el.innerHTML = '<tr><td colspan="5" class="mut tiny" style="padding:14px 6px">No entries in the last 14 days.</td></tr>';
+  } else {
+    let run = 0;
+    el.innerHTML = days.map(x => {
+      run += x.net;
+      const ok = x.net >= netDay;
+      return '<tr><td class="tiny">' + x.key.slice(8) + '/' + x.key.slice(5,7) + '</td><td class="tiny mut">' +
+        x.d.toLocaleDateString('en-GB',{weekday:'short'}) + '</td><td class="n k ' + (x.net>=0?'lime':'red') + '">' + LK(x.net) +
+        '</td><td class="n k">' + LK(run) + '</td><td><span class="badge ' + (ok?'b-ok':'b-mid') + '">' +
+        (ok ? '+' + K(x.net-netDay) : '−' + K(netDay-x.net)) + '</span></td></tr>';
+    }).join('');
+  }
+}
+
+function paintLog(){
+  const w = weekLog();
+  $('#lgGross').textContent = K(w.gross);
+  $('#lgNet').textContent = LK(w.net);
+  $('#lgNet').className = 'v k ' + (w.net >= 0 ? 'lime':'red');
+  const hours = w.km / Math.max(M.kph,1);
+  $('#lgNph').textContent = hours > 0 ? K(w.net/hours,0) : '—';
+  $('#lgMargin').textContent = w.gross > 0 ? Math.round(w.net/w.gross*100) + '%' : '—';
+  $('#lgTargetLbl').textContent = 'target ' + K(M.target);
+  const pct = Math.max(0, Math.min(100, w.net / Math.max(M.target,1) * 100));
+  $('#lgBar').style.width = pct + '%';
+
+  const tb = $('#lBody');
+  if (!LOG.length){
+    tb.innerHTML = '<tr><td colspan="9" class="mut tiny" style="padding:16px 6px">No entries yet. Add your first shift above — it takes 20 seconds and it is the difference between guessing and knowing.</td></tr>';
+  } else {
+    tb.innerHTML = LOG.slice(0, 60).map(e => {
+      const n = entryNet(e);
+      const kmk = e.km > 0 ? e.gross/e.km : 0;
+      return '<tr><td>' + e.date + '</td><td class="n">' + e.trips + '</td><td class="n k">' + K(e.gross) +
+        '</td><td class="n k red">−' + K(e.gross*(e.comm ?? M.comm)/100) + '</td><td class="n k red">−' + K(e.fuel) +
+        '</td><td class="n k red">−' + K(e.other) + '</td><td class="n k ' + (n>=0?'lime':'red') + '">' + LK(n) +
+        '</td><td class="n k">' + (e.km>0 ? K(kmk,2) : '—') + '</td>' +
+        '<td class="n"><button class="chip" style="padding:2px 7px;font-size:10px" onclick="delEntry(' + e.id + ')">✕</button></td></tr>';
+    }).join('');
+  }
+  paintLogChart();
+  paintRolling();
+}
+
+function paintLogChart(){
+  const el = $('#lgChart'); if (!el) return;
+  const days = [];
+  for (let i = 13; i >= 0; i--){
+    const d = new Date(); d.setDate(d.getDate()-i);
+    const key = todayStr(d);
+    const rows = LOG.filter(e => e.date === key);
+    days.push({ key, label: key.slice(8) + '/' + key.slice(5,7), net: rows.reduce((a,e)=>a+entryNet(e),0), any: rows.length>0 });
+  }
+  const W = 700, H = 150, pad = {l:46,r:8,t:10,b:20};
+  const nets = days.map(d=>d.net);
+  const hi = Math.max(M.target/M.days, ...nets, 1) * 1.1;
+  const lo = Math.min(0, ...nets);
+  const ys = v => pad.t + (hi - v)/(hi-lo) * (H-pad.t-pad.b);
+  const bw = (W-pad.l-pad.r)/days.length;
+  let bars = '';
+  days.forEach((d,i) => {
+    const x = pad.l + i*bw + bw*0.18, w2 = bw*0.64;
+    const y0 = ys(0), y1 = ys(d.net);
+    const h = Math.abs(y1-y0);
+    const col = d.net >= M.target/M.days ? '#c6f76a' : d.net > 0 ? 'rgba(198,247,106,.45)' : '#2a3a4d';
+    bars += '<rect x="' + x.toFixed(1) + '" y="' + Math.min(y0,y1).toFixed(1) + '" width="' + w2.toFixed(1) + '" height="' + Math.max(h,1.5).toFixed(1) + '" rx="2.5" fill="' + col + '"/>';
+    bars += '<text x="' + (x+w2/2).toFixed(1) + '" y="' + (H-6) + '" fill="#6b7f95" font-size="8.5" text-anchor="middle">' + d.label + '</text>';
+  });
+  const daily = M.target/M.days;
+  const targetLine = '<line x1="' + pad.l + '" x2="' + (W-pad.r) + '" y1="' + ys(daily) + '" y2="' + ys(daily) + '" stroke="rgba(255,200,92,.6)" stroke-dasharray="4 4"/>' +
+    '<text x="' + (pad.l-6) + '" y="' + (ys(daily)+3.5) + '" fill="#ffc85c" font-size="9" text-anchor="end">' + K(daily) + '</text>' +
+    '<text x="' + (pad.l-6) + '" y="' + (ys(0)+3.5) + '" fill="#6b7f95" font-size="9" text-anchor="end">0</text>';
+  el.innerHTML = '<div class="tiny mut" style="margin-bottom:6px">Net profit, last 14 days · dashed line is your daily need (' + K(daily) + ')</div>' +
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">' + targetLine + bars + '</svg>';
+}
+
+window.delEntry = function(id){
+  LOG = LOG.filter(e => e.id !== id); saveLog(); paintLog(); paintDash();
+};
+
+function status(msg, col){
+  const el = $('#lStatus'); if (!el) return;
+  el.innerHTML = msg; el.style.color = col || 'var(--mut)';
+}
+function addEntry(){
+  const e = {
+    id: Date.now(),
+    date: $('#lDate').value || todayStr(),
+    trips: Math.max(0, num($('#lTrips'),0)),
+    gross: Math.max(0, num($('#lGross'),0)),
+    fuel: Math.max(0, num($('#lFuel'),0)),
+    other: Math.max(0, num($('#lOther'),0)),
+    km: Math.max(0, num($('#lKm'),0)),
+    comm: $('#lComm').value === '' ? null : Math.max(0, num($('#lComm'),M.comm))
+  };
+  if (!e.gross && !e.fuel){ status('Enter at least your gross earnings for the day.', 'var(--gold)'); return; }
+  LOG.unshift(e); saveLog(); paintLog(); paintDash();
+  $('#lGross').value = 0; $('#lFuel').value = 0; $('#lOther').value = 0; $('#lKm').value = 0;
+  const n = entryNet(e);
+  $('#lgNet').textContent = K(weekLog().net);
+  status('Saved. Net for ' + e.date + ': ' + LK(n) + (n < 0
+    ? ' — that shift lost money. Check the fare and fuel numbers.' : ' — ' + (n >= M.target/M.days ? 'above your daily target.' : 'below your daily target of ' + K(M.target/M.days) + '.')),
+    n < 0 ? 'var(--red)' : 'var(--lime)');
+}
+$('#lAdd').addEventListener('click', addEntry);
+
+$('#lExport').addEventListener('click', () => {
+  if (!LOG.length){ status('Nothing to export yet.', 'var(--gold)'); return; }
+  const head = 'date,trips,gross,commission_pct,fuel,other,km,net\n';
+  const body = LOG.map(e => [e.date, e.trips, e.gross, (e.comm ?? M.comm), e.fuel, e.other, e.km, entryNet(e).toFixed(2)].join(',')).join('\n');
+  const csv = head + body;
+  let downloaded = false;
+  try {
+    const blob = new Blob([csv], {type:'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'yango-log.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    downloaded = true;
+  } catch(err){ downloaded = false; }
+  const box = $('#lCsv');
+  box.value = csv; box.style.display = 'block';
+  status(downloaded ? 'CSV downloaded. A copy is in the box below too.' : 'Download blocked in this preview — copy the CSV from the box below.', 'var(--lime)');
+});
+let clearArmed = false;
+$('#lClear').addEventListener('click', function(){
+  if (!clearArmed){
+    clearArmed = true;
+    this.textContent = 'Tap again to confirm delete';
+    status('This deletes every logged shift in this browser. Tap again to confirm.', 'var(--gold)');
+    setTimeout(() => { clearArmed = false; this.textContent = 'Clear all data'; }, 6000);
+    return;
+  }
+  LOG = []; saveLog(); paintLog(); paintDash();
+  clearArmed = false; this.textContent = 'Clear all data';
+  status('All logged data cleared.', 'var(--red)');
+});
+
+
+/* ================= fuel price feed ================= */
+const PRICE_DEFAULT = { p:33.06, d:34.45, k:32.08, updated:'2026-11-01', label:'Nov 2026' };
+let PRICES = Object.assign({}, PRICE_DEFAULT);
+try { const v = JSON.parse(store.get('ypo_prices')||'null'); if (v && v.p) PRICES = Object.assign(PRICES, v); } catch(e){}
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function monthLabel(d){ return MONTHS[d.getMonth()] + ' ' + String(d.getFullYear()).slice(2); }
+function lastDayOfMonth(d){ return new Date(d.getFullYear(), d.getMonth()+1, 0); }
+function nextReview(){ return lastDayOfMonth(new Date()); }
+function daysToReview(){ const t = new Date(); t.setHours(0,0,0,0); const r = nextReview(); r.setHours(0,0,0,0); return Math.round((r - t)/86400000); }
+function isStale(){
+  const u = new Date(PRICES.updated + 'T12:00:00');
+  const n = new Date();
+  return (n.getFullYear()*12 + n.getMonth()) > (u.getFullYear()*12 + u.getMonth());
+}
+function savePrices(obj){
+  PRICES = Object.assign({}, PRICES, obj);
+  PRICES.label = monthLabel(new Date(PRICES.updated + 'T12:00:00'));
+  store.set('ypo_prices', JSON.stringify(PRICES));
+  M.fuelPrice = PRICES.p;
+  store.set('ypo_model', JSON.stringify(M));
+  const hist = fuelHistory().filter(r => r.m !== PRICES.label);
+  hist.push({ m: PRICES.label, p: PRICES.p, d: PRICES.d, note: 'Updated in-app' });
+  store.set('ypo_fuel_extra', JSON.stringify(hist.filter(r => !FUEL_BASE.some(b => b.m === r.m && b.p === r.p && b.d === r.d))));
+  if ($('#tFuel')) $('#tFuel').value = PRICES.p.toFixed(2);
+  paintPrices(); paintFuel(); paintAll();
+}
+function paintPrices(){
+  const P = PRICES;
+  $('#hdrFuel').textContent = K(P.p,2) + ' /L';
+  $('#hdrFuel').className = 'pillfuel';
+  // dashboard
+  $('#fxLabel').textContent = P.label + ' · ERB pump price';
+  $('#fxPetrol').textContent = K(P.p,2);
+  $('#fxDieselLine').innerHTML = 'Diesel <b class="gold">' + K(P.d,2) + '</b> per litre · kerosene ' + K(P.k,2);
+  const hist = fuelHistory();
+  const prev = hist.length > 1 ? hist[hist.length-2] : null;
+  const chg = prev ? P.p - prev.p : 0;
+  const b = $('#fxChange');
+  b.textContent = prev ? (chg > 0 ? '▲ +' + K(chg,2).slice(1) : chg < 0 ? '▼ −' + K(Math.abs(chg),2).slice(1) : '— unchanged') : '—';
+  b.className = 'badge ' + (chg > 0 ? 'b-bad' : chg < 0 ? 'b-ok' : 'b-inf');
+  $('#fxEff').textContent = 'Effective ' + new Date(P.updated + 'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  const d2r = daysToReview();
+  $('#fxNext').innerHTML = '<b>Next ERB review: ' + nextReview().toLocaleDateString('en-GB',{day:'numeric',month:'long'}) + '</b> — ' +
+    (d2r === 0 ? 'announced <b class="gold">today</b>. Check tonight and update before you fill up.' : 'in ' + d2r + ' day' + (d2r===1?'':'s') + '. Prices change at midnight.') +
+    (isStale() ? ' <span class="red">Your saved price is from ' + P.label + ' — update it.</span>' : '');
+
+  // banner
+  const bn = $('#priceBanner');
+  if (isStale()){
+    bn.innerHTML = '<div class="note r" style="margin-top:0">' +
+      '<b>Fuel price needs updating.</b> Your saved pump price is from ' + P.label + ', but a new ERB review has happened since. ' +
+      'Tap <b>Update price</b> — 10 seconds, and every number in this app corrects itself. ' +
+      '<button class="btn ghost" style="width:auto;padding:6px 11px;font-size:12px;margin-left:8px" onclick="goUpdate()">Update now</button></div>';
+  } else if (d2r <= 2){
+    bn.innerHTML = '<div class="note" style="margin-top:0"><b>ERB reviews prices in ' + d2r + ' day' + (d2r===1?'':'s') + '.</b> Fill your tank before the announcement — prices change at midnight on the last day of the month.</div>';
+  } else bn.innerHTML = '';
+
+  // fuel tab
+  const set = (id, v) => { const e = $(id); if (e) e.textContent = v; };
+  set('#kPetrol', K(P.p,2)); set('#kDiesel', K(P.d,2)); set('#kKero', K(P.k,2));
+  set('#kPetrolD', prev ? (chg>0?'▲ +'+K(chg,2).slice(1):chg<0?'▼ −'+K(Math.abs(chg),2).slice(1):'unchanged') + ' vs ' + prev.m : '—');
+  set('#kDieselD', prev ? (P.d>prev.d?'▲ +'+K(P.d-prev.d,2).slice(1):P.d<prev.d?'▼ −'+K(Math.abs(P.d-prev.d),2).slice(1):'unchanged') + ' vs ' + prev.m : '—');
+  set('#kKeroD', 'per litre');
+  set('#kNext', nextReview().toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+  set('#kNextD', daysToReview() === 0 ? 'announced today — update tonight' : 'in ' + daysToReview() + ' days · announced last day of the month');
+  const fs = $('#feedStatus');
+  if (fs) fs.innerHTML = 'Last saved price: <b>' + P.label + '</b> (' + K(P.p,2) + '/L petrol) · effective ' + P.updated +
+    (isStale() ? ' · <span class="red">out of date</span>' : ' · <span class="lime">current</span>');
+  const ip = $('#upPetrol'), id2 = $('#upDiesel'), ik = $('#upKero'), iu = $('#upDate');
+  if (ip && document.activeElement !== ip) ip.value = P.p;
+  if (id2 && document.activeElement !== id2) id2.value = P.d;
+  if (ik && document.activeElement !== ik) ik.value = P.k;
+  if (iu && !iu.value) iu.value = P.updated;
+}
+window.goUpdate = function(){
+  $$('#nav .tab').forEach(x => x.classList.remove('on'));
+  $$('.page').forEach(x => x.classList.remove('on'));
+  const t = document.querySelector('#nav .tab[data-p="fuel"]');
+  t.classList.add('on'); $('#p-fuel').classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>{ const e = $('#upPetrol'); if (e){ e.focus(); e.select(); } }, 250);
+};
+
+function upStatus(msg, col){ const e = $('#upStatus'); if (e){ e.innerHTML = msg; e.style.color = col || 'var(--mut)'; } }
+
+$('#savePrice').addEventListener('click', () => {
+  const p = num($('#upPetrol'), PRICES.p), d = num($('#upDiesel'), PRICES.d), k = num($('#upKero'), PRICES.k);
+  const date = $('#upDate').value || PRICES.updated;
+  if (p < 10 || p > 80){ upStatus('That petrol price looks wrong — check the figure and try again.', 'var(--red)'); return; }
+  savePrices({ p, d, k, updated: date });
+  upStatus('Saved. Petrol ' + K(p,2) + '/L is now driving every calculation in this app, and the chart has the new point.', 'var(--lime)');
+});
+
+/* ---- automatic change detection ---- */
+function parsePrices(text){
+  const grab = label => {
+    const re = new RegExp(label + '[^0-9]{0,120}?(?:K|ZMW)?\\s?(\\d{2}\\.\\d{2})', 'i');
+    const m = text.match(re);
+    if (!m) return null;
+    const v = parseFloat(m[1]);
+    return (v >= 10 && v <= 80) ? v : null;
+  };
+  return { p: grab('petrol'), d: grab('diesel'), k: grab('kerosene') };
+}
+function fetchWithTimeout(url, ms){
+  return new Promise((resolve, reject) => {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => { ctrl.abort(); reject(new Error('timeout')); }, ms);
+    fetch(url, { signal: ctrl.signal, cache:'no-store' })
+      .then(r => { clearTimeout(t); return r.ok ? r.text() : Promise.reject(new Error('HTTP ' + r.status)); })
+      .then(resolve).catch(e => { clearTimeout(t); reject(e); });
+  });
+}
+const SYNC_SOURCES = [
+  'https://r.jina.ai/https://www.erb.org.zm/',
+  'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.erb.org.zm/'),
+  'https://r.jina.ai/https://lusakatimes.com/category/business/'
+];
+async function autoSync(quiet){
+  upStatus('Checking for a new ERB price…', 'var(--gold)');
+  for (const url of SYNC_SOURCES){
+    try {
+      const txt = await fetchWithTimeout(url, 7000);
+      const f = parsePrices(txt);
+      if (f.p){
+        const changed = Math.abs(f.p - PRICES.p) > 0.001;
+        upStatus('Found petrol <b>' + K(f.p,2) + '</b>' + (f.d ? ' and diesel <b>' + K(f.d,2) + '</b>' : '') +
+          (changed ? ' — different from your saved price.' : ' — same as what you already have.') +
+          (changed ? ' <button class="btn" style="width:auto;padding:6px 12px;font-size:12px;margin-top:6px" onclick="applyFound(' + f.p + ',' + (f.d||PRICES.d) + ',' + (f.k||PRICES.k) + ')">Apply these prices</button>' : ''),
+          changed ? 'var(--gold)' : 'var(--lime)');
+        return true;
+      }
+    } catch(e){ /* try the next source */ }
+  }
+  upStatus('Could not reach a price source from this browser (no internet, or the site blocked it). Use the manual update above — it takes 10 seconds and it is just as accurate.', 'var(--mut)');
+  return false;
+}
+window.applyFound = function(p, d, k){
+  savePrices({ p, d, k, updated: todayStr() });
+  upStatus('Applied. Petrol ' + K(p,2) + '/L now drives every calculation.', 'var(--lime)');
+};
+$('#syncBtn').addEventListener('click', () => autoSync(false));
+$('#fxBtn').addEventListener('click', goUpdate);
+
+/* automatic check when the app opens, if the month has turned */
+function autoCheckOnOpen(){
+  if (!isStale()) return;
+  const bn = $('#priceBanner');
+  if (bn) bn.innerHTML = '<div class="note r" style="margin-top:0"><b>A new ERB review has happened since your last update.</b> ' +
+    'Prices are announced on the last day of the month and change at midnight. Update before you fill up — every calculation here depends on it. ' +
+    '<button class="btn ghost" style="width:auto;padding:6px 11px;font-size:12px;margin-left:8px" onclick="goUpdate()">Update now</button></div>';
+}
+
+/* ================= my week ================= */
+const WEEK = [
+  { d:'Monday', blocks:[[360,570],[960,1200]], focus:'Commute in, commute home',
+    tips:['Be online by 05:45 in Kabwata, Chilenje, Matero or Chelston — morning pickups run toward the CBD.',
+          '06:00–09:00 is volume work: short hops, minimal deadhead. Take nearly everything above K40.',
+          'Be in the CBD by 16:15. Do not chase a far pickup at 16:30 — the CBD will feed you.'],
+    trap:'Rest at home between shifts instead of sitting in a mall car park — waiting in the car burns fuel for nothing.' },
+  { d:'Tuesday', blocks:[[360,570],[960,1200]], focus:'Repeat Monday, but better',
+    tips:['Same windows as Monday. Consistency is what makes the week predictable.',
+          'Use the quiet 09:30–12:00 gap for shopping, food and a real break, not for cruising.',
+          'At 19:30, drive home on a route that passes a busy pickup area — free repositioning.'],
+    trap:'Do not take a long out-of-town run on a Tuesday afternoon; you will be stranded when the evening peak starts.' },
+  { d:'Wednesday', blocks:[[360,570],[720,840],[960,1170]], focus:'Add the midday crush',
+    tips:['Wednesday is the softest day of the week, so use its lunch peak: 12:00–14:00 around Cairo Road and the CBD.',
+          'Midday traffic is slow, so your per-minute earnings matter more than distance. Accept short, dense trips.',
+          'Finish at 19:30 and log the day before you sleep.'],
+    trap:'Do not skip the midday block and then try to make it up at 21:00 — that hour pays a fraction of the lunch peak.' },
+  { d:'Thursday', blocks:[[360,570],[960,1200]], focus:'Same as Monday — with payday upside',
+    tips:['Identical to Monday. Month-end weeks: stay online until 21:00.',
+          'From the 25th, salaries land — expect longer trips and more airport runs from Thursday onward.',
+          'Check your weekly trip count against your bonus tier before the weekend, not on Saturday night.'],
+    trap:'Do not start the weekend early on a Thursday night. Friday is the biggest day of the week — arrive rested.' },
+  { d:'Friday', blocks:[[840,1410]], focus:'The biggest earner of the week',
+    tips:['Start at 14:00 in the CBD: offices empty from 16:30 and Friday traffic is the worst of the week.',
+          'From 20:00 work East Park, Arcades, Levy Junction, Cosmopolitan and Northmead — nightlife pays a premium.',
+          'Fewer drivers are online late on Friday, so accept the higher-value requests and protect your rating.'],
+    trap:'Never drink and drive on a Friday. One incident ends the business and the car in the same night.' },
+  { d:'Saturday', blocks:[[600,840],[1020,1430]], focus:'Errands by day, nightlife by night',
+    tips:['10:00–14:00 is market, mall and family-trip traffic — and good Delivery by Car work.',
+          'Rest 14:00–17:00. Saturday night is long; do not start it tired.',
+          '17:00 onwards: same mall and nightlife circuit as Friday, usually with fewer cars and better fares.'],
+    trap:'Do not work Saturday morning if you were out until 01:00 on Friday. A tired Saturday costs you Sunday too.' }
+];
+
+function hhmm(mins){
+  const m = Math.round(mins/5)*5;
+  const wrap = m >= 1440;
+  const x = ((m % 1440) + 1440) % 1440;
+  return String(Math.floor(x/60)).padStart(2,'0') + ':' + String(x%60).padStart(2,'0') + (wrap ? '+' : '');
+}
+function scaleBlocks(blocks, scale){
+  const out = blocks.map(([a,b], i) => {
+    const dur = (b - a) * scale;
+    let st = a, en = a + dur;
+    if (en > 1435){ en = 1435; st = Math.max(300, en - dur); }
+    const nxt = blocks[i+1];
+    if (nxt && en > nxt[0] - 10) en = nxt[0] - 10;
+    return [st, Math.max(en, st + 25)];
+  });
+  for (let i = 1; i < out.length; i++){
+    if (out[i][0] < out[i-1][1] + 10){
+      const shift = out[i-1][1] + 10 - out[i][0];
+      out[i][0] += shift; out[i][1] += shift;
+    }
+  }
+  return out;
+}
+function trimDay(day, hours){
+  let mins = Math.round(hours*60/5)*5;
+  while (mins > 0){
+    const last = day.blocks[day.blocks.length-1];
+    const room = Math.max((last[1]-last[0]) - 90, 0);
+    if (room <= 0) break;
+    const cut = Math.min(room, mins);
+    last[1] -= cut; mins -= cut;
+  }
+}
+function extendDay(day, hours){
+  let mins = Math.round(hours*60/5)*5;
+  const last = day.blocks[day.blocks.length-1];
+  const room = Math.max(1435 - last[1], 0);
+  last[1] += Math.min(room, mins);
+}
+function balanceDays(days, cap){
+  const hours = days.map(d => d.blocks.reduce((a,[s0,e0])=>a+(e0-s0)/60,0));
+  let excess = 0;
+  days.forEach((d,i) => { if (hours[i] > cap + 0.05){ excess += hours[i]-cap; trimDay(d, hours[i]-cap); hours[i]=cap; } });
+  const slack = hours.map(h => Math.max(cap-h, 0));
+  const totalSlack = slack.reduce((a,b)=>a+b,0);
+  if (excess > 0.05 && totalSlack > 0){
+    days.forEach((d,i) => { if (slack[i] > 0){ const add = excess*slack[i]/totalSlack; extendDay(d, add); } });
+  }
+  return days;
+}
+function loggedForWeekday(idx){
+  const s = startOfWeek(new Date());
+  return LOG.filter(e => {
+    const d = new Date(e.date + 'T12:00:00');
+    return d >= s && ((d.getDay()+6)%7) === idx;
+  }).reduce((a,e)=>a+entryNet(e),0);
+}
+function weekSchedule(){
+  const p = plan();
+  const baseHours = WEEK.reduce((a,d)=>a+d.blocks.reduce((x,[s0,e0])=>x+(e0-s0)/60,0),0);
+  const need = isFinite(p.hours) ? p.hours : baseHours;
+  const scale = Math.min(Math.max(need / baseHours, 0.75), 1.4);
+  const netDay = M.target / Math.max(M.days, 1);
+  const scaled = WEEK.map(day => ({ blocks: scaleBlocks(day.blocks.slice(), scale) }));
+  balanceDays(scaled, Math.max(11, (need / Math.max(M.days,1)) * 1.12));
+  const days = WEEK.map((day, i) => {
+    const blocks = scaled[i].blocks;
+    const hrs = blocks.reduce((a,[s0,e0])=>a+(e0-s0)/60,0);
+    const litres = hrs * M.kph / Math.max(M.kmpl,1);
+    const fuel = litres * M.fuelPrice;
+    const maint = hrs * M.kph * M.maint;
+    const gross = (netDay + fuel + maint + M.other + M.rent) / (1 - M.comm/100);
+    return { d: day.d, blocks, hrs, litres, fuel, gross, net: netDay,
+             trips: gross / Math.max(M.fare,1),
+             times: blocks.map(([a,b]) => hhmm(a) + '–' + hhmm(b)).join(' · ') };
+  });
+  return { need, scale, days, netDay, baseHours, p };
+}
+
+function paintWeek(){
+  const el = $('#dayCards'); if (!el) return;
+  const p = plan();
+  const baseHours = WEEK.reduce((a,d)=>a+d.blocks.reduce((x,[s0,e0])=>x+(e0-s0)/60,0),0);
+  const need = isFinite(p.hours) ? p.hours : baseHours;
+  const scale = Math.min(Math.max(need / baseHours, 0.75), 1.4);
+  const netDay = M.target / Math.max(M.days, 1);
+  const todayIdx = (new Date().getDay()+6)%7;
+
+  const set = (id,v) => { const e = $(id); if (e) e.textContent = v; };
+  set('#wkPerDay', K(netDay));
+  set('#wkPerDaySub', 'net per working day · ' + M.days + ' days on, Sunday off');
+  set('#wkTarget', K(M.target));
+  set('#wkDays', M.days);
+  set('#wkHours', isFinite(p.hours) ? N(p.hours,0) + ' online hours / week' : '—');
+  set('#wkHrsDay', isFinite(p.hours) ? N(p.hours/Math.max(M.days,1),1) + ' h per working day' : '—');
+  set('#wkFuel', isFinite(p.hours) ? K(p.fuelSpend) : '—');
+  set('#wkFuelL', isFinite(p.hours) ? N(p.litres,0) + ' litres at ' + K(M.fuelPrice,2) + '/L' : '—');
+  set('#wkGross', isFinite(p.hours) ? K(p.grossWeek) : '—');
+
+  const wn = $('#wkNote');
+  if (wn){
+    if (!isFinite(p.hours)) wn.textContent = 'Your cost model cannot reach the target at any number of hours. Fix fuel per km, gross per hour or commission in the K3,000 Plan tab first.';
+    else if (scale >= 1.4 && need > baseHours * 1.4) wn.innerHTML = 'Your model needs <b>' + N(need,0) + ' hours</b>, which is more than a 6-day week can sensibly hold. Do not fix that by working Sunday — fix it with the levers in the Vehicle tab (driving style, positioning, commission), which is worth 7–18 hours a week.';
+    else wn.innerHTML = 'The blocks below are scaled to your <b>' + N(need,0) + ' hour</b> week. If you only ever do one thing: be online in the <b>06:00–09:00</b> and <b>16:30–20:00</b> windows. Those four hours pay more than eight hours in the middle of the day.';
+  }
+
+  const sched = weekSchedule();
+  let html = '';
+  WEEK.forEach((day, idx) => {
+    const row = sched.days[idx];
+    const blocks = row.blocks, hrs = row.hrs, fuel = row.fuel, litres = row.litres,
+          gross = row.gross, trips = row.trips;
+    const logged = loggedForWeekday(idx);
+    const isToday = idx === todayIdx;
+    const times = blocks.map(([a,b]) => hhmm(a) + '–' + hhmm(b)).join(' · ');
+    html += '<article class="card' + (isToday ? ' accent' : '') + '">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">' +
+        '<div><h3>' + day.d + '</h3><div class="tiny mut">' + day.focus + '</div></div>' +
+        (isToday ? '<span class="badge b-ok">TODAY</span>' : '<span class="badge b-inf">' + K(netDay) + ' net</span>') +
+      '</div>' + (isToday ? '<div id="nowStrip" class="nowstrip" style="margin-top:9px">—</div>' : '') + '<div class="hr"></div>' +
+      '<div class="split"><span class="mut">Online</span><b>' + N(hrs,1) + ' h</b></div>' +
+      '<div class="tiny" style="margin:-4px 0 8px;color:var(--lime)">' + times + '</div>' +
+      '<div class="split"><span class="mut">Gross needed</span><b class="k">' + K(gross) + '</b></div>' +
+      '<div class="split"><span class="mut">Trips at ' + K(M.fare) + '</span><b class="k">' + N(trips,0) + '</b></div>' +
+      '<div class="split"><span class="mut">Fuel budget</span><b class="k">' + K(fuel) + ' <span class="dim tiny">(' + N(litres,0) + ' L)</span></b></div>' +
+      '<div class="hr"></div>' +
+      '<ul class="dot" style="font-size:13px">' + day.tips.map(t => '<li>' + t + '</li>').join('') + '</ul>' +
+      '<div class="note r" style="margin:9px 0 0"><b>Avoid:</b> ' + day.trap + '</div>' +
+      (logged !== 0 ? '<div class="tiny dim" style="margin-top:9px">Logged this week: <b class="' + (logged>=netDay?'lime':'gold') + '">' + LK(logged) + '</b> of ' + K(netDay) + '</div>' : '') +
+    '</article>';
+  });
+
+  // Sunday card
+  html += '<article class="card" style="border-color:rgba(99,179,255,.3)">' +
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">' +
+      '<div><h3>Sunday</h3><div class="tiny mut">Off day — the one that keeps the other six working</div></div>' +
+      (todayIdx === 6 ? '<span class="badge b-ok">TODAY</span>' : '<span class="badge b-inf">OFF</span>') +
+    '</div>' + (todayIdx === 6 ? '<div id="nowStrip" class="nowstrip off" style="margin-top:9px">—</div>' : '') + '<div class="hr"></div>' +
+    '<div class="split"><span class="mut">Target</span><b class="blue">K0 — by design</b></div>' +
+    '<div class="split"><span class="mut">Fuel budget</span><b class="k">K0</b></div>' +
+    '<div class="hr"></div>' +
+    '<ul class="dot" style="font-size:13px">' +
+      '<li>Sleep properly. Fatigue is what causes the crash that ends the business.</li>' +
+      '<li>Car: wash, tyres cold, oil, coolant, fuel for Monday.</li>' +
+      '<li>Numbers: log the week, compare to target, drop the worst-paying window next week.</li>' +
+      '<li>Money: separate next week\'s fuel from living money.</li>' +
+    '</ul>' +
+    '<div class="note b" style="margin:9px 0 0">Behind target? Add hours to <b>Friday</b>, not to Sunday. Friday evening pays roughly double a Sunday morning per hour — and you keep the rest.</div>' +
+  '</article>';
+
+  el.innerHTML = html;
+  paintPrintCard();
+}
+
+/* ---------- live date & time ---------- */
+let _sched = null;
+function getSched(){ if (!_sched) _sched = weekSchedule(); return _sched; }
+const pad2 = n => String(n).padStart(2,'0');
+function fmtDur(mins){
+  mins = Math.max(0, Math.round(mins));
+  const h = Math.floor(mins/60), m = mins % 60;
+  return (h ? h + 'h ' : '') + m + 'm';
+}
+const BLOCK_ACTIONS = [
+  ['Morning commute — residential \u2192 CBD. Be at the pickups in Kabwata, Chilenje, Matero or Chelston by 05:45.',
+   'Evening peak — CBD \u2192 residential. Position in the CBD by 16:15 and take everything above K40.'],
+  ['Morning commute — same windows as Monday. Volume beats cleverness here.',
+   'Evening peak — CBD \u2192 residential. At 19:30 head home on a route that passes a busy pickup area.'],
+  ['Morning commute — residential \u2192 CBD.',
+   'Midday crush — CBD lunch traffic around Cairo Road. Short, dense trips; per-minute earnings matter more than distance.',
+   'Evening peak — CBD \u2192 residential.'],
+  ['Morning commute — residential \u2192 CBD. Month-end weeks: keep going until 21:00.',
+   'Evening peak — CBD \u2192 residential. From the 25th expect longer trips and airport runs.'],
+  ['Friday peak then nightlife — CBD from 14:00, offices empty at 16:30, then East Park, Arcades, Levy and Northmead after 20:00.'],
+  ['Saturday errands — malls, markets and family trips. Strong Delivery by Car window.',
+   'Saturday night — same circuit as Friday with fewer cars online and better fares.']
+];
+const SUNDAY_ACTION = 'Sunday off — sleep, service and clean the car, then log the week. Everything starts again Monday 06:00.';
+
+let _slotCache = {};
+function hhEnd(m){ return m >= 1440 ? 'midnight' : hhmm(m); }
+function daySlots(idx){
+  if (_slotCache[idx]) return _slotCache[idx];
+  const s = getSched();
+  if (idx === 6){ _slotCache[idx] = [{ from:0, to:1440, kind:'off', label:SUNDAY_ACTION }]; return _slotCache[idx]; }
+  const blocks = s.days[idx].blocks;
+  const acts = BLOCK_ACTIONS[idx] || [];
+  const slots = [];
+  if (!blocks.length){ _slotCache[idx] = [{ from:0, to:1440, kind:'off', label:'Off day.' }]; return _slotCache[idx]; }
+  const firstPrep = Math.max(blocks[0][0] - 20, 0);
+  slots.push({ from:0, to:firstPrep, kind:'off', label:'Nothing on the clock yet. Sleep.' });
+  slots.push({ from:firstPrep, to:blocks[0][0], kind:'prep',
+               label:'Prep — fuel, tyres, water, phone charged. Go online 15 minutes early so the first request is yours.' });
+  blocks.forEach(([a,b], i) => {
+    slots.push({ from:a, to:b, kind:'work', label:acts[i] || 'Online — work the peak.' });
+    const nxt = blocks[i+1];
+    if (nxt) slots.push({ from:b, to:nxt[0], kind:'off', label:'Break — rest at home or eat. Do not burn fuel cruising in the trough.' });
+  });
+  const last = blocks[blocks.length-1][1];
+  slots.push({ from:last, to:1440, kind:'log', label:'Log the day in My Log (trips, gross, fuel, km), then rest.' });
+  _slotCache[idx] = slots;
+  return slots;
+}
+function slotAt(idx, mins){
+  const slots = daySlots(idx);
+  for (const sl of slots) if (mins >= sl.from && mins < sl.to) return sl;
+  return slots[slots.length-1];
+}
+function dayBarSVG(idx, mins){
+  const W = 700, H = 52, t = 6, hgt = 16;
+  const slots = daySlots(idx);
+  const x = m => (m/1440) * W;
+  const COL = { work:'#c6f76a', off:'#16202d', prep:'#ffc85c', log:'#63b3ff' };
+  let rects = '';
+  slots.forEach(sl => {
+    const x0 = x(sl.from), w = Math.max(x(sl.to) - x0, 1.5);
+    rects += '<rect x="' + x0.toFixed(1) + '" y="' + t + '" width="' + w.toFixed(1) + '" height="' + hgt + '" fill="' + COL[sl.kind] + '"/>';
+  });
+  let ticks = '';
+  for (let h = 0; h <= 24; h += 3){
+    ticks += '<line x1="' + x(h*60) + '" x2="' + x(h*60) + '" y1="' + (t+hgt) + '" y2="' + (t+hgt+3) + '" stroke="#2c3d51" stroke-width="1"/>' +
+             '<text x="' + x(h*60) + '" y="' + (H-3) + '" fill="#6b7f95" font-size="9" text-anchor="' + (h===0?'start':h===24?'end':'middle') + '">' + (h===24?'24':h) + ':00</text>';
+  }
+  const nx = x(mins).toFixed(1);
+  const marker = '<line x1="' + nx + '" x2="' + nx + '" y1="' + (t-4) + '" y2="' + (t+hgt+4) + '" stroke="#fff" stroke-width="2"/>' +
+                 '<circle cx="' + nx + '" cy="' + (t-5) + '" r="3.4" fill="#fff"/>';
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">' +
+    '<rect x="0" y="' + t + '" width="' + W + '" height="' + hgt + '" rx="3" fill="#0a1017"/>' +
+    rects + ticks + marker + '</svg>';
+}
+const SLOT_LABEL = { work:'ON SHIFT', off:'OFF', prep:'PREP', log:'WRAP UP' };
+
+function nowStatus(){
+  const d = new Date();
+  const idx = (d.getDay() + 6) % 7;
+  const mins = d.getHours()*60 + d.getMinutes();
+  const s = getSched();
+  if (idx === 6){
+    const monStart = s.days[0].blocks[0][0];
+    const toMon = (24*60 - mins) + monStart;
+    return { cls:'b-inf', label:'OFF DAY — SUNDAY',
+             detail:'Car service, clean, log the week. Back online Monday at ' + hhmm(monStart) + ' (in ' + fmtDur(toMon) + ').' };
+  }
+  const blocks = s.days[idx].blocks;
+  for (const [a,b] of blocks){
+    if (mins >= a && mins < b){
+      return { cls:'b-ok', label:'ON SHIFT',
+               detail:'Online until <b>' + hhmm(b) + '</b> — ' + fmtDur(b - mins) + ' left in this block. Target today: <b>' + K(s.netDay) + '</b> net.' };
+    }
+  }
+  const next = blocks.find(([a]) => a > mins);
+  if (next){
+    const first = blocks[0][0];
+    if (next[0] === first){
+      return { cls:'b-mid', label:'BEFORE SHIFT — ' + hhmm(next[0]) + ' START',
+               detail:'Kicks off in ' + fmtDur(next[0] - mins) + '. Fuel, tyres, water, phone charged — be rolling 15 minutes early so the first request is yours.' };
+    }
+    return { cls:'b-mid', label:'OFF — NEXT BLOCK AT ' + hhmm(next[0]),
+             detail:'Nothing on the clock for ' + fmtDur(next[0] - mins) + '. Eat, sleep or check the car — do not burn fuel cruising in the trough.' };
+  }
+  const mStart = s.days[0].blocks[0][0];
+  return { cls:'b-ok', label:'DONE FOR TODAY',
+           detail:'Blocks finished. Log the day in My Log, then rest. Next start: ' + hhmm(mStart) + (idx === 5 ? ' Monday' : ' tomorrow') + '.' };
+}
+function paintNow(){
+  const d = new Date();
+  const tEl = $('#nowTime');
+  if (!tEl) return;
+  tEl.textContent = pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+  $('#nowSec').textContent = ':' + pad2(d.getSeconds());
+  $('#nowDate').textContent = d.toLocaleDateString('en-GB',{weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  const hc = $('#hdrClock');
+  if (hc) hc.textContent = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ' · ' + d.toLocaleDateString('en-GB',{weekday:'short', day:'numeric', month:'short'});
+
+  const st = nowStatus();
+  const b = $('#nowBadge');
+  if (b){ b.className = 'badge ' + st.cls; b.textContent = st.label; }
+  const dt = $('#nowDetail');
+  if (dt) dt.innerHTML = st.detail;
+
+  // day bar + current action
+  const idxN = (d.getDay() + 6) % 7;
+  const minsN = d.getHours()*60 + d.getMinutes();
+  const bar = $('#nowBar');
+  if (bar) bar.innerHTML = dayBarSVG(idxN, minsN);
+  const sl = slotAt(idxN, minsN);
+  const act = $('#nowAction');
+  if (act){
+    const dot = (sl.kind === 'work') ? 'nowdot' : 'nowdot off';
+    const col = sl.kind === 'work' ? 'var(--lime)' : sl.kind === 'log' ? 'var(--blue)' : 'var(--gold)';
+    act.innerHTML = '<span class="' + dot + '"></span><b style="color:' + col + ';letter-spacing:.06em">' + SLOT_LABEL[sl.kind] + '</b> ' +
+      '<span class="dim">until ' + hhEnd(sl.to) + '</span> — ' + sl.label;
+  }
+  const strip = $('#nowStrip');
+  if (strip){
+    strip.className = 'nowstrip' + (sl.kind === 'work' ? '' : ' off');
+    strip.innerHTML = '<div class="tiny" style="font-weight:850;letter-spacing:.07em;color:' +
+      (sl.kind === 'work' ? 'var(--lime)' : 'var(--gold)') + '"><span class="nowdot' + (sl.kind==='work'?'':' off') + '"></span>' +
+      'NOW ' + hhmm(minsN) + ' · ' + SLOT_LABEL[sl.kind] + ' until ' + hhEnd(sl.to) + '</div>' +
+      '<div class="tiny mut" style="margin-top:3px">' + sl.label + '</div>';
+  }
+  const hrNow = d.getHours();
+  const heatKey = idxN + ':' + hrNow;
+  if (heatKey !== _heatKey){
+    _heatKey = heatKey;
+    $$('#heat .hc').forEach(c => c.classList.remove('hnow'));
+    const cell = document.querySelector('#heat .hc[data-di="' + idxN + '"][data-h="' + hrNow + '"]');
+    if (cell) cell.classList.add('hnow');
+  }
+
+  const nt = $('#nowTarget');
+  if (nt){
+    const w = weekLog();
+    const idx = (d.getDay() + 6) % 7;
+    const logged = (typeof loggedForWeekday === 'function') ? loggedForWeekday(idx) : 0;
+    const s = getSched();
+    nt.innerHTML = 'Today\u2019s target: <b class="lime">' + K(s.netDay) + '</b> net · logged today: <b class="' +
+      (logged >= s.netDay ? 'lime' : 'gold') + '">' + LK(logged) + '</b>' +
+      ' · week: <b>' + LK(w.net) + '</b> of ' + K(M.target) +
+      (idx === 6 ? ' · <span class="blue">Sunday — you are not supposed to be on the clock</span>' : '');
+  }
+}
+let _heatKey = null;
+setInterval(paintNow, 1000);
+
+/* ---------- printable one-page shift card ---------- */
+function paintPrintCard(){
+  const rowsEl = $('#pcRows'); if (!rowsEl) return;
+  const s = weekSchedule();
+  const d = new Date();
+  const mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay()+6)%7));
+  $('#pcTitle').textContent = 'Shift card — week of ' + mon.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+  $('#pcMeta').innerHTML = 'Petrol <b>' + K(M.fuelPrice,2) + '/L</b><br>' + N(M.kmpl) + ' km/L · ' +
+    K(M.fuelPrice/Math.max(M.kmpl,1),2) + ' fuel per km<br>Target <b>' + K(M.target) + '</b> net / week';
+  const totHrs = s.days.reduce((a,x)=>a+x.hrs,0);
+  const totFuel = s.days.reduce((a,x)=>a+x.fuel,0);
+  rowsEl.innerHTML = s.days.map(r =>
+    '<tr><td><b>' + r.d.slice(0,3) + '</b></td><td>' + r.times + '</td><td class="n">' + N(r.hrs,1) +
+    '</td><td class="n">' + K(r.net) + '</td><td class="n">' + N(r.trips,0) + '</td><td class="n">' + K(r.fuel) + '</td></tr>'
+  ).join('') +
+  '<tr class="pctr-off"><td><b>Sun</b></td><td>OFF — sleep, service, clean, log the week</td><td class="n">0</td>' +
+  '<td class="n">K0</td><td class="n">0</td><td class="n">K0</td></tr>' +
+  '<tr><td colspan="2" style="font-size:9.5px;color:#6b7785;letter-spacing:.08em;font-weight:800">WEEK TOTAL</td>' +
+  '<td class="n"><b>' + N(totHrs,1) + '</b></td><td class="n"><b>' + K(M.target) + '</b></td><td class="n">—</td>' +
+  '<td class="n"><b>' + K(totFuel) + '</b></td></tr>';
+
+  const rules = [
+    ['Peak', '06:00–09:00 and 16:30–20:00 Mon–Fri. Those four hours pay more than eight hours mid-day.'],
+    ['Never chase', 'refuse pickups over about 3 km away for a short fare — unpaid kilometres are pure loss.'],
+    ['Fuel', 'fill before the last day of the month; ERB changes prices at midnight.'],
+    ['Bonuses', 'count your weekly trips — the last few to hit a tier pay double after fuel.'],
+    ['Log nightly', 'trips, gross, fuel, km. You cannot manage what you do not measure.'],
+    ['Sunday off', 'behind target? Add hours to Friday, not to Sunday.']
+  ];
+  $('#pcRules').innerHTML = rules.map(([a,b]) =>
+    '<div class="pcrule"><b style="min-width:84px;display:inline-block">' + a + '</b><span>' + b + '</span></div>').join('');
+  const nowD = new Date();
+  $('#pcFoot').textContent = 'Generated ' + nowD.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) +
+    ' at ' + pad2(nowD.getHours()) + ':' + pad2(nowD.getMinutes()) +
+    ' · ' + N(s.need,0) + ' online hours required by your cost model';
+}
+
+$('#printBtn').addEventListener('click', () => {
+  try { window.print(); } catch(e){ alertish('Printing is blocked in this preview — download the file and press Ctrl/Cmd + P.'); }
+});
+function alertish(msg){
+  const el = $('#pcFoot');
+  if (el){ const old = el.textContent; el.textContent = msg; el.style.color = '#b26a00';
+    setTimeout(()=>{ el.textContent = old; el.style.color = ''; }, 6000); }
+}
+
+/* ================= checklists ================= */
+function initChecks(id, key){
+  const ul = document.getElementById(id); if (!ul) return;
+  let saved = [];
+  try { saved = JSON.parse(store.get(key) || '[]'); } catch(e){}
+  [...ul.children].forEach((li, i) => {
+    if (saved.includes(i)) li.classList.add('done');
+    li.addEventListener('click', () => {
+      li.classList.toggle('done');
+      const idx = [...ul.children].filter(x => x.classList.contains('done')).map(x => [...ul.children].indexOf(x));
+      store.set(key, JSON.stringify(idx));
+    });
+  });
+}
+
+/* ================= model wiring ================= */
+Object.keys(MODEL_FIELDS).forEach(id => {
+  const el = document.getElementById(id);
+  if (el){ el.addEventListener('input', readModel); }
+});
+$('#pFare').addEventListener('input', readModel);
+$('#presetReset').addEventListener('click', () => {
+  M = Object.assign({}, DEFAULTS);
+  store.set('ypo_model', JSON.stringify(M));
+  paintModel(); paintAll();
+});
+
+/* ================= paint all ================= */
+function paintAll(){
+  _sched = null; _slotCache = {};
+  paintPrices(); paintDash(); paintPlan(); paintCars(); paintMyCar(); paintTrip(); paintLog(); paintWeek(); paintNow();
+}
+
+/* ================= boot ================= */
+(function boot(){
+  $('#lDate').value = todayStr();
+  paintModel();
+  paintFuel();
+  paintHeat();
+  initChecks('shiftCk','ypo_ck_shift');
+  initChecks('onbCk','ypo_ck_onb');
+  initChecks('sunCk','ypo_ck_sun');
+  initChecks('sunCk2','ypo_ck_sun2');
+  autoCheckOnOpen();
+  $('#tFuel').value = M.fuelPrice.toFixed(2);
+  $('#tKmpl').value = M.kmpl;
+  $('#tComm').value = M.comm;
+  paintAll();
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a58565d3ccdc3c99',t:'MTc5NDMxNzI3OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a58565d3ccdc3c99',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
